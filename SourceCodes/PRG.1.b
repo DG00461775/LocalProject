@@ -1,5 +1,5 @@
-* @ValidationCode : Mjo5MTM1NzkwNjpDcDEyNTI6MTU3NzE4ODk4OTc5OTpERzAwNDYxNzc1Oi0xOi0xOjA6MDpmYWxzZTpOL0E6UjE5X1NQNi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 24 Dec 2019 17:33:09
+* @ValidationCode : MjoxNTI1NjE3NTE2OkNwMTI1MjoxNTc3MTkyMzc1Mzg0OkRHMDA0NjE3NzU6LTE6LTE6MDowOmZhbHNlOk4vQTpSMTlfU1A2LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 24 Dec 2019 18:29:35
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : DG00461775
 * @ValidationInfo : Nb tests success  : N/A
@@ -18,5 +18,6 @@ PROGRAM PRG.1
 
 *-----------------------------------------------------------------------------
     PRINT "HELLO WORLD"
+    PRINT "HELLO WORLD1"
 
 END
