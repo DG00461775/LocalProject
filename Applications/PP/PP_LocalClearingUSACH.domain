@@ -1,0 +1,64 @@
+# UTF-8
+/* LocalClearingUSACH */
+Domain PP_LocalClearingUSACH
+    @t24:i (module=PP)
+    @java:Package (value=com.temenos.t24.datamodel.pp.pp_localclearingusach)
+namespace "http://www.temenos.com/t24/PP_LocalClearingUSACH"
+metamodelVersion 1.30.6
+Classes {
+    NOFILE_PP_POR_ACH
+        @i18n:Description (en="")
+        @t24:i (t24Name=NOFILE.PP.POR.ACH, level=I, type=T, allowedFunctions="L P S", localRefAllowed=false)
+    {
+        CompanyID : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=N, maxLength=20, core=false, t24Name=CompanyID, mandatory=false)
+        FTNumber : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=N, maxLength=20, core=false, t24Name=FTNumber, mandatory=false)
+        OUT_VAL : T24BusinessTypes:N
+            @t24:i (align=L, inputBehaviour=N, maxLength=150, core=false, t24Name=OUT.VAL, genOperation=E.NOFILE.PP.POR.ACH, mandatory=true)
+    }
+    /* This table is used to capture information very specific to ACH transactions */
+    POR_ACH
+        @i18n:Description (en="")
+        @t24:i (t24Name=POR.ACH, level=I, type=L, allowedFunctions="L P S", localRefAllowed=false)
+    {
+        /* This field indicates the Processing Company of the USACH Payment. */
+        CompanyID : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=1.0, core=true, t24Name=CompanyID, mandatory=false)
+/* The value for payment type code will be present in Entry Detail Record of the US NACHA format
+This field is applicable for the following SEC CODES - (ACK, ADV, ARC, ATX, BOC, CCD, CIE, CTX, DNE, MTE, POP, PPD, RCK, XCK, dishonored Returns, contested dishonored returns, COR, Refused COR)
+This field allows ODFI to Include Codes, of significance to them, to enable specialized handling of the entry. There is no standardized Interpretation for the value of this field. This field must be returned intact for any returned Entry
+CCD, CTX - When an Acknowledgement Entry is requested by an Originator, this field contains "AK" */
+        DiscretionaryData : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=1, sysNumber=6.0, core=true, t24Name=DiscretionaryData, mandatory=false)
+        /* Unique Transaction ID for the payment within the processing Company. */
+        FTNumber : T24BusinessTypes:A required
+            @t24:i (align=L, inputBehaviour=I, maxLength=16, sysNumber=2.0, core=true, t24Name=FTNumber, mandatory=true)
+/* The value for payment type code will be present in Entry Detail Record of the US NACHA format
+This field is applicable only for SEC CODE = IAT
+This field indicates the results of a Gateway Operator Screen for OFAC Compliance. A value of "0" indicates that the Gateway Operator has not found a potential blocked party, as Identified by OFAC on its list of "Specially Designated Nationals"
+A value of "1" indicates the potential presence of a blocked party
+This field must be space filled If no screening has been conducted */
+        GatwayOprtorOFACScreningIndctr : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=1, sysNumber=4.0, core=true, t24Name=GatwayOprtorOFACScreningIndctr, mandatory=false)
+        /* Unique ID generated for the record in the format CompanyID-FTNumber. */
+        ID -> PP_LocalClearingUSACH:POR_ACH PK required
+            @i18n:Label (en="Transaction Ref")
+            @i18n:Tooltip (en="Transaction Reference")
+            @t24:i (align=L, inputBehaviour=I, maxLength=255, sysNumber=0.0, core=true, businessType=A, t24Name=ID, mandatory=true)
+/* The value for payment type code will be present in Entry Detail Record of the US NACHA format
+This value is mandatory for 2 SEC Codes - TEL / WEB
+This field is Used to Indicate whether an Entry is a recurring or Single-Entry payment
+TEL: For a Recurring TEL Entry, this field must contain the value 'R'. For a Single-Entry TEL, this field must either contain the value "S" or be space-filled
+WEB: For a recurring WEB Entry, this field must contain the value "R". For a Single-Entry WEB, this field must contain the value "S" */
+        PaymentTypeCode : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=2, sysNumber=3.0, core=true, t24Name=PaymentTypeCode, mandatory=false)
+/* The value for payment type code will be present in Entry Detail Record of the US NACHA format
+This field is applicable only for SEC CODE = IAT
+This field indicates the results of a Third-Party Service provider screen for OFAC Compliance. A value of "0" indicates that the Third-Party Service provider has not found a potential blocked party, as Identified by OFAC on its list of "Specially Designated Nationals"
+A value of "1" indicates the potential presence of a blocked party
+This field must be space filled If no screening has been conducted */
+        SecondaryOFACScreeningIndicatr : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=1, sysNumber=5.0, core=true, t24Name=SecondaryOFACScreeningIndicatr, mandatory=false)
+    }
+}

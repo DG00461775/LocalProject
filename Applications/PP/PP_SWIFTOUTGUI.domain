@@ -1,0 +1,329 @@
+# UTF-8
+/* SWIFT OUT GUI */
+Domain PP_SWIFTOUTGUI
+    @t24:i (module=PP)
+    @java:Package (value=com.temenos.t24.datamodel.pp.pp_swiftoutgui)
+namespace "http://www.temenos.com/t24/PP_SWIFTOUTGUI"
+metamodelVersion 1.30.6
+Classes {
+    NOFILE_PP_SWIFTOUT_PAYMENTS
+        @i18n:Description (en="")
+        @t24:i (t24Name=NOFILE.PP.SWIFTOUT.PAYMENTS, level=I, type=T, allowedFunctions="L P S", localRefAllowed=false)
+    {
+        FTNumber : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=N, maxLength=20, core=false, t24Name=FTNumber, mandatory=false)
+        ID_LIST : T24BusinessTypes:N
+            @t24:i (align=L, inputBehaviour=N, maxLength=100, core=false, t24Name=ID.LIST, genOperation=PP.NOFILE.SWIFTOUT.PAYMENTS, mandatory=true)
+    }
+    NOFILE_PP_SWIFTOUT_PAYMENTS_DEL
+        @i18n:Description (en="")
+        @t24:i (t24Name=NOFILE.PP.SWIFTOUT.PAYMENTS.DEL, level=I, type=T, allowedFunctions="L P S", localRefAllowed=false)
+    {
+        FT_NUMBER_DEL : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=N, maxLength=30, core=false, t24Name=FT.NUMBER.DEL, mandatory=false)
+        ID_LIST_DEL : T24BusinessTypes:N
+            @t24:i (align=L, inputBehaviour=N, maxLength=100, core=false, t24Name=ID.LIST.DEL, genOperation=PP.NOFILE.SWIFTOUT.PAYMENTS.DEL, mandatory=true)
+        MSG_TYPE_DEL : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=N, maxLength=30, core=false, t24Name=MSG.TYPE.DEL, mandatory=false)
+        TPS_ID_DEL : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=N, maxLength=30, core=false, t24Name=TPS.ID.DEL, mandatory=false)
+    }
+    NOFILE_PP_SWIFTOUT_PAYMENTS_PRE_DEL
+        @i18n:Description (en="")
+        @t24:i (t24Name=NOFILE.PP.SWIFTOUT.PAYMENTS.PRE.DEL, level=I, type=T, allowedFunctions="L P S", localRefAllowed=false)
+    {
+        ID_LIST_PRE_DEL : T24BusinessTypes:N
+            @t24:i (align=L, inputBehaviour=N, maxLength=100, core=false, t24Name=ID.LIST.PRE.DEL, genOperation=PP.NOFILE.SWIFTOUT.PAYMENTS.PRE.DEL, mandatory=true)
+        PSM_ID : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=N, maxLength=30, core=false, t24Name=PSM.ID, mandatory=false)
+        TPS_ID : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=N, maxLength=30, core=false, t24Name=TPS.ID, mandatory=false)
+    }
+    NOFILE_PP_SWIFTOUT_PAYMENTS_RECEIVED_PRE_DEL
+        @i18n:Description (en="")
+        @t24:i (t24Name=NOFILE.PP.SWIFTOUT.PAYMENTS.RECEIVED.PRE.DEL, level=I, type=T, allowedFunctions="L P S", localRefAllowed=false)
+    {
+        CompanyID : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=N, maxLength=3, core=false, t24Name=CompanyID, mandatory=false)
+        DEL_ID : T24BusinessTypes:N
+            @t24:i (align=L, inputBehaviour=N, maxLength=3, core=false, t24Name=DEL.ID, genOperation=PP.NOFILE.SWIFTOUT.PAYMENTS.RECEIVED.PRE.DEL, mandatory=true)
+        ErrorCode : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=N, maxLength=3, core=false, t24Name=ErrorCode, mandatory=false)
+        ID_LIST_PRE_DEL : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=N, maxLength=255, core=false, t24Name=ID.LIST.PRE.DEL, mandatory=false)
+        Receiver : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=N, maxLength=12, core=false, t24Name=Receiver, mandatory=false)
+        SendersReference : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=N, maxLength=16, core=false, t24Name=SendersReference, mandatory=false)
+    }
+    NOFILE_PP_SWIFTOUT_PAYMENTS_VIEW
+        @i18n:Description (en="")
+        @t24:i (t24Name=NOFILE.PP.SWIFTOUT.PAYMENTS.VIEW, level=I, type=T, allowedFunctions="L P S", localRefAllowed=false)
+    {
+        ID_LIST_VIEW : T24BusinessTypes:N
+            @t24:i (align=L, inputBehaviour=N, maxLength=100, core=false, t24Name=ID.LIST.VIEW, genOperation=PP.NOFILE.SWIFTOUT.PAYMENTS.VIEW, mandatory=true)
+        PSM_ID : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=N, maxLength=30, core=false, t24Name=PSM.ID, mandatory=false)
+        TPS_ID : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=N, maxLength=30, core=false, t24Name=TPS.ID, mandatory=false)
+    }
+    NOFILE_PP_SWIFTOUT_RECEIVED_PAYMENTS_DEL
+        @i18n:Description (en="")
+        @t24:i (t24Name=NOFILE.PP.SWIFTOUT.RECEIVED.PAYMENTS.DEL, level=I, type=T, allowedFunctions="L P S", localRefAllowed=false)
+    {
+        DELID2 : T24BusinessTypes:N
+            @t24:i (align=L, inputBehaviour=N, maxLength=100, core=false, t24Name=DELID2, genOperation=PP.NOFILE.SWIFTOUT.RECEIVED.PAYMENTS.DEL, mandatory=true)
+        FT_NUMBER_DEL : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=N, maxLength=30, core=false, t24Name=FT.NUMBER.DEL, mandatory=false)
+        ID_LIST_DEL : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=N, maxLength=255, core=false, t24Name=ID.LIST.DEL, mandatory=false)
+        TPS_ID_DEL : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=N, maxLength=30, core=false, t24Name=TPS.ID.DEL, mandatory=false)
+    }
+    NOFILE_SWIFTOUT_EXCEPTION
+        @i18n:Description (en="")
+        @t24:i (t24Name=NOFILE.SWIFTOUT.EXCEPTION, level=I, type=T, allowedFunctions="L P S", localRefAllowed=false)
+    {
+        Amount : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=N, maxLength=19, sysNumber=3.0, core=true, t24Name=Amount, mandatory=false)
+        Channel : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=N, maxLength=10, sysNumber=8.0, core=true, t24Name=Channel, mandatory=false)
+        CompanyID : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=N, maxLength=9, sysNumber=1.0, core=true, t24Name=CompanyID, mandatory=true)
+        Currency : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=N, maxLength=3, sysNumber=4.0, core=true, t24Name=Currency, mandatory=false)
+        Date : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=N, maxLength=11, sysNumber=5.0, core=true, t24Name=Date, mandatory=false)
+        ErrorCode : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=N, maxLength=10, sysNumber=6.0, core=true, t24Name=ErrorCode, mandatory=false)
+        FTNumber : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=N, maxLength=25, sysNumber=2.0, core=true, t24Name=FTNumber, mandatory=false)
+        ID_LIST : T24BusinessTypes:N
+            @t24:i (align=L, inputBehaviour=N, maxLength=1000, core=false, t24Name=ID.LIST, genOperation=E.NOFILE.PP.SWIFTOUT.EXCEP.LIST, mandatory=false)
+        StatusCode : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=N, maxLength=5, sysNumber=7.0, core=true, t24Name=StatusCode, mandatory=false)
+    }
+    NOFILE_SWIFTOUT_PSM_BLOB
+        @i18n:Description (en="")
+        @t24:i (t24Name=NOFILE.SWIFTOUT.PSM.BLOB, level=I, type=T, allowedFunctions="L P S", localRefAllowed=false)
+    {
+        CompanyID : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=N, maxLength=20, core=false, t24Name=CompanyID, mandatory=false)
+        FTNumber : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=N, maxLength=20, core=false, t24Name=FTNumber, mandatory=false)
+        OUT_VAL : T24BusinessTypes:N
+            @t24:i (align=L, inputBehaviour=N, maxLength=150, core=false, t24Name=OUT.VAL, genOperation=E.PP.NOFILE.PSM.BLOB, mandatory=true)
+    }
+    NOFILE_SWIFTOUT_RECEIVED_PAYMENTS
+        @i18n:Description (en="")
+        @t24:i (t24Name=NOFILE.SWIFTOUT.RECEIVED.PAYMENTS, level=I, type=T, allowedFunctions="L P S", localRefAllowed=false)
+    {
+        Amount : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=N, maxLength=19, sysNumber=5.0, core=true, t24Name=Amount, mandatory=false)
+        CompanyID : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=N, maxLength=9, sysNumber=1.0, core=true, t24Name=CompanyID, mandatory=true)
+        Currency : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=N, maxLength=3, sysNumber=6.0, core=true, t24Name=Currency, mandatory=false)
+        ErrorCode : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=N, maxLength=10, sysNumber=8.0, core=true, t24Name=ErrorCode, mandatory=false)
+        ErrorDescription : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=N, maxLength=128, sysNumber=12.0, core=true, t24Name=ErrorDescription, mandatory=false)
+        FTNumber : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=N, maxLength=25, sysNumber=3.0, core=true, t24Name=FTNumber, mandatory=false)
+        ID_LIST : T24BusinessTypes:N
+            @t24:i (align=L, inputBehaviour=N, maxLength=1000, core=false, t24Name=ID.LIST, genOperation=E.NOFILE.PP.SWIFTOUT.RECEIVED.PAYMENTS, mandatory=false)
+        MessageType : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=N, maxLength=10, sysNumber=7.0, core=true, t24Name=MessageType, mandatory=false)
+        Receiver : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=N, maxLength=12, sysNumber=4.0, core=true, t24Name=Receiver, mandatory=false)
+        SendersReference : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=N, maxLength=16, sysNumber=2.0, core=true, t24Name=SendersReference, mandatory=false)
+        SettlementNotificationMessage : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=N, maxLength=255, sysNumber=9.0, core=true, t24Name=SettlementNotificationMessage, mandatory=false)
+    }
+/* This screen is used to define Balance Check Required Flag based on the characteristics of the payment such as Originating Source, Account Type,
+Incoming Message Type and Clearing Nature Code.
+If the flag is set to ‘Y’ then fund authorization is required for the payment. Else fund authorization is not required for the payment.
+A record authorised in this screen will create or amend or delete a record in store table, PPT.BANKOPERATIONCODEWORD
+The entries in the table are searched for a match in the order of their ranking. The Balance Check Required flag is retrieved from the first entry
+that matches the payment characteristics based on the peeling logic used in payments hub. If no entry meets the match criteria then a default value of ‘Y’ is considered. */
+    PPT_BANKOPERATIONCODEWORD
+        @i18n:Description (en="")
+        @t24:i (t24Name=PPT.BANKOPERATIONCODEWORD, nonStop=true, level=I, type=L, allowedFunctions="L P S", localRefAllowed=false)
+    {
+        ApprovedDateTime : T24BusinessTypes:TIME
+            @t24:i (align=L, inputBehaviour=I, maxLength=17, sysNumber=9.0, core=true, t24Name=ApprovedDateTime, mask="RDDDD DD  DD ##:##:##.###", mandatory=false)
+        ApproverUserID : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=30, sysNumber=8.0, core=true, t24Name=ApproverUserID, mandatory=false)
+/* Holds the Bank Operation Code.
+Validation Rules:
+Mandatory field. 4 alphanumeric character. */
+        BankOperationCode : T24BusinessTypes:A required
+            @t24:i (align=L, inputBehaviour=I, maxLength=4, sysNumber=1.0, core=true, t24Name=BankOperationCode, mandatory=true)
+/* The codeword received in the payment instruction.
+Validation Rules:
+Mandatory field. 8 alphanumeric characters. */
+        CodeWord : T24BusinessTypes:A required
+            @t24:i (align=L, inputBehaviour=I, maxLength=8, sysNumber=3.0, core=true, t24Name=CodeWord, mandatory=true)
+        EntryDateTime : T24BusinessTypes:TIME
+            @t24:i (align=L, inputBehaviour=I, maxLength=17, sysNumber=7.0, core=true, t24Name=EntryDateTime, mask="RDDDD DD  DD ##:##:##.###", mandatory=false)
+        EntryUserID : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=30, sysNumber=6.0, core=true, t24Name=EntryUserID, mandatory=false)
+        /* Unique ID generated by the payments hub in order to identify each record in the application. */
+        ID -> PP_SWIFTOUTGUI:PPT_BANKOPERATIONCODEWORD PK required
+            @i18n:Label (en="Transaction Ref")
+            @i18n:Tooltip (en="Transaction Reference")
+            @t24:i (align=L, inputBehaviour=I, maxLength=255, sysNumber=0.0, core=true, businessType=A, t24Name=ID, mandatory=true)
+        RACBankOperationCodeWord : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=19, sysNumber=4.0, core=true, t24Name=RACBankOperationCodeWord, mandatory=false)
+        RSCBankOperationCodeWord : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=1, sysNumber=5.0, core=true, t24Name=RSCBankOperationCodeWord, mandatory=false)
+/* As a Posting Set can have multiple posting lines, Sequence Number is used to order the posting lines within the Posting Set.
+Validation Rules:
+Mandatory field. 7 alphanumeric characters. */
+        SequenceNumber : T24BusinessTypes:N required
+            @t24:i (align=R, inputBehaviour=I, maxLength=7, sysNumber=2.0, core=true, t24Name=SequenceNumber, mandatory=true)
+    }
+/* This screen is used to define Balance Check Required Flag based on the characteristics of the payment such as Originating Source, Account Type,
+Incoming Message Type and Clearing Nature Code.
+If the flag is set to ‘Y’ then fund authorization is required for the payment. Else fund authorization is not required for the payment.
+A record authorised in this screen will create or amend or delete a record in store table, PPT.CODEWORDDISALLOWCOMB
+The entries in the table are searched for a match in the order of their ranking. The Balance Check Required flag is retrieved from the first entry
+that matches the payment characteristics based on the peeling logic used in payments hub. If no entry meets the match criteria then a default value of ‘Y’ is considered. */
+    PPT_CODEWORDDISALLOWCOMB
+        @i18n:Description (en="")
+        @t24:i (t24Name=PPT.CODEWORDDISALLOWCOMB, nonStop=true, level=I, type=L, allowedFunctions="L P S", localRefAllowed=false)
+    {
+        ApprovedDateTime : T24BusinessTypes:TIME
+            @t24:i (align=L, inputBehaviour=I, maxLength=17, sysNumber=10.0, core=true, t24Name=ApprovedDateTime, mask="RDDDD DD  DD ##:##:##.###", mandatory=false)
+        ApproverUserID : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=30, sysNumber=9.0, core=true, t24Name=ApproverUserID, mandatory=false)
+/* The codeword received in the payment instruction
+Validation Rules:
+Mandatory field. 8 alphanumeric character. */
+        CodeWord1 : T24BusinessTypes:A required
+            @t24:i (align=L, inputBehaviour=I, maxLength=8, sysNumber=1.0, core=true, t24Name=CodeWord1, mandatory=true)
+/* The codeword received in the payment instruction
+Validation Rules:
+Mandatory field. 8 alphanumeric character. */
+        CodeWord2 : T24BusinessTypes:A required
+            @t24:i (align=L, inputBehaviour=I, maxLength=8, sysNumber=2.0, core=true, t24Name=CodeWord2, mandatory=true)
+        /* ??? */
+        EndDateCodewDisallowedCombi : T24BusinessTypes:D
+            @t24:i (align=R, inputBehaviour=I, maxLength=11, sysNumber=4.0, core=true, t24Name=EndDateCodewDisallowedCombi, mandatory=false)
+        EntryDateTime : T24BusinessTypes:TIME
+            @t24:i (align=L, inputBehaviour=I, maxLength=17, sysNumber=8.0, core=true, t24Name=EntryDateTime, mask="RDDDD DD  DD ##:##:##.###", mandatory=false)
+        EntryUserID : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=30, sysNumber=7.0, core=true, t24Name=EntryUserID, mandatory=false)
+        /* Unique ID generated by the payments hub in order to identify each record in the application. */
+        ID -> PP_SWIFTOUTGUI:PPT_CODEWORDDISALLOWCOMB PK required
+            @i18n:Label (en="Transaction Ref")
+            @i18n:Tooltip (en="Transaction Reference")
+            @t24:i (align=L, inputBehaviour=I, maxLength=255, sysNumber=0.0, core=true, businessType=A, t24Name=ID, mandatory=true)
+        RACCodeWordDisallowedCombi : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=19, sysNumber=5.0, core=true, t24Name=RACCodeWordDisallowedCombi, mandatory=false)
+        RSCCodeWordDisallowedCombi : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=1, sysNumber=6.0, core=true, t24Name=RSCCodeWordDisallowedCombi, mandatory=false)
+        /* ??? */
+        StartDateCodewDisallowedCombi : T24BusinessTypes:D required
+            @t24:i (align=R, inputBehaviour=I, maxLength=11, sysNumber=3.0, core=true, t24Name=StartDateCodewDisallowedCombi, mandatory=true)
+    }
+/* This table or its GUI version will be used to fetch the details from the POR.TRANSACTION and display.
+All the fields in this version are No Input field and the values will get defaulted from POR.TRANSACTION.
+Upon opening the record the status code will be changed to new one based on the option selected by the user. (i.e.) Complete/Cancel.(999-Complete  997-Cancel)
+Once the user verifies all the fields displayed in POR.SO.TRANSACTION and clicks on approve button the new status code will get updated in POR.TRANSACTION. */
+    PP_SO_TRANSACTION
+        @i18n:Description (en="")
+        @t24:i (t24Name=PP.SO.TRANSACTION, nonStop=true, level=I, type=U, allowedFunctions="A C D E I L P Q R S", localRefAllowed=false)
+    {
+        AUDITOR_CODE : T24BusinessTypes:A
+            @i18n:Label (en="Auditor Code")
+            @i18n:Tooltip (en="Auditor Code")
+            @t24:i (align=L, inputBehaviour=E, maxLength=16, sysNumber=23.0, core=true, t24Name=AUDITOR.CODE, mandatory=false)
+        AUDIT_DATE_TIME : T24BusinessTypes:RELTIME
+            @i18n:Label (en="Audit Date Time")
+            @i18n:Tooltip (en="Date and time when record was audited")
+            @t24:i (align=L, inputBehaviour=E, maxLength=15, sysNumber=24.0, core=true, t24Name=AUDIT.DATE.TIME, mask="RDD DD  DD ##:##", mandatory=false)
+        AUTHORISER : T24BusinessTypes:A
+            @i18n:Label (en=Authoriser)
+            @i18n:Tooltip (en="Indicates the User who Authorises the record")
+            @t24:i (align=L, inputBehaviour=N, maxLength=40, sysNumber=20.0, core=true, t24Name=AUTHORISER, mandatory=false)
+        CO_CODE -> ST_CompanyCreation:COMPANY
+            @i18n:Label (en=Company)
+            @t24:i (align=L, inputBehaviour=N, maxLength=11, sysNumber=21.0, core=true, businessType=A, t24Name=CO.CODE, mask="R##-###-####", mandatory=false)
+        CURR_NO : T24BusinessTypes:N
+            @i18n:Label (en="Curr No")
+            @t24:i (align=R, inputBehaviour=N, maxLength=4, sysNumber=17.0, core=true, t24Name=CURR.NO, mandatory=false)
+        /* It will be defaulted with the value of CompanyID from POR.TRANSACTION. */
+        CompanyID : T24BusinessTypes:A required
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=1.0, core=true, t24Name=CompanyID, mandatory=true)
+        /* It will be defaulted with the value of TransactionCurrencyCode from POR.TRANSACTION. */
+        CurrencyCode : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=4.0, core=true, t24Name=CurrencyCode, mandatory=false)
+        DATE_TIME -> byValue PP_SWIFTOUTGUI:PP_SO_TRANSACTION__DATE_TIME *
+            @t24:i (t24Name=DATE.TIME)
+        DEPT_CODE -> ST_Config:DEPT_ACCT_OFFICER
+            @i18n:Label (en="Dept Code")
+            @t24:i (align=R, inputBehaviour=N, maxLength=4, sysNumber=22.0, core=true, t24Name=DEPT.CODE, mandatory=false)
+        /* It will be defaulted with the value of ErrorCode  from POR.HISTORYLOG for the corresponding FT Number. */
+        ErrorCode : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=10, sysNumber=6.0, core=true, t24Name=ErrorCode, mandatory=false)
+        /* It will be defaulted with the value of AdditionalInformation from POR.HISTORYLOG for the corresponding FT Number. */
+        ErrorDescription : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=128, sysNumber=7.0, core=true, t24Name=ErrorDescription, mandatory=false)
+        /* It holds the value of FTNumber from POR.TRANSACTION. */
+        FTNumber : T24BusinessTypes:A required
+            @t24:i (align=L, inputBehaviour=I, maxLength=16, sysNumber=2.0, core=true, t24Name=FTNumber, mandatory=true)
+        /* ID of POR.TRANSACTION.Holds the unique id generated for the payment */
+        ID -> PP_SWIFTOUTGUI:PP_SO_TRANSACTION PK required
+            @i18n:Label (en="Transaction Ref")
+            @i18n:Tooltip (en="Transaction Reference")
+            @t24:i (align=L, inputBehaviour=I, maxLength=255, sysNumber=0.0, core=true, businessType=A, t24Name=ID, mandatory=true)
+        INPUTTER -> byValue PP_SWIFTOUTGUI:PP_SO_TRANSACTION__INPUTTER *
+            @t24:i (t24Name=INPUTTER)
+        /* It will be defaulted with the value of OuputChannel from POR.TRANSACTION. */
+        OutputChannel : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=10, sysNumber=9.0, core=true, t24Name=OutputChannel, mandatory=false)
+        PaymentStatus : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=128, sysNumber=10.0, core=true, t24Name=PaymentStatus, mandatory=false)
+        RECORD_STATUS : T24BusinessTypes:STAT
+            @i18n:Label (en="Record Status")
+            @t24:i (align=L, inputBehaviour=N, maxLength=4, sysNumber=16.0, core=true, t24Name=RECORD.STATUS, mandatory=false)
+        RESERVED01 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=10, sysNumber=15.0, core=true, t24Name=RESERVED01, mandatory=false)
+        RESERVED02 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=10, sysNumber=14.0, core=true, t24Name=RESERVED02, mandatory=false)
+        RESERVED03 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=10, sysNumber=13.0, core=true, t24Name=RESERVED03, mandatory=false)
+        RESERVED04 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=10, sysNumber=12.0, core=true, t24Name=RESERVED04, mandatory=false)
+        RESERVED05 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=10, sysNumber=11.0, core=true, t24Name=RESERVED05, mandatory=false)
+        /* It holds the value of PaymentSendDate from POR.TRANSACTION. */
+        SendDate : T24BusinessTypes:D
+            @t24:i (align=R, inputBehaviour=I, maxLength=11, sysNumber=5.0, core=true, t24Name=SendDate, mandatory=false)
+/* It will be defaulted with the value 999 or 997.
+Possible values:
+Status Code: 999 indicates that the Payment is Complete.
+Status Code: 997 indicates that the Payment is cancelled. */
+        StatusCode : T24BusinessTypes:AMT
+            @t24:i (align=R, inputBehaviour=I, maxLength=3, sysNumber=8.0, core=true, t24Name=StatusCode, typeModifiers="0", mandatory=false)
+        /* It will be defaulted with the value of TransactionAmount from POR.TRANSACTION. */
+        TransactionAmount : T24BusinessTypes:AMT
+            @t24:i (align=R, inputBehaviour=I, maxLength=17, sysNumber=3.0, core=true, t24Name=TransactionAmount, mandatory=false)
+    }
+    PP_SO_TRANSACTION__DATE_TIME
+    {
+        DATE_TIME : T24BusinessTypes:RELTIME
+            @i18n:Label (en="Date time")
+            @i18n:Tooltip (en="Date and time when record was input or authorised")
+            @t24:i (align=L, inputBehaviour=N, maxLength=15, sysNumber=19.0, core=true, t24Name=DATE.TIME, mask="RDD DD  DD ##:##", mandatory=false)
+    }
+    PP_SO_TRANSACTION__INPUTTER
+    {
+        INPUTTER : T24BusinessTypes:A
+            @i18n:Label (en=Inputter)
+            @i18n:Tooltip (en="The user who last updated the record")
+            @t24:i (align=L, inputBehaviour=N, maxLength=40, sysNumber=18.0, core=true, t24Name=INPUTTER, mandatory=false)
+    }
+}

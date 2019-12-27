@@ -1,0 +1,1990 @@
+# UTF-8
+/* Outward Mapping Framework */
+Domain PP_OutwardMappingFramework
+    @t24:i (module=PP)
+    @java:Package (value=com.temenos.t24.datamodel.pp.pp_outwardmappingframework)
+namespace "http://www.temenos.com/t24/PP_OutwardMappingFramework"
+metamodelVersion 1.30.6
+Classes {
+    NOFILE_PPT_SENTMSGDETAILSLIST
+        @i18n:Description (en="")
+        @t24:i (t24Name=NOFILE.PPT.SENTMSGDETAILSLIST, level=I, type=T, allowedFunctions="L P S", localRefAllowed=false)
+    {
+        BulkReference : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=N, maxLength=50, core=false, t24Name=BulkReference, mandatory=false)
+        ClearingChannel : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=N, maxLength=10, core=false, t24Name=ClearingChannel, mandatory=false)
+        FileReference : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=N, maxLength=50, core=false, t24Name=FileReference, mandatory=false)
+        ID : T24BusinessTypes:N
+            @i18n:Label (en="Transaction Ref")
+            @i18n:Tooltip (en="Transaction Reference")
+            @t24:i (align=R, inputBehaviour=N, maxLength=50, core=false, t24Name="@ID", mandatory=false)
+        SENTMSGDETS : T24BusinessTypes:N
+            @t24:i (align=L, inputBehaviour=N, maxLength=100, core=false, t24Name=SENTMSGDETS, genOperation=E.NOFILE.PPT.SENTMSGDETAILSLIST, mandatory=true)
+        TransactionAmount : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=N, maxLength=10, core=false, t24Name=TransactionAmount, mandatory=false)
+        TransactionCurrencyCode : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=N, maxLength=10, core=false, t24Name=TransactionCurrencyCode, mandatory=false)
+    }
+    POR_CLG_OUT_SETTLEMENT_PENDING
+        @i18n:Description (en="")
+        @t24:i (t24Name=POR.CLG.OUT.SETTLEMENT.PENDING, level=F, type=L, allowedFunctions="L P S", localRefAllowed=false)
+    {
+        ClearingID : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=10, sysNumber=1.0, core=true, t24Name=ClearingID, mandatory=false)
+        ClearingTransactionType : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=2, sysNumber=7.0, core=true, t24Name=ClearingTransactionType, mandatory=false)
+        CreditAccountCompany : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=12.0, core=true, t24Name=CreditAccountCompany, mandatory=false)
+        CreditAccountCurrency : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=14.0, core=true, t24Name=CreditAccountCurrency, mandatory=false)
+        CreditAccountNumber : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=13.0, core=true, t24Name=CreditAccountNumber, mandatory=false)
+        DebitAccountCompany : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=15.0, core=true, t24Name=DebitAccountCompany, mandatory=false)
+        DebitAccountCurrency : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=17.0, core=true, t24Name=DebitAccountCurrency, mandatory=false)
+        DebitAccountNumber : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=16.0, core=true, t24Name=DebitAccountNumber, mandatory=false)
+        FileReferenceOutgoing : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=50, sysNumber=3.0, core=true, t24Name=FileReferenceOutgoing, mandatory=false)
+        FileSendersReference : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=50, sysNumber=2.0, core=true, t24Name=FileSendersReference, mandatory=false)
+        ID -> PP_OutwardMappingFramework:POR_CLG_OUT_SETTLEMENT_PENDING PK required
+            @i18n:Label (en="Transaction Ref")
+            @i18n:Tooltip (en="Transaction Reference")
+            @t24:i (align=L, inputBehaviour=I, maxLength=255, sysNumber=0.0, core=true, businessType=A, t24Name=ID, mandatory=true)
+        IncomingMessageType : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=10, sysNumber=6.0, core=true, t24Name=IncomingMessageType, mandatory=false)
+        NumberOfChildren : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=I, maxLength=6, sysNumber=11.0, core=true, t24Name=NumberOfChildren, mandatory=false)
+        OriginatingChannel : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=10, sysNumber=5.0, core=true, t24Name=OriginatingChannel, mandatory=false)
+        OriginatingSource : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=10, sysNumber=4.0, core=true, t24Name=OriginatingSource, mandatory=false)
+        RejectedAmount -> byValue PP_OutwardMappingFramework:POR_CLG_OUT_SETTLEMENT_PENDING__RejectedAmount *
+            @t24:i (t24Name=RejectedAmount)
+        SettlementDate : T24BusinessTypes:D
+            @t24:i (align=R, inputBehaviour=I, maxLength=17, sysNumber=20.0, core=true, t24Name=SettlementDate, mandatory=false)
+        SettlementFlag : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=1, sysNumber=21.0, core=true, t24Name=SettlementFlag, mandatory=false)
+        SettlementID : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=16, sysNumber=10.0, core=true, t24Name=SettlementID, mandatory=false)
+        TransactionAmount : T24BusinessTypes:AMT
+            @t24:i (align=R, inputBehaviour=I, maxLength=13, sysNumber=8.0, core=true, t24Name=TransactionAmount, typeModifiers="5", mandatory=false)
+        TransactionCurrencyCode : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=9.0, core=true, t24Name=TransactionCurrencyCode, mandatory=false)
+    }
+    POR_CLG_OUT_SETTLEMENT_PENDING__RejectedAmount
+    {
+        FTNumber : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=16, sysNumber=19.0, core=true, t24Name=FTNumber, mandatory=false)
+        RejectedAmount : T24BusinessTypes:AMT
+            @t24:i (align=R, inputBehaviour=I, maxLength=17, sysNumber=18.0, core=true, t24Name=RejectedAmount, typeModifiers="3", mandatory=false)
+    }
+    /* This table is used to store the information related to bulks (bulked transactions on similar clearing specific criteria) which have been sent to a clearing. */
+    PPT_SENTBULKDETAILS
+        @i18n:Description (en="")
+        @t24:i (t24Name=PPT.SENTBULKDETAILS, level=F, type=H, allowedFunctions="A C D E H I L P Q R S", localRefAllowed=false)
+    {
+        AUDITOR_CODE : T24BusinessTypes:A
+            @i18n:Label (en="Auditor Code")
+            @i18n:Tooltip (en="Auditor Code")
+            @t24:i (align=L, inputBehaviour=E, maxLength=16, sysNumber=27.0, core=true, t24Name=AUDITOR.CODE, mandatory=false)
+        AUDIT_DATE_TIME : T24BusinessTypes:RELTIME
+            @i18n:Label (en="Audit Date Time")
+            @i18n:Tooltip (en="Date and time when record was audited")
+            @t24:i (align=L, inputBehaviour=E, maxLength=15, sysNumber=28.0, core=true, t24Name=AUDIT.DATE.TIME, mask="RDD DD  DD ##:##", mandatory=false)
+        AUTHORISER : T24BusinessTypes:A
+            @i18n:Label (en=Authoriser)
+            @i18n:Tooltip (en="Indicates the User who Authorises the record")
+            @t24:i (align=L, inputBehaviour=N, maxLength=40, sysNumber=24.0, core=true, t24Name=AUTHORISER, mandatory=false)
+/* Indicates format of the bulk sent to the clearing
+
+Example: pacs.008.001.02 */
+        BulkFormat : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=20, sysNumber=4.0, core=true, t24Name=BulkFormat, mandatory=false)
+/* Indicates type of the payment sent to the clearing.
+
+Example: pacs.008 */
+        BulkPaymentType : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=10, sysNumber=5.0, core=true, t24Name=BulkPaymentType, mandatory=false)
+        /* Reference of the bulk as generated by the system. */
+        BulkReference : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=16, sysNumber=3.0, core=true, t24Name=BulkReference, mandatory=false)
+/* Actual status of the bulk.
+
+Possible values:
+''     - initial status: Created
+'RJCT' - rejected / cancelled by clearing
+'PART' - partly rejected by clearing
+'ACCP' - accepted by clearing */
+        BulkStatus : T24BusinessTypes:A
+            @i18n:Label (en="Bulk Status")
+            @i18n:Tooltip (en="Bulk Status")
+            @t24:i (align=L, inputBehaviour=I, maxLength=4, sysNumber=12.0, core=true, t24Name=BulkStatus, mandatory=false)
+        CO_CODE -> ST_CompanyCreation:COMPANY
+            @i18n:Label (en=Company)
+            @t24:i (align=L, inputBehaviour=N, maxLength=11, sysNumber=25.0, core=true, businessType=A, t24Name=CO.CODE, mask="R##-###-####", mandatory=false)
+        CURR_NO : T24BusinessTypes:N
+            @i18n:Label (en="Curr No")
+            @t24:i (align=R, inputBehaviour=N, maxLength=4, sysNumber=21.0, core=true, t24Name=CURR.NO, mandatory=false)
+/* When a Clearing Report with "RJCT" or "PART" comes, it will go into an expection queue..
+Possible values:
+'PNDG' - pending
+'CMPT' - completed
+'SUBM' - resubmitted
+Examples:
+When the Clearing Report bulk is received, the field is updated at status "PNDG".
+When an action is taken in the Exception Queue of the Clearing Status Report, the fields is updated at status CMPT.
+If the Clearing Report is received with "ACCP", this field is updated directly to "CMPT".
+If the original file is resubmitted to the clearing the filed is updated directly to "SUBM".
+Validation Rules:
+4 alphanumeric characters. */
+        ClearingActionStatusCode : T24BusinessTypes:A
+            @i18n:Label (en="Clearing Action Status Code")
+            @i18n:Tooltip (en="Clearing Action Status Code")
+            @t24:i (align=L, inputBehaviour=I, maxLength=4, sysNumber=16.0, core=true, t24Name=ClearingActionStatusCode, mandatory=false)
+/* Date and time when ClearingActionStatusCode is updated.
+Validation Rules:
+17 characters Date Time format.
+It need to be displayed as DD MMM YYYY HH:MM:SS.sss.
+Example: 12 JAN 2015 12:34:25.123
+The value is not editable by the user. */
+        ClearingActionStatusDateTime : T24BusinessTypes:TIME
+            @i18n:Label (en="Clearing Action Status Date Time")
+            @i18n:Tooltip (en="Clearing Action Status Date Time")
+            @t24:i (align=L, inputBehaviour=N, maxLength=17, sysNumber=17.0, core=true, t24Name=ClearingActionStatusDateTime, mask="RDDDD DD  DD ##:##:##.###", mandatory=false)
+/* Code acceptance or rejection as provided in a Clearing Status Report.
+Either the ISO or proprietary reason code will be provided by the clearing.
+
+Example: AC04 */
+        ClearingReasonCode : T24BusinessTypes:A
+            @i18n:Label (en="Clearing Reason Code")
+            @i18n:Tooltip (en="Clearing Reason Code")
+            @t24:i (align=L, inputBehaviour=N, maxLength=4, sysNumber=14.0, core=true, t24Name=ClearingReasonCode, mandatory=false)
+        /* Free text for the acceptance or rejection of a bulk as provided in a Clearing Status Report. */
+        ClearingReasonCodeProprietary : T24BusinessTypes:A
+            @i18n:Label (en="Clearing Reason Code Proprietary")
+            @i18n:Tooltip (en="Clearing Reason Code Proprietary")
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=15.0, core=true, t24Name=ClearingReasonCodeProprietary, mandatory=false)
+        /* Bulk Reference of the Clearing Status Report file from PPT.RECEIVEDBULKDETAILS. */
+        ClearingStatusBulkReference : T24BusinessTypes:A
+            @i18n:Label (en="Clearing Status Bulk Reference")
+            @i18n:Tooltip (en="Clearing Status Bulk Reference")
+            @t24:i (align=L, inputBehaviour=N, maxLength=16, sysNumber=13.0, core=true, t24Name=ClearingStatusBulkReference, mandatory=false)
+/* User can act on PART or RJCT file. Following action can be made on the file.
+Options are : REJECT, RESUBMIT, REVERSE,""
+Based on the action respective value is updated in the field.
+Validation Rules:
+35 alphanumeric characters. */
+        ClearingUserAction : PP_OutwardMappingFramework:PPT_SENTBULKDETAILS__ClearingUserAction
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=18.0, core=true, t24Name=ClearingUserAction, mandatory=false)
+/* ID of the company for which the record is applicable or processing company.
+
+Example: EU1
+
+Validation Rules:
+It holds 3 alphanumeric characters.
+The value links to the field 'CompanyID' in PPT.COMPANY. */
+        CompanyID : T24BusinessTypes:A
+            @i18n:Label (en=CompanyID)
+            @i18n:Tooltip (en=CompanyID)
+            @t24:i (align=L, inputBehaviour=N, maxLength=3, sysNumber=1.0, core=true, t24Name=CompanyID, mandatory=false)
+        DATE_TIME -> byValue PP_OutwardMappingFramework:PPT_SENTBULKDETAILS__DATE_TIME *
+            @t24:i (t24Name=DATE.TIME)
+        DEPT_CODE -> ST_Config:DEPT_ACCT_OFFICER
+            @i18n:Label (en="Dept Code")
+            @t24:i (align=R, inputBehaviour=N, maxLength=4, sysNumber=26.0, core=true, t24Name=DEPT.CODE, mandatory=false)
+        /* Reference of the file generated by the system to which the bulk belongs to. */
+        FileReference : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=16, sysNumber=2.0, core=true, t24Name=FileReference, mandatory=false)
+        /* Unique ID of the record. It is equal to the BulkReference. */
+        ID -> PP_OutwardMappingFramework:PPT_SENTBULKDETAILS PK required
+            @i18n:Label (en="Transaction Ref")
+            @i18n:Tooltip (en="Transaction Reference")
+            @t24:i (align=L, inputBehaviour=I, maxLength=255, sysNumber=0.0, core=true, businessType=A, t24Name=ID, mandatory=true)
+        INPUTTER -> byValue PP_OutwardMappingFramework:PPT_SENTBULKDETAILS__INPUTTER *
+            @t24:i (t24Name=INPUTTER)
+        /* Total number of transactions in the bulk. */
+        NumberOfTransactions : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=N, maxLength=7, sysNumber=8.0, core=true, t24Name=NumberOfTransactions, mandatory=false)
+        OVERRIDE -> byValue PP_OutwardMappingFramework:PPT_SENTBULKDETAILS__OVERRIDE *
+            @t24:i (t24Name=OVERRIDE)
+        RECORD_STATUS : T24BusinessTypes:STAT
+            @i18n:Label (en="Record Status")
+            @t24:i (align=L, inputBehaviour=N, maxLength=4, sysNumber=20.0, core=true, t24Name=RECORD.STATUS, mandatory=false)
+        /* Instructed party of the bulk. */
+        ReceiverAddress : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=7.0, core=true, t24Name=ReceiverAddress, mandatory=false)
+        /* Instructing party of the bulk. */
+        SenderAddress : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=6.0, core=true, t24Name=SenderAddress, mandatory=false)
+        /* Total interbank settlement amount of the transactions in the bulk. */
+        SettlementAmount : T24BusinessTypes:AMT
+            @t24:i (align=R, inputBehaviour=N, maxLength=17, sysNumber=9.0, core=true, t24Name=SettlementAmount, mandatory=false)
+/* Interbank settlement currency.
+
+Example: EUR */
+        SettlementCurrency : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=3, sysNumber=10.0, core=true, t24Name=SettlementCurrency, mandatory=false)
+        /* Interbank settlement date. */
+        SettlementDate : T24BusinessTypes:D
+            @t24:i (align=R, inputBehaviour=I, maxLength=11, sysNumber=11.0, core=true, t24Name=SettlementDate, mandatory=false)
+    }
+    PPT_SENTBULKDETAILS__DATE_TIME
+    {
+        DATE_TIME : T24BusinessTypes:RELTIME
+            @i18n:Label (en="Date time")
+            @i18n:Tooltip (en="Date and time when record was input or authorised")
+            @t24:i (align=L, inputBehaviour=N, maxLength=15, sysNumber=23.0, core=true, t24Name=DATE.TIME, mask="RDD DD  DD ##:##", mandatory=false)
+    }
+    PPT_SENTBULKDETAILS__INPUTTER
+    {
+        INPUTTER : T24BusinessTypes:A
+            @i18n:Label (en=Inputter)
+            @i18n:Tooltip (en="The user who last updated the record")
+            @t24:i (align=L, inputBehaviour=N, maxLength=40, sysNumber=22.0, core=true, t24Name=INPUTTER, mandatory=false)
+    }
+    PPT_SENTBULKDETAILS__OVERRIDE
+    {
+        OVERRIDE : T24BusinessTypes:N
+            @i18n:Label (en=Override)
+            @i18n:Tooltip (en="Overrides generated by this transaction")
+            @t24:i (align=R, inputBehaviour=N, maxLength=35, sysNumber=19.0, core=true, t24Name=OVERRIDE, mandatory=false)
+    }
+    /* This table is used to store the information related to files which have been sent to a clearing. */
+    PPT_SENTFILEDETAILS
+        @i18n:Description (en="")
+        @t24:i (t24Name=PPT.SENTFILEDETAILS, level=F, type=H, allowedFunctions="A C D E H I L P Q R S", localRefAllowed=false)
+    {
+        AUDITOR_CODE : T24BusinessTypes:A
+            @i18n:Label (en="Auditor Code")
+            @i18n:Tooltip (en="Auditor Code")
+            @t24:i (align=L, inputBehaviour=E, maxLength=16, sysNumber=23.0, core=true, t24Name=AUDITOR.CODE, mandatory=false)
+        AUDIT_DATE_TIME : T24BusinessTypes:RELTIME
+            @i18n:Label (en="Audit Date Time")
+            @i18n:Tooltip (en="Date and time when record was audited")
+            @t24:i (align=L, inputBehaviour=E, maxLength=15, sysNumber=24.0, core=true, t24Name=AUDIT.DATE.TIME, mask="RDD DD  DD ##:##", mandatory=false)
+        AUTHORISER : T24BusinessTypes:A
+            @i18n:Label (en=Authoriser)
+            @i18n:Tooltip (en="Indicates the User who Authorises the record")
+            @t24:i (align=L, inputBehaviour=N, maxLength=40, sysNumber=20.0, core=true, t24Name=AUTHORISER, mandatory=false)
+        CO_CODE -> ST_CompanyCreation:COMPANY
+            @i18n:Label (en=Company)
+            @t24:i (align=L, inputBehaviour=N, maxLength=11, sysNumber=21.0, core=true, businessType=A, t24Name=CO.CODE, mask="R##-###-####", mandatory=false)
+        CURR_NO : T24BusinessTypes:N
+            @i18n:Label (en="Curr No")
+            @t24:i (align=R, inputBehaviour=N, maxLength=4, sysNumber=17.0, core=true, t24Name=CURR.NO, mandatory=false)
+/* When a Clearing Report with "RJCT" or "PART" comes, it will go into an expection queue..
+Possible values:
+'PNDG' - pending
+'CMPT' - completed
+'SUBM' - resubmitted
+Examples:
+When the Clearing Report bulk is received, the field is updated at status "PNDG".
+When an action is taken in the Exception Queue of the Clearing Status Report, the fields is updated at status CMPT.
+If the Clearing Report is received with "ACCP", this field is updated directly to "CMPT".
+If the original file is resubmitted to the clearing the filed is updated directly to "SUBM".
+Validation Rules:
+4 alphanumeric characters. */
+        ClearingActionStatusCode : T24BusinessTypes:A
+            @i18n:Label (en="Clearing Action Status Code")
+            @i18n:Tooltip (en="Clearing Action Status Code")
+            @t24:i (align=L, inputBehaviour=I, maxLength=4, sysNumber=13.0, core=true, t24Name=ClearingActionStatusCode, mandatory=false)
+/* Date and time when ClearingActionStatusCode is updated.
+Validation Rules:
+17 characters Date Time format.
+It need to be displayed as DD MMM YYYY HH:MM:SS.sss.
+Example: 12 JAN 2015 12:34:25.123
+The value is not editable by the user. */
+        ClearingActionStatusDateTime : T24BusinessTypes:TIME
+            @i18n:Label (en="Clearing Action Status Date Time")
+            @i18n:Tooltip (en="Clearing Action Status Date Time")
+            @t24:i (align=L, inputBehaviour=N, maxLength=17, sysNumber=14.0, core=true, t24Name=ClearingActionStatusDateTime, mask="RDDDD DD  DD ##:##:##.###", mandatory=false)
+        /* Code acceptance or rejection as provided in a Clearing Status Report. */
+        ClearingReasonCode : T24BusinessTypes:A
+            @i18n:Label (en="Clearing Reason Code")
+            @i18n:Tooltip (en="Clearing Reason Code")
+            @t24:i (align=L, inputBehaviour=N, maxLength=4, sysNumber=12.0, core=true, t24Name=ClearingReasonCode, mandatory=false)
+/* File Reference of the Clearing Status Report file from the PPT_RECEIVEDFILEDETAILS.
+It is updated following a received Clearing Status Report following a file sent to the clearing. */
+        ClearingStatusFileReference : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=16, sysNumber=11.0, core=true, t24Name=ClearingStatusFileReference, mandatory=false)
+/* ID of the company for which the record is applicable or processing company.
+
+Example: EU1
+
+Validation Rules:
+It holds 3 alphanumeric characters.
+The value links to the field ‘CompanyID’ in PPT.COMPANY. */
+        CompanyID : T24BusinessTypes:A
+            @i18n:Label (en=CompanyID)
+            @i18n:Tooltip (en=CompanyID)
+            @t24:i (align=L, inputBehaviour=N, maxLength=3, sysNumber=1.0, core=true, t24Name=CompanyID, mandatory=false)
+/* Indicates the system date and time when the status becomes 'READY'.
+
+Example: 12 JAN 2015 12:34:25.123
+
+Validation Rules:
+It needs to be displayed as DD MMM YYYY HH:MM:SS.sss. */
+        CreationDateTime : T24BusinessTypes:TIME
+            @t24:i (align=L, inputBehaviour=N, maxLength=17, sysNumber=8.0, core=true, t24Name=CreationDateTime, mask="RDDDD DD  DD ##:##:##.###", mandatory=false)
+        DATE_TIME -> byValue PP_OutwardMappingFramework:PPT_SENTFILEDETAILS__DATE_TIME *
+            @t24:i (t24Name=DATE.TIME)
+        DEPT_CODE -> ST_Config:DEPT_ACCT_OFFICER
+            @i18n:Label (en="Dept Code")
+            @t24:i (align=R, inputBehaviour=N, maxLength=4, sysNumber=22.0, core=true, t24Name=DEPT.CODE, mandatory=false)
+        /* Name of the file generated from the system, sent to the clearing. */
+        FileName : T24BusinessTypes:A
+            @i18n:Label (en="File Name")
+            @i18n:Tooltip (en="File Name")
+            @t24:i (align=L, inputBehaviour=N, maxLength=50, sysNumber=4.0, core=true, t24Name=FileName, mandatory=false)
+        FileReference -> byValue PP_OutwardMappingFramework:PPT_SENTFILEDETAILS__FileReference *
+            @t24:i (t24Name=FileReference)
+/* Indicates the current status of the file.
+
+Possible values:
+'READY' - put in generic tables
+'SENT'  - file generated and sent to the clearing
+'ACCP'  - accepted by the clearing
+'RJCT'  - rejected by the clearing
+'PART'  - partially accepted by the clearing. */
+        FileStatus : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=20, sysNumber=9.0, core=true, t24Name=FileStatus, mandatory=false)
+/* Type of the file sent to the clearing.
+
+Examples for SEPA clearers: ICF, IDF */
+        FileType : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=3, sysNumber=5.0, core=true, t24Name=FileType, mandatory=false)
+        /* Unique ID of the record. It is equal to the FileReference. */
+        ID -> PP_OutwardMappingFramework:PPT_SENTFILEDETAILS PK required
+            @i18n:Label (en="Transaction Ref")
+            @i18n:Tooltip (en="Transaction Reference")
+            @t24:i (align=L, inputBehaviour=I, maxLength=255, sysNumber=0.0, core=true, businessType=A, t24Name=ID, mandatory=true)
+        INPUTTER -> byValue PP_OutwardMappingFramework:PPT_SENTFILEDETAILS__INPUTTER *
+            @t24:i (t24Name=INPUTTER)
+        /* The number of bulks in the file. */
+        NumberOfBulks : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=N, maxLength=4, sysNumber=10.0, core=true, t24Name=NumberOfBulks, mandatory=false)
+        OVERRIDE -> byValue PP_OutwardMappingFramework:PPT_SENTFILEDETAILS__OVERRIDE *
+            @t24:i (t24Name=OVERRIDE)
+/* Channel on which the file is sent to the recipient.
+
+Examples: STEP2, RPSSCL */
+        OutputChannel : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=10, sysNumber=7.0, core=true, t24Name=OutputChannel, mandatory=false)
+        RECORD_STATUS : T24BusinessTypes:STAT
+            @i18n:Label (en="Record Status")
+            @t24:i (align=L, inputBehaviour=N, maxLength=4, sysNumber=16.0, core=true, t24Name=RECORD.STATUS, mandatory=false)
+/* Indicator to determine if the message is Single or Multiple.
+
+Possible values:
+'S' - Single transaction file
+'C' - Clearing (multiple transactions)
+'B' - Batch */
+        SingleMultipleIndicator : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=1, sysNumber=6.0, core=true, t24Name=SingleMultipleIndicator, mandatory=false)
+    }
+    PPT_SENTFILEDETAILS__DATE_TIME
+    {
+        DATE_TIME : T24BusinessTypes:RELTIME
+            @i18n:Label (en="Date time")
+            @i18n:Tooltip (en="Date and time when record was input or authorised")
+            @t24:i (align=L, inputBehaviour=N, maxLength=15, sysNumber=19.0, core=true, t24Name=DATE.TIME, mask="RDD DD  DD ##:##", mandatory=false)
+    }
+    PPT_SENTFILEDETAILS__FileReference
+    {
+        /* Reference of the file as generated by the system. */
+        FileReference : T24BusinessTypes:A
+            @i18n:Label (en="File Reference")
+            @i18n:Tooltip (en="File Reference")
+            @t24:i (align=L, inputBehaviour=I, maxLength=16, sysNumber=2.0, core=true, t24Name=FileReference, mandatory=false)
+        /* It is used only for clearing payment status report in case the original file was fully rejected. */
+        SentDate : T24BusinessTypes:D
+            @t24:i (align=R, inputBehaviour=I, maxLength=11, sysNumber=3.0, core=true, t24Name=SentDate, mandatory=false)
+    }
+    PPT_SENTFILEDETAILS__INPUTTER
+    {
+        INPUTTER : T24BusinessTypes:A
+            @i18n:Label (en=Inputter)
+            @i18n:Tooltip (en="The user who last updated the record")
+            @t24:i (align=L, inputBehaviour=N, maxLength=40, sysNumber=18.0, core=true, t24Name=INPUTTER, mandatory=false)
+    }
+    PPT_SENTFILEDETAILS__OVERRIDE
+    {
+        OVERRIDE : T24BusinessTypes:N
+            @i18n:Label (en=Override)
+            @i18n:Tooltip (en="Overrides generated by this transaction")
+            @t24:i (align=R, inputBehaviour=N, maxLength=35, sysNumber=15.0, core=true, t24Name=OVERRIDE, mandatory=false)
+    }
+    /* Generic image of an outward credit transfer */
+    PP_OUT_CT_TRANSACTION
+        @i18n:Description (en="")
+        @t24:i (t24Name=PP.OUT.CT.TRANSACTION, level=F, type=L, allowedFunctions="L P S", localRefAllowed=false)
+    {
+        AdditionalInformationCode -> byValue PP_OutwardMappingFramework:PP_OUT_CT_TRANSACTION__AdditionalInformationCode *
+            @t24:i (t24Name=AdditionalInformationCode)
+/* Batch Indicator
+Possible values
+P - Parent
+C - Child */
+        BatchIndicator : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=1, sysNumber=229.0, core=true, t24Name=BatchIndicator, mandatory=false)
+        /* The number of bulks in the file. */
+        BulkCount : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=10, sysNumber=3.0, core=true, t24Name=BulkCount, mandatory=false)
+        /* Reference of the bulk as generated by the system. */
+        BulkReference : T24BusinessTypes:A
+            @i18n:Label (en=BulkReference)
+            @i18n:Tooltip (en="Bulk Reference")
+            @t24:i (align=L, inputBehaviour=I, maxLength=50, sysNumber=4.0, core=true, t24Name=BulkReference, mandatory=false)
+        /* From the incoming message, reference of the bulk to which the transaction is part of. */
+        BulkSendersReference : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=50, sysNumber=228.0, core=true, t24Name=BulkSendersReference, mandatory=false)
+        CancelReasonCodeAddInfo : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=105, sysNumber=235.0, core=true, t24Name=CancelReasonCodeAddInfo, mandatory=false)
+        CancelReasonCodeISO : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=4, sysNumber=233.0, core=true, t24Name=CancelReasonCodeISO, mandatory=false)
+        CancelReasonCodeProprietary : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=234.0, core=true, t24Name=CancelReasonCodeProprietary, mandatory=false)
+/* Receiving institution identification code that is normally used in the header of files sent to that institution.
+Validation Rules:
+35 alphanumeric characters. Value links to field 'BICCode' in PPT.BICTABLE. */
+        ClearingBIC : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=225.0, core=true, t24Name=ClearingBIC, mandatory=false)
+/* Specifies the name of the clearing in the payments hub.
+Example :
+Global TRX-based: "TARGET2"
+Global file-based: "EBA"
+Local TRX-based: "FPS" (UK), "CHAPS" (UK),"CHATS"/"HKICL" (HK)
+Local file-based:"BACS"(UK),"CEC" (BE),"EMZ" (GE)
+Validation Rules:
+Mandatory field; 10 alphanumeric characters. */
+        ClearingChannel : T24BusinessTypes:A
+            @i18n:Label (en="Clearing Channel")
+            @i18n:Tooltip (en="Clearing Channel")
+            @t24:i (align=L, inputBehaviour=I, maxLength=10, sysNumber=7.0, core=true, t24Name=ClearingChannel, mandatory=false)
+        ClearingNatureCode : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=4, sysNumber=236.0, core=true, t24Name=ClearingNatureCode, mandatory=false)
+/* Indicates the Return Code (reason) for rejection Clearing.
+Validation Rules:
+Mandatory field. 20 alphanumeric characters. */
+        ClearingReturnCode : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=50, sysNumber=20.0, core=true, t24Name=ClearingReturnCode, mandatory=false)
+/* Specifies the BIC of the company.
+Validation Rules:
+Mandatory field. Value links to field 'BICCode' in PPT.BICTABLE. */
+        CompanyBIC : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=50, sysNumber=19.0, core=true, t24Name=CompanyBIC, mandatory=false)
+        /* Date and Time in which the record is created */
+        CreatedDateTime : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=227.0, core=true, t24Name=CreatedDateTime, mandatory=false)
+        CreditPartyRole -> byValue PP_OutwardMappingFramework:PP_OUT_CT_TRANSACTION__CreditPartyRole *
+            @t24:i (t24Name=CreditPartyRole)
+        /* Reference provided by the customer initiating the payment. */
+        CustomerSpecifiedReference : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=10.0, core=true, t24Name=CustomerSpecifiedReference, mandatory=false)
+        /* Specifies the Address line of the party specified in the field DebitPartyRole. */
+        DebitPartyLine1 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=223.0, core=true, t24Name=DebitPartyLine1, mandatory=false)
+        /* Specifies the Address line of the party specified in the field DebitPartyRole. */
+        DebitPartyLine2 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=224.0, core=true, t24Name=DebitPartyLine2, mandatory=false)
+        DebitPartyRole -> byValue PP_OutwardMappingFramework:PP_OUT_CT_TRANSACTION__DebitPartyRole *
+            @t24:i (t24Name=DebitPartyRole)
+        /* Reference of the file as generated by the system. */
+        FileReference : T24BusinessTypes:A
+            @i18n:Label (en="File Reference")
+            @i18n:Tooltip (en="File Reference")
+            @t24:i (align=L, inputBehaviour=I, maxLength=50, sysNumber=1.0, core=true, t24Name=FileReference, mandatory=false)
+/* Denotes the unique ID generated by the payments hub upon generating a payment order.
+Validation Rules:
+Mandatory field; 16 alphanumeric characters. */
+        ID -> PP_OutwardMappingFramework:PP_OUT_CT_TRANSACTION PK required
+            @i18n:Label (en="Transaction Ref")
+            @i18n:Tooltip (en="Transaction Reference")
+            @t24:i (align=L, inputBehaviour=I, maxLength=50, sysNumber=0.0, core=true, businessType=A, t24Name=ID, mandatory=true)
+        InformationCode -> byValue PP_OutwardMappingFramework:PP_OUT_CT_TRANSACTION__InformationCode *
+            @t24:i (t24Name=InformationCode)
+        MainOrChargeAccountType -> byValue PP_OutwardMappingFramework:PP_OUT_CT_TRANSACTION__MainOrChargeAccountType *
+            @t24:i (t24Name=MainOrChargeAccountType)
+/* MessageReference is unique within a company.
+Validation Rules:
+16 alphanumeric characters. */
+        MessageReference : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=50, sysNumber=8.0, core=true, t24Name=MessageReference, mandatory=false)
+        /* Reference of the message sent by the user. */
+        MessageUserReference : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=16, sysNumber=230.0, core=true, t24Name=MessageUserReference, mandatory=false)
+        /* SWIFT based */
+        OrderingPartyTagOption : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=1, sysNumber=220.0, core=true, t24Name=OrderingPartyTagOption, mandatory=false)
+        OriginatorName : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=140, sysNumber=231.0, core=true, t24Name=OriginatorName, mandatory=false)
+        OriginatorOrganisationId : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=11, sysNumber=232.0, core=true, t24Name=OriginatorOrganisationId, mandatory=false)
+        /* Holds the Amount of money sent out to the clearing */
+        OutTransactionAmount : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=I, maxLength=17, sysNumber=11.0, core=true, t24Name=OutTransactionAmount, mandatory=false)
+        /* Holds the currency of the amount which sent out to the clearing */
+        OutTransactionCurrencyCode : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=12.0, core=true, t24Name=OutTransactionCurrencyCode, mandatory=false)
+/* Indicates the Direction of the payment.
+Possible values:
+"I" – Incoming payment
+"B" – Book payment
+"O" – Outgoing Payment
+"R" – Redirect payment
+It's a mandatory field.
+This field is used as one of the criteria to determine the product of a payment. */
+        PaymentDirection : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=1, sysNumber=221.0, core=true, t24Name=PaymentDirection, mandatory=false)
+        /* Description of reason for which the transaction is returned. */
+        ReasonDescription : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=50, sysNumber=18.0, core=true, t24Name=ReasonDescription, mandatory=false)
+        RefDocInfTpCdOrPropCd -> byValue PP_OutwardMappingFramework:PP_OUT_CT_TRANSACTION__RefDocInfTpCdOrPropCd *
+            @t24:i (t24Name=RefDocInfTpCdOrPropCd)
+        /* Holds the currency code of the charge account from where the fee is deducted */
+        SenderChargeCurrencyCode1 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=17.0, core=true, t24Name=SenderChargeCurrencyCode1, mandatory=false)
+/* Specifies the common reference shared by all transactions of a bulk message as parsed from the actual message received.This field can hold upto 128 alphanumeric characters.
+Example:
+Global Batch Identifier value such as 89139020225698
+Validation Rules:
+128 alphanumeric characters. */
+        SendersReferenceIncoming : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=13.0, core=true, t24Name=SendersReferenceIncoming, mandatory=false)
+        /* Total amount settled with clearing house as part of this bulk. */
+        SettlementAmount : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=I, maxLength=17, sysNumber=226.0, core=true, t24Name=SettlementAmount, mandatory=false)
+        /* Date of settlement created with clearing house */
+        SettlementDate : T24BusinessTypes:D
+            @t24:i (align=R, inputBehaviour=I, maxLength=11, sysNumber=6.0, core=true, t24Name=SettlementDate, mandatory=false)
+/* Indicates the type of a message.
+1 alphabetic character.
+Possible values:
+"S" – Single
+"C" – Clearing
+"B" – Bulk */
+        SingleMultipleIndicator : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=1, sysNumber=222.0, core=true, t24Name=SingleMultipleIndicator, mandatory=false)
+/* Holds the amount of the transaction
+It's a mandatory field,can have a maximum length of 17 Numneric characters. */
+        TransactionAmount : T24BusinessTypes:N
+            @i18n:Label (en="Transaction Amount")
+            @i18n:Tooltip (en="Transaction Amount")
+            @t24:i (align=R, inputBehaviour=I, maxLength=17, sysNumber=14.0, core=true, t24Name=TransactionAmount, mandatory=false)
+        /* Total number of transaction in the bulk */
+        TransactionBulkCount : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=10, sysNumber=5.0, core=true, t24Name=TransactionBulkCount, mandatory=false)
+/* Holds a 3 character unique code which denotes a specific currency in which the transaction is initiated.
+It's a mandatory field. */
+        TransactionCurrencyCode : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=15.0, core=true, t24Name=TransactionCurrencyCode, mandatory=false)
+        /* Total number of transaction in the file */
+        TransactionFileCount : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=10, sysNumber=2.0, core=true, t24Name=TransactionFileCount, mandatory=false)
+        /* Reference of originator initiating the payment */
+        TransactionReferenceIncoming : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=9.0, core=true, t24Name=TransactionReferenceIncoming, mandatory=false)
+        /* Holds the Sender's charge amount equivalent in charge account currency */
+        senderChargeAmount1 : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=I, maxLength=15, sysNumber=16.0, core=true, t24Name=senderChargeAmount1, mandatory=false)
+    }
+    PP_OUT_CT_TRANSACTION__AdditionalInformationCode
+    {
+/* Additional Info Line
+Validation Rules:
+This is a string of information containing the content of the field. This is not to be compared with the SWIFT lines in a tag. */
+        AdditionalInfLine : T24BusinessTypes:ANY
+            @t24:i (align=L, inputBehaviour=I, maxLength=0, sysNumber=84.0, core=true, t24Name=AdditionalInfLine, mandatory=false)
+/* Additional Info Tag; e.g. 77T or 70
+Validation Rules:
+3 alphanumeric characters */
+        AdditionalInfTag : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=83.0, core=true, t24Name=AdditionalInfTag, mandatory=false)
+        AdditionalInfTypeLineSeq : T24BusinessTypes:N required
+            @t24:i (align=R, inputBehaviour=I, maxLength=7, sysNumber=82.0, core=true, t24Name=AdditionalInfTypeLineSeq, mandatory=true)
+/* Additional Information Code
+Possible Values:
+RMTINF - Remittance Information (= Swift tag 70)
+ENVCON - Envelope Contents (= Swift tag 77T)
+See FRD Mapping for additional information
+Validation Rules:
+6 characters; Mandatory field */
+        AdditionalInformationCode : T24BusinessTypes:A required
+            @t24:i (align=L, inputBehaviour=I, maxLength=6, sysNumber=81.0, core=true, t24Name=AdditionalInformationCode, mandatory=true)
+    }
+    PP_OUT_CT_TRANSACTION__CreditPartyRole
+    {
+        CdtPartyOrgIdOtherIssuer : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=39.0, core=true, t24Name=CdtPartyOrgIdOtherIssuer, mandatory=false)
+        CdtPartyOrgIdOtherSchCode : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=4, sysNumber=37.0, core=true, t24Name=CdtPartyOrgIdOtherSchCode, mandatory=false)
+        CdtPartyOrgIdOtherSchProp : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=38.0, core=true, t24Name=CdtPartyOrgIdOtherSchProp, mandatory=false)
+        CdtPartyPrvIdOtherIssuer : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=47.0, core=true, t24Name=CdtPartyPrvIdOtherIssuer, mandatory=false)
+        CdtPartyPrvIdOtherSchCode : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=4, sysNumber=45.0, core=true, t24Name=CdtPartyPrvIdOtherSchCode, mandatory=false)
+        CdtPartyPrvIdOtherSchProp : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=46.0, core=true, t24Name=CdtPartyPrvIdOtherSchProp, mandatory=false)
+/* Credit Party Accoun Line
+Validation Rules:
+37 alphanumeric characters. */
+        CreditPartyAccountLine : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=37, sysNumber=26.0, core=true, t24Name=CreditPartyAccountLine, mandatory=false)
+/* Credit Party Address Line1
+Validation Rules:
+70 alphanumeric characters. */
+        CreditPartyAddressLine1 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=70, sysNumber=34.0, core=true, t24Name=CreditPartyAddressLine1, mandatory=false)
+/* Credit Party Address Line2
+Validation Rules:
+70 alphanumeric characters. */
+        CreditPartyAddressLine2 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=70, sysNumber=35.0, core=true, t24Name=CreditPartyAddressLine2, mandatory=false)
+/* Can be filled from: TransactionCreditorIdentificationPrivateIdentificationDateAndPlaceOfBirthBirthDate,
+TransactionUltimateCreditorIdentificationPrivateIdentificationDateAndPlaceOfBirthBirthDate
+Validation Rules:
+11 characters of DATE type */
+        CreditPartyBirthDate : T24BusinessTypes:D
+            @t24:i (align=R, inputBehaviour=I, maxLength=11, sysNumber=40.0, core=true, t24Name=CreditPartyBirthDate, mandatory=false)
+/* Can be filled from: TransactionCreditorIdentificationPrivateIdentificationDateAndPlaceOfBirthCityOfBirth,
+TransactionUltimateCreditorIdentificationPrivateIdentificationDateAndPlaceOfBirthCityOfBirth
+Validation Rules:
+35 alphanumeric characters. */
+        CreditPartyCityOfBirth : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=42.0, core=true, t24Name=CreditPartyCityOfBirth, mandatory=false)
+/* Credit Party Country
+Validation Rules:
+2 alphanumeric characters. */
+        CreditPartyCountry : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=2, sysNumber=33.0, core=true, t24Name=CreditPartyCountry, mandatory=false)
+/* Can be filled from: TransactionCreditorIdentificationPrivateIdentificationDateAndPlaceOfBirthCountryOfBirth,
+TransactionUltimateCreditorIdentificationPrivateIdentificationDateAndPlaceOfBirthCountryOfBirth
+Validation Rules:
+2 alphanumeric characters. */
+        CreditPartyCountryOfBirth : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=2, sysNumber=43.0, core=true, t24Name=CreditPartyCountryOfBirth, mandatory=false)
+/* Credit Party Free Line1
+Validation Rules:
+35 alphanumeric characters. */
+        CreditPartyFreeLine1 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=27.0, core=true, t24Name=CreditPartyFreeLine1, mandatory=false)
+/* Credit Party Free Line2
+Validation Rules:
+35 alphanumeric characters. */
+        CreditPartyFreeLine2 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=28.0, core=true, t24Name=CreditPartyFreeLine2, mandatory=false)
+/* Credit Party Free Line3
+Validation Rules:
+35 alphanumeric characters. */
+        CreditPartyFreeLine3 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=29.0, core=true, t24Name=CreditPartyFreeLine3, mandatory=false)
+/* Credit Party Free Line4
+Validation Rules:
+35 alphanumeric characters. */
+        CreditPartyFreeLine4 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=30.0, core=true, t24Name=CreditPartyFreeLine4, mandatory=false)
+/* If the credit party is identified by a BIC code, this field provides the BIC required for credit account determination.
+Validation Rules:
+35 characters. */
+        CreditPartyIdentifierCode : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=25.0, core=true, t24Name=CreditPartyIdentifierCode, mandatory=false)
+        /* SWIFT based */
+        CreditPartyInformationTag : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=23.0, core=true, t24Name=CreditPartyInformationTag, mandatory=false)
+/* Credit Party Name
+Validation Rules:
+140 alphanumeric characters. */
+        CreditPartyName : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=140, sysNumber=32.0, core=true, t24Name=CreditPartyName, mandatory=false)
+/* Credit Party NationalId
+In case the Credit Party National Identification indicator is set to “Y”, the account field is populated with a National Identification number.
+This payment must be put to the repair queue for operator intervention.
+Validation Rules:
+1 alphanumeric character */
+        CreditPartyNationalId : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=1, sysNumber=24.0, core=true, t24Name=CreditPartyNationalId, mandatory=false)
+/* Can be filled from: TransactionCreditorAgentFinancialInstitutionIdentificationOtherIdentification,
+TransactionCreditorIdentificationOrganisationIdentificationOtherIdentification (1st occurrence), TransactionUltimateCreditorIdentificationOrganisationIdentificationOtherIdentification (1st occurrence
+Validation Rules:
+35 alphanumeric characters. */
+        CreditPartyOrgIdOtherId : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=36.0, core=true, t24Name=CreditPartyOrgIdOtherId, mandatory=false)
+/* Can be filled from: TransactionCreditorIdentificationPrivateIdentificationDateAndPlaceOfBirthProvinceOfBirth,
+TransactionUltimateCreditorIdentificationPrivateIdentificationDateAndPlaceOfBirthProvinceOfBirth
+Validation Rules:
+35 alphanumeric characters. */
+        CreditPartyProvinceOfBirth : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=41.0, core=true, t24Name=CreditPartyProvinceOfBirth, mandatory=false)
+/* Can be filled from: TransactionCreditorIdentificationPrivateIdentificationOtherIdentification,
+TransactionUltimateCreditorIdentificationPrivateIdentificationOtherIdentification
+Validation Rules:
+35 alphanumeric characters. */
+        CreditPartyPrvIdOtherId : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=44.0, core=true, t24Name=CreditPartyPrvIdOtherId, mandatory=false)
+/* CreditPartyRole
+Possible values:
+BENFCY Beneficiary 59A or no letter option 50 C or L
+IMPCDT Implied Credit 50 A, F, G, H or K
+Validation Rules:
+Mandatory field;6 characters. */
+        CreditPartyRole : T24BusinessTypes:A required
+            @t24:i (align=L, inputBehaviour=I, maxLength=6, sysNumber=21.0, core=true, t24Name=CreditPartyRole, mandatory=true)
+/* Credit Party Role Indicator
+Validation Rules:
+Mandatory field; 1 alphanumeric character */
+        CreditPartyRoleIndicator : T24BusinessTypes:A required
+            @t24:i (align=L, inputBehaviour=I, maxLength=1, sysNumber=22.0, core=true, t24Name=CreditPartyRoleIndicator, mandatory=true)
+/* DirectPaymentFlag
+This flag is set on the credit party and it is used to denote the receiver of the MT103 payment message when cover method is used.
+This flag is set only when a cover method of routing is used.
+Possible values:
+Y - Credit Party is the receiver of the MT103 message when cover method is used.
+N or Blank - Credit party is not the receiver of the MT103 message.
+The DirectPaymentFlag can also be used to determine if a cover method of routing is used for the payment or not. However, the DirectPaymentFlag is set at a credit party level and not at a transaction level.
+Validation Rules:
+1 alphanumeric character */
+        DirectPaymentFlag : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=1, sysNumber=31.0, core=true, t24Name=DirectPaymentFlag, mandatory=false)
+    }
+    PP_OUT_CT_TRANSACTION__DebitPartyRole
+    {
+        /* Debtor’s IBAN (client’s account) */
+        DebitPartyAccountLine : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=37, sysNumber=53.0, core=true, t24Name=DebitPartyAccountLine, mandatory=false)
+        /* Address of the debit side. */
+        DebitPartyAddressLine1 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=70, sysNumber=60.0, core=true, t24Name=DebitPartyAddressLine1, mandatory=false)
+        /* Address of the debit side. */
+        DebitPartyAddressLine2 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=70, sysNumber=61.0, core=true, t24Name=DebitPartyAddressLine2, mandatory=false)
+        /* Birth Date of the debit side. */
+        DebitPartyBirthDate : T24BusinessTypes:D
+            @t24:i (align=R, inputBehaviour=I, maxLength=11, sysNumber=66.0, core=true, t24Name=DebitPartyBirthDate, mandatory=false)
+        /* City of Birth of the debit side. */
+        DebitPartyCityOfBirth : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=68.0, core=true, t24Name=DebitPartyCityOfBirth, mandatory=false)
+        /* Country of the debit side. */
+        DebitPartyCountry : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=2, sysNumber=59.0, core=true, t24Name=DebitPartyCountry, mandatory=false)
+        /* Country of Birth of the debit side. */
+        DebitPartyCountryOfBirth : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=2, sysNumber=69.0, core=true, t24Name=DebitPartyCountryOfBirth, mandatory=false)
+        /* Specifies the Address line of the party specified in the field DebitPartyRole. */
+        DebitPartyFreeLine1 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=54.0, core=true, t24Name=DebitPartyFreeLine1, mandatory=false)
+        /* Specifies the Address line of the party specified in the field DebitPartyRole. */
+        DebitPartyFreeLine2 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=55.0, core=true, t24Name=DebitPartyFreeLine2, mandatory=false)
+        /* Specifies the Address line of the party specified in the field DebitPartyRole. */
+        DebitPartyFreeLine3 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=56.0, core=true, t24Name=DebitPartyFreeLine3, mandatory=false)
+        /* Specifies the Address line of the party specified in the field DebitPartyRole. */
+        DebitPartyFreeLine4 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=57.0, core=true, t24Name=DebitPartyFreeLine4, mandatory=false)
+        /* Specifies the Bank Identifier Code (BIC) of the party specified in the field DebitPartyRole. A valid BIC code. */
+        DebitPartyIdentifierCode : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=52.0, core=true, t24Name=DebitPartyIdentifierCode, mandatory=false)
+        /* SWIFT based */
+        DebitPartyInformationTag : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=50.0, core=true, t24Name=DebitPartyInformationTag, mandatory=false)
+/* Name of the debit side.
+Validation Rules:
+140 alphanumeric characters. */
+        DebitPartyName : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=140, sysNumber=58.0, core=true, t24Name=DebitPartyName, mandatory=false)
+/* In case the Debit Party National Identification indicator is set to “Y”, the account field is populated with a National Identification number.
+This payment must be put to the repair queue for operator intervention */
+        DebitPartyNationalId : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=1, sysNumber=51.0, core=true, t24Name=DebitPartyNationalId, mandatory=false)
+/* Identification of the debit side.
+Validation Rules:
+34 alphanumeric characters. */
+        DebitPartyOrgIdOtherId : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=62.0, core=true, t24Name=DebitPartyOrgIdOtherId, mandatory=false)
+        /* Issuer of the debit side. */
+        DebitPartyOrgIdOtherIssuer : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=65.0, core=true, t24Name=DebitPartyOrgIdOtherIssuer, mandatory=false)
+        /* Province of birth of the debit side. */
+        DebitPartyProvinceOfBirth : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=67.0, core=true, t24Name=DebitPartyProvinceOfBirth, mandatory=false)
+        /* Private Identification of the debit side. */
+        DebitPartyPrvIdOtherId : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=70.0, core=true, t24Name=DebitPartyPrvIdOtherId, mandatory=false)
+        /* Private Identification Issuer of the debit side. */
+        DebitPartyPrvIdOtherIssuer : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=73.0, core=true, t24Name=DebitPartyPrvIdOtherIssuer, mandatory=false)
+/* Party Role Description Tag
+INSPTY Instructing Party 50 C or L
+ORDPTY Ordering Party 50 A, F, G, H or K
+SNDINS Sending Institution 51A
+ASVINS Account Servicing Institution 52A or C
+ORDINS Ordering Institution 52A or D
+SNDCBK Sender's Correspondent Bank 53A, B or D
+RCVCBK Receiver's Correspondent Bank 54A, B or D
+TRMINS Third Reimbursement Institution 55A, B or D
+SENDER Sender
+IMPDBT Implied Debit Account */
+        DebitPartyRole : T24BusinessTypes:A required
+            @t24:i (align=L, inputBehaviour=I, maxLength=6, sysNumber=48.0, core=true, t24Name=DebitPartyRole, mandatory=true)
+/* Possible values:
+"R" - Received.
+"G" - Generated by routing and settlement. */
+        DebitPartyRoleIndicator : T24BusinessTypes:A required
+            @t24:i (align=L, inputBehaviour=I, maxLength=1, sysNumber=49.0, core=true, t24Name=DebitPartyRoleIndicator, mandatory=true)
+        DebitPtyOrgIdOtherSchCode : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=4, sysNumber=63.0, core=true, t24Name=DebitPtyOrgIdOtherSchCode, mandatory=false)
+        DebitPtyOrgIdOtherSchProp : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=64.0, core=true, t24Name=DebitPtyOrgIdOtherSchProp, mandatory=false)
+        DebitPtyPrvIdOtherSchCode : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=4, sysNumber=71.0, core=true, t24Name=DebitPtyPrvIdOtherSchCode, mandatory=false)
+        DebitPtyPrvIdOtherSchProp : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=72.0, core=true, t24Name=DebitPtyPrvIdOtherSchProp, mandatory=false)
+    }
+    PP_OUT_CT_TRANSACTION__InformationCode
+    {
+/* Specifies the country code in ISO format.
+Validation Rules:
+2 alphanumeric characters. Value links to field 'COUNTRY.CODE' in COUNTRY */
+        CountryCode : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=2, sysNumber=78.0, core=true, t24Name=CountryCode, mandatory=false)
+/* Information Code
+Possible values:
+TIMIND - Time Indication (Swift 13C)
+INSBNK - Instruction Code (Swift 23E)
+INSDOC - Details of Charges (Swift 71B)
+INSSDR - Sender to Receiver Information (Swift 72)
+REGREP - Regulatory Reporting (77B)
+See FRD Mapping for additional information
+Validation Rules:
+Mandatory field; 6 alphanumeric characters. */
+        InformationCode : T24BusinessTypes:A required
+            @t24:i (align=L, inputBehaviour=I, maxLength=6, sysNumber=74.0, core=true, t24Name=InformationCode, mandatory=true)
+/* Information Line
+Validation Rules:
+50 alphanumeric characters. */
+        InformationLine : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=50, sysNumber=79.0, core=true, t24Name=InformationLine, mandatory=false)
+/* Information Tag
+Swift tag containg the codeword:
+13C
+23E
+72
+77B
+Validation Rules:
+3 alphanumeric characters */
+        InformationTag : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=76.0, core=true, t24Name=InformationTag, mandatory=false)
+        InformationTypeLineSeq : T24BusinessTypes:N required
+            @t24:i (align=R, inputBehaviour=I, maxLength=7, sysNumber=75.0, core=true, t24Name=InformationTypeLineSeq, mandatory=true)
+/* Instruction Code
+From the fields: 13C, 23E, 72, 70, 77B
+Validation Rules:
+8 alphanumeric characters. */
+        InstructionCode : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=8, sysNumber=77.0, core=true, t24Name=InstructionCode, mandatory=false)
+        OutboundCwApplicableFlag : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=1, sysNumber=80.0, core=true, t24Name=OutboundCwApplicableFlag, mandatory=false)
+    }
+    PP_OUT_CT_TRANSACTION__MainOrChargeAccountType
+    {
+        /* The ID of the company holding the account */
+        AccountCompanyID : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=86.0, core=true, t24Name=AccountCompanyID, mandatory=false)
+/* Specifies the currency of the account.
+Validation Rules:
+1) Mandatory.
+2) Dropdown field linked to PPT.CURRENCY table */
+        AccountCurrency : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=88.0, core=true, t24Name=AccountCurrency, mandatory=false)
+/* Specifies the account number.
+Validation Rules:
+1) Mandatory.
+2) Free Text/Not validated against T24 Account.
+3) Duplicate Account Number not allowed. */
+        AccountNumber : T24BusinessTypes:ACCA
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=87.0, core=true, t24Name=AccountNumber, mandatory=false)
+        /* Code of Acount officer (DAO code) returned by T24. Needed for Posting. */
+        AccountOfficer : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=30, sysNumber=104.0, core=true, t24Name=AccountOfficer, mandatory=false)
+/* Status of account. It can have values:
+Active - Active account
+Closed - Account is closed
+Inactive - Dormant account
+Invalid - Not present in Ledger */
+        AccountStatus : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=8, sysNumber=90.0, core=true, t24Name=AccountStatus, mandatory=false)
+/* Type of account. It can have values:
+C - Client
+N - Nostro
+V - Vostro / Loro
+I - Suspense / Internal
+PL - PL Account */
+        AccountType : T24BusinessTypes:AA
+            @t24:i (align=L, inputBehaviour=I, maxLength=20, sysNumber=89.0, core=true, t24Name=AccountType, mandatory=false)
+/* Attribute content will be received from the Account and Customer interface.
+Itwill hold the value for local reference field BOOK.CODE from ACCOUNT table that contains either ACU/DBU indicating the ledger book and be stored by debit party determination and credit party determination */
+        BookCode : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=10, sysNumber=106.0, core=true, t24Name=BookCode, mandatory=false)
+        /* Customer group identifier. Needed by other components such as Client Conditions. E.g. ECT will have different conditions (fees, floats etc.) than CBI */
+        BusinessLine : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=102.0, core=true, t24Name=BusinessLine, mandatory=false)
+        CdtPostingRestrictionCode : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=10, sysNumber=93.0, core=true, t24Name=CdtPostingRestrictionCode, mandatory=false)
+        CdtPostingRestrictionDesc : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=128, sysNumber=94.0, core=true, t24Name=CdtPostingRestrictionDesc, mandatory=false)
+        /* Address of the customer owning the account */
+        CustomerAddress : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=50, sysNumber=97.0, core=true, t24Name=CustomerAddress, mandatory=false)
+        /* Country of the customer owning the account */
+        CustomerCountryCode : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=50, sysNumber=99.0, core=true, t24Name=CustomerCountryCode, mandatory=false)
+        /* Email ID of the customer owning the account */
+        CustomerEmailID : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=50, sysNumber=109.0, core=true, t24Name=CustomerEmailID, mandatory=false)
+        /* Unique customer identifier. One customer can hold multiple accounts. Other components of the STP-flow use this ID. */
+        CustomerID : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=34, sysNumber=95.0, core=true, t24Name=CustomerID, mandatory=false)
+/* Language in which the customer wishes to receive its statement lines. Please refer to Posting scheme FRD for more details.
+For the LanguageDescription lookup the Language table */
+        CustomerLanguageID : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=2, sysNumber=101.0, core=true, t24Name=CustomerLanguageID, mandatory=false)
+        /* Name of the customer owning the account */
+        CustomerName : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=50, sysNumber=96.0, core=true, t24Name=CustomerName, mandatory=false)
+        /* Phone Number of the customer owning the account */
+        CustomerPhoneNumber : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=20, sysNumber=108.0, core=true, t24Name=CustomerPhoneNumber, mandatory=false)
+        /* Postal of the customer owning the account */
+        CustomerPostalCode : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=50, sysNumber=98.0, core=true, t24Name=CustomerPostalCode, mandatory=false)
+/* Indicates the Resident type of the Customer.
+Possible Values:
+R - Resident
+N - Non Resident */
+        CustomerResidency : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=2, sysNumber=100.0, core=true, t24Name=CustomerResidency, mandatory=false)
+        DbtPostingRestrictionCode : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=10, sysNumber=91.0, core=true, t24Name=DbtPostingRestrictionCode, mandatory=false)
+        DbtPostingRestrictionDesc : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=128, sysNumber=92.0, core=true, t24Name=DbtPostingRestrictionDesc, mandatory=false)
+/* Any errors encountered will be communicated back to the payment system through this parameter.
+Appropriate codes will be used to communicate the desired meaning of the errors for operator intervention */
+        ErrorCode : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=10, sysNumber=107.0, core=true, t24Name=ErrorCode, mandatory=false)
+        /* IdentifierCode of the customer owning the account */
+        IdentifierCode : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=110.0, core=true, t24Name=IdentifierCode, mandatory=false)
+/* This 2 position indicator stores the purpose of the Account:
+Possible values:
+D: Account details of debit main account
+DC: Account details of debit charge account
+C: Account details of credit main account
+CC: Account details of credit charge account.
+This indicator ensures that we do not get an DB error if a debit account and credit charge account happen to be the same in case of a book payment */
+        MainOrChargeAccountType : T24BusinessTypes:A required
+            @t24:i (align=L, inputBehaviour=I, maxLength=2, sysNumber=85.0, core=true, t24Name=MainOrChargeAccountType, mandatory=true)
+        OtherRestrictionType -> byValue PP_OutwardMappingFramework:PP_OUT_CT_TRANSACTION__MainOrChargeAccountType__OtherRestrictionType *
+            @t24:i (t24Name=OtherRestrictionType)
+/* If a BBAN is specified as the Ordering Customer in a customer request for transfer, the ledger may be aware of the related IBAN which it can send back as well
+Possible values:
+IBAN-number
+"empty field": no value specified */
+        RelatedIBAN : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=34, sysNumber=105.0, core=true, t24Name=RelatedIBAN, mandatory=false)
+        /* Needed for billing purposes */
+        SectorCode : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=4, sysNumber=103.0, core=true, t24Name=SectorCode, mandatory=false)
+    }
+    PP_OUT_CT_TRANSACTION__MainOrChargeAccountType__OtherRestrictionType
+    {
+        /* Specifies the description of the restricion number given in the field OtherRestrictionType. */
+        OtherRestrictionDesc : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=50, sysNumber=112.0, core=true, t24Name=OtherRestrictionDesc, mandatory=false)
+        /* Specifies the number for a restriction applicable for the account. */
+        OtherRestrictionType : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=1, sysNumber=111.0, core=true, t24Name=OtherRestrictionType, mandatory=false)
+    }
+    PP_OUT_CT_TRANSACTION__RefDocInfTpCdOrPropCd
+    {
+        /* Additional information, in free text form, to complement the structured remittance information. */
+        AdRemittanceInf1 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=140, sysNumber=217.0, core=true, t24Name=AdRemittanceInf1, mandatory=false)
+        /* Additional information, in free text form, to complement the structured remittance information. */
+        AdRemittanceInf2 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=140, sysNumber=218.0, core=true, t24Name=AdRemittanceInf2, mandatory=false)
+        /* Additional information, in free text form, to complement the structured remittance information. */
+        AdRemittanceInf3 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=140, sysNumber=219.0, core=true, t24Name=AdRemittanceInf3, mandatory=false)
+        /* Unique reference, as assigned by the creditor, to unambiguously refer to the payment transaction. If available, the initiating party should provide this reference in the structured remittance information, to enable reconciliation by the creditor upon receipt of the amount of money. If the business context requires the use of a creditor reference or a payment remit identification, and only one identifier can be passed through the end-to-end chain, the creditor's reference or payment remittance identification should be quoted in the end-to-end transaction identification. */
+        CrdRefInfRef : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=140.0, core=true, t24Name=CrdRefInfRef, mandatory=false)
+        /* Reference information provided by the creditor to allow the identification of the underlying documents - Type of creditor reference, in a coded form. Example of values: RADM (Remittance Advice Message), RPIN (RelatedPaymentInstruction), FXDR (Foreign Exchange Deal Reference), DISP (Dispatch Advice), PUOR (Purchase Order), SCOR (Structured Communication Reference). */
+        CrdRefInfTpCdOrPropCd : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=4, sysNumber=137.0, core=true, t24Name=CrdRefInfTpCdOrPropCd, mandatory=false)
+        /* Creditor reference type, in a proprietary form. */
+        CrdRefInfTpCdOrPropProp : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=138.0, core=true, t24Name=CrdRefInfTpCdOrPropProp, mandatory=false)
+        /* Entity that assigns the credit reference type. */
+        CrdRefInfTpIssuer : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=139.0, core=true, t24Name=CrdRefInfTpIssuer, mandatory=false)
+        /* Invoicee contact details - email address. */
+        InveContactDetEmailAdd : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=2048, sysNumber=215.0, core=true, t24Name=InveContactDetEmailAdd, mandatory=false)
+        /* Invoicee contact details - fax number. */
+        InveContactDetFaxNr : T24BusinessTypes:ANY
+            @t24:i (align=L, inputBehaviour=I, maxLength=30, sysNumber=214.0, core=true, t24Name=InveContactDetFaxNr, mandatory=false)
+        /* Invoicee contact details - mobile number. */
+        InveContactDetMobileNr : T24BusinessTypes:ANY
+            @t24:i (align=L, inputBehaviour=I, maxLength=30, sysNumber=213.0, core=true, t24Name=InveContactDetMobileNr, mandatory=false)
+        /* Invoicee contact details - name. */
+        InveContactDetNm : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=140, sysNumber=211.0, core=true, t24Name=InveContactDetNm, mandatory=false)
+        /* Invoicee contact details - name prefix. Example of values: DOCT (Doctor), MIST (Mister), MISS (Miss), MADM (Madam). */
+        InveContactDetNmPrefix : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=4, sysNumber=210.0, core=true, t24Name=InveContactDetNmPrefix, mandatory=false)
+        /* Invoicee contact details - in another free format. */
+        InveContactDetOth : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=216.0, core=true, t24Name=InveContactDetOth, mandatory=false)
+        /* Invoicee contact details - phone number. */
+        InveContactDetPhoneNr : T24BusinessTypes:ANY
+            @t24:i (align=L, inputBehaviour=I, maxLength=30, sysNumber=212.0, core=true, t24Name=InveContactDetPhoneNr, mandatory=false)
+        /* Country of the invoicee (the place of a person's home or the country from which the affairs of a company are directed). ISO Standard. */
+        InveCtryOfResidence : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=2, sysNumber=209.0, core=true, t24Name=InveCtryOfResidence, mandatory=false)
+        /* Invoicee identification as a BIC */
+        InveIdOrgIdAnyBIC : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=11, sysNumber=196.0, core=true, t24Name=InveIdOrgIdAnyBIC, mandatory=false)
+        InveIdOrgIdOthId -> byValue PP_OutwardMappingFramework:PP_OUT_CT_TRANSACTION__RefDocInfTpCdOrPropCd__InveIdOrgIdOthId *
+            @t24:i (t24Name=InveIdOrgIdOthId)
+        /* Private identification of the invoicee - birth date. */
+        InveIdPrvIdDtPlOfBrBrDt : T24BusinessTypes:D
+            @t24:i (align=R, inputBehaviour=I, maxLength=11, sysNumber=201.0, core=true, t24Name=InveIdPrvIdDtPlOfBrBrDt, mandatory=false)
+        InveIdPrvIdDtPlOfBrCityBr : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=203.0, core=true, t24Name=InveIdPrvIdDtPlOfBrCityBr, mandatory=false)
+        InveIdPrvIdDtPlOfBrCtryBr : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=2, sysNumber=204.0, core=true, t24Name=InveIdPrvIdDtPlOfBrCtryBr, mandatory=false)
+        InveIdPrvIdDtPlOfBrProvBr : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=202.0, core=true, t24Name=InveIdPrvIdDtPlOfBrProvBr, mandatory=false)
+        InveIdPrvIdOthId -> byValue PP_OutwardMappingFramework:PP_OUT_CT_TRANSACTION__RefDocInfTpCdOrPropCd__InveIdPrvIdOthId *
+            @t24:i (t24Name=InveIdPrvIdOthId)
+        /* Invoicee is the party to whom an invoice is issued, when it is different from the debtor or ultimate debtor. This holds the Invoicee name. */
+        InveNm : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=140, sysNumber=179.0, core=true, t24Name=InveNm, mandatory=false)
+        /* Invoicee address building number (on a street). */
+        InvePostAddBuildingNr : T24BusinessTypes:ANY
+            @t24:i (align=L, inputBehaviour=I, maxLength=16, sysNumber=184.0, core=true, t24Name=InvePostAddBuildingNr, mandatory=false)
+        /* Invoicee address country. ISO standard. */
+        InvePostAddCtry : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=2, sysNumber=188.0, core=true, t24Name=InvePostAddCtry, mandatory=false)
+        /* Invoicee address county / state / region. */
+        InvePostAddCtrySubDiv : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=187.0, core=true, t24Name=InvePostAddCtrySubDiv, mandatory=false)
+        /* Invoicee address department. Identification of a division of a large organisation or building. */
+        InvePostAddDep : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=70, sysNumber=181.0, core=true, t24Name=InvePostAddDep, mandatory=false)
+        /* Information that locates and identifies a specific address, as defined by postal services, pre-sented in free format text. */
+        InvePostAddLine1 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=70, sysNumber=189.0, core=true, t24Name=InvePostAddLine1, mandatory=false)
+        /* Information that locates and identifies a specific address, as defined by postal services, pre-sented in free format text. */
+        InvePostAddLine2 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=70, sysNumber=190.0, core=true, t24Name=InvePostAddLine2, mandatory=false)
+        /* Information that locates and identifies a specific address, as defined by postal services, pre-sented in free format text. */
+        InvePostAddLine3 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=70, sysNumber=191.0, core=true, t24Name=InvePostAddLine3, mandatory=false)
+        /* Information that locates and identifies a specific address, as defined by postal services, pre-sented in free format text. */
+        InvePostAddLine4 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=70, sysNumber=192.0, core=true, t24Name=InvePostAddLine4, mandatory=false)
+        /* Information that locates and identifies a specific address, as defined by postal services, pre-sented in free format text. */
+        InvePostAddLine5 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=70, sysNumber=193.0, core=true, t24Name=InvePostAddLine5, mandatory=false)
+        /* Information that locates and identifies a specific address, as defined by postal services, pre-sented in free format text. */
+        InvePostAddLine6 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=70, sysNumber=194.0, core=true, t24Name=InvePostAddLine6, mandatory=false)
+        /* Information that locates and identifies a specific address, as defined by postal services, pre-sented in free format text. */
+        InvePostAddLine7 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=70, sysNumber=195.0, core=true, t24Name=InvePostAddLine7, mandatory=false)
+        /* Invoicee address postal code. */
+        InvePostAddPostCd : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=16, sysNumber=185.0, core=true, t24Name=InvePostAddPostCd, mandatory=false)
+        /* Invoicee address street name. */
+        InvePostAddStreetNm : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=70, sysNumber=183.0, core=true, t24Name=InvePostAddStreetNm, mandatory=false)
+        /* Invoicee address sub-department. Identification of a sub-division of a large organisation or building. */
+        InvePostAddSubDep : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=70, sysNumber=182.0, core=true, t24Name=InvePostAddSubDep, mandatory=false)
+        /* Invoicee address town name. */
+        InvePostAddTownNm : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=186.0, core=true, t24Name=InvePostAddTownNm, mandatory=false)
+        /* Invoicee address type. Example of values: ADDR (Postal), PBOX (POBox), HOME (Residential), BIZZ (Business), MLTO (MailTo), DLVY (DeliveryTo). */
+        InvePostAddTp : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=4, sysNumber=180.0, core=true, t24Name=InvePostAddTp, mandatory=false)
+        /* Invoicer contact details - email address. */
+        InvrContactDetEmailAdd : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=2048, sysNumber=177.0, core=true, t24Name=InvrContactDetEmailAdd, mandatory=false)
+        /* Invoicer contact details - fax number. */
+        InvrContactDetFaxNr : T24BusinessTypes:ANY
+            @t24:i (align=L, inputBehaviour=I, maxLength=30, sysNumber=176.0, core=true, t24Name=InvrContactDetFaxNr, mandatory=false)
+        /* Invoicer contact details - mobile number. */
+        InvrContactDetMobileNr : T24BusinessTypes:ANY
+            @t24:i (align=L, inputBehaviour=I, maxLength=30, sysNumber=175.0, core=true, t24Name=InvrContactDetMobileNr, mandatory=false)
+        /* Invoicer contact details - name. */
+        InvrContactDetNm : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=140, sysNumber=173.0, core=true, t24Name=InvrContactDetNm, mandatory=false)
+        /* Invoicer contact details - name prefix. Example of values: DOCT (Doctor), MIST (Mister), MISS (Miss), MADM (Madam). */
+        InvrContactDetNmPrefix : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=4, sysNumber=172.0, core=true, t24Name=InvrContactDetNmPrefix, mandatory=false)
+        /* Invoicer contact details - in another free format. */
+        InvrContactDetOth : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=178.0, core=true, t24Name=InvrContactDetOth, mandatory=false)
+        /* Invoicer contact details - phone number. */
+        InvrContactDetPhoneNr : T24BusinessTypes:ANY
+            @t24:i (align=L, inputBehaviour=I, maxLength=30, sysNumber=174.0, core=true, t24Name=InvrContactDetPhoneNr, mandatory=false)
+        /* Country of the invoicer (the place of a person's home or the country from which the affairs of a company are directed). ISO Standard. */
+        InvrCtryOfResidence : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=2, sysNumber=171.0, core=true, t24Name=InvrCtryOfResidence, mandatory=false)
+        /* Invoicer identification as a BIC */
+        InvrIdOrgIdAnyBIC : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=11, sysNumber=158.0, core=true, t24Name=InvrIdOrgIdAnyBIC, mandatory=false)
+        InvrIdOrgIdOthId -> byValue PP_OutwardMappingFramework:PP_OUT_CT_TRANSACTION__RefDocInfTpCdOrPropCd__InvrIdOrgIdOthId *
+            @t24:i (t24Name=InvrIdOrgIdOthId)
+        /* Private identification of the invoicer - birth date. */
+        InvrIdPrvIdDtPlOfBrBrDt : T24BusinessTypes:D
+            @t24:i (align=R, inputBehaviour=I, maxLength=11, sysNumber=163.0, core=true, t24Name=InvrIdPrvIdDtPlOfBrBrDt, mandatory=false)
+        InvrIdPrvIdDtPlOfBrCityBr : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=165.0, core=true, t24Name=InvrIdPrvIdDtPlOfBrCityBr, mandatory=false)
+        InvrIdPrvIdDtPlOfBrCtryBr : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=2, sysNumber=166.0, core=true, t24Name=InvrIdPrvIdDtPlOfBrCtryBr, mandatory=false)
+        InvrIdPrvIdDtPlOfBrProvBr : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=164.0, core=true, t24Name=InvrIdPrvIdDtPlOfBrProvBr, mandatory=false)
+        InvrIdPrvIdOthId -> byValue PP_OutwardMappingFramework:PP_OUT_CT_TRANSACTION__RefDocInfTpCdOrPropCd__InvrIdPrvIdOthId *
+            @t24:i (t24Name=InvrIdPrvIdOthId)
+        /* Invoicer is the organisation issuing the invoice, when it is different from the creditor or ultimate creditor. This holds the invoicer name. */
+        InvrNm : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=140, sysNumber=141.0, core=true, t24Name=InvrNm, mandatory=false)
+        /* Invoicer address building number (on a street). */
+        InvrPostAddBuildingNr : T24BusinessTypes:ANY
+            @t24:i (align=L, inputBehaviour=I, maxLength=16, sysNumber=146.0, core=true, t24Name=InvrPostAddBuildingNr, mandatory=false)
+        /* Invoicer address country. ISO standard. */
+        InvrPostAddCtry : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=2, sysNumber=150.0, core=true, t24Name=InvrPostAddCtry, mandatory=false)
+        /* Invoicer address county / state / region. */
+        InvrPostAddCtrySubDiv : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=149.0, core=true, t24Name=InvrPostAddCtrySubDiv, mandatory=false)
+        /* Invoicer address department. Identification of a division of a large organisation or building. */
+        InvrPostAddDep : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=70, sysNumber=143.0, core=true, t24Name=InvrPostAddDep, mandatory=false)
+        /* Information that locates and identifies a specific address, as defined by postal services, pre-sented in free format text. */
+        InvrPostAddLine1 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=70, sysNumber=151.0, core=true, t24Name=InvrPostAddLine1, mandatory=false)
+        /* Information that locates and identifies a specific address, as defined by postal services, pre-sented in free format text. */
+        InvrPostAddLine2 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=70, sysNumber=152.0, core=true, t24Name=InvrPostAddLine2, mandatory=false)
+        /* Information that locates and identifies a specific address, as defined by postal services, pre-sented in free format text. */
+        InvrPostAddLine3 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=70, sysNumber=153.0, core=true, t24Name=InvrPostAddLine3, mandatory=false)
+        /* Information that locates and identifies a specific address, as defined by postal services, pre-sented in free format text. */
+        InvrPostAddLine4 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=70, sysNumber=154.0, core=true, t24Name=InvrPostAddLine4, mandatory=false)
+        /* Information that locates and identifies a specific address, as defined by postal services, pre-sented in free format text. */
+        InvrPostAddLine5 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=70, sysNumber=155.0, core=true, t24Name=InvrPostAddLine5, mandatory=false)
+        /* Information that locates and identifies a specific address, as defined by postal services, pre-sented in free format text. */
+        InvrPostAddLine6 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=70, sysNumber=156.0, core=true, t24Name=InvrPostAddLine6, mandatory=false)
+        /* Information that locates and identifies a specific address, as defined by postal services, pre-sented in free format text. */
+        InvrPostAddLine7 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=70, sysNumber=157.0, core=true, t24Name=InvrPostAddLine7, mandatory=false)
+        /* Invoicer address postal code. */
+        InvrPostAddPostCd : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=16, sysNumber=147.0, core=true, t24Name=InvrPostAddPostCd, mandatory=false)
+        /* Invoicer address street name. */
+        InvrPostAddStreetNm : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=70, sysNumber=145.0, core=true, t24Name=InvrPostAddStreetNm, mandatory=false)
+        /* Invoicer address sub-department. Identification of a sub-division of a large organisation or building. */
+        InvrPostAddSubDep : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=70, sysNumber=144.0, core=true, t24Name=InvrPostAddSubDep, mandatory=false)
+        /* Invoicer address town name. */
+        InvrPostAddTownNm : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=148.0, core=true, t24Name=InvrPostAddTownNm, mandatory=false)
+        /* Invoicer address type. Example of values: ADDR (Postal), PBOX (POBox), HOME (Residential), BIZZ (Business), MLTO (MailTo), DLVY (DeliveryTo). */
+        InvrPostAddTp : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=4, sysNumber=142.0, core=true, t24Name=InvrPostAddTp, mandatory=false)
+        RefDocAmAdjAmRsnAm -> byValue PP_OutwardMappingFramework:PP_OUT_CT_TRANSACTION__RefDocInfTpCdOrPropCd__RefDocAmAdjAmRsnAm *
+            @t24:i (t24Name=RefDocAmAdjAmRsnAm)
+        /* Details on the amounts of the referred document - Amount specified for the referred document is the amount of a credit note. */
+        RefDocAmCrNoteAm : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=I, maxLength=18, sysNumber=124.0, core=true, t24Name=RefDocAmCrNoteAm, mandatory=false)
+        /* Details on the amounts of the referred document - Currency of the credit note amount. */
+        RefDocAmCrNoteAmCcy : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=125.0, core=true, t24Name=RefDocAmCrNoteAmCcy, mandatory=false)
+        RefDocAmDiscApplAmTpCd -> byValue PP_OutwardMappingFramework:PP_OUT_CT_TRANSACTION__RefDocInfTpCdOrPropCd__RefDocAmDiscApplAmTpCd *
+            @t24:i (t24Name=RefDocAmDiscApplAmTpCd)
+        /* Details on the amounts of the referred document - Amount specified is the exact amount due and payable to the creditor. */
+        RefDocAmDuePayableAm : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=I, maxLength=18, sysNumber=118.0, core=true, t24Name=RefDocAmDuePayableAm, mandatory=false)
+        /* Details on the amounts of the referred document - Currency of the payable amount. */
+        RefDocAmDuePayableAmCcy : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=119.0, core=true, t24Name=RefDocAmDuePayableAmCcy, mandatory=false)
+        /* Details on the amounts of the referred document - Amount of money remitted for the referred document. */
+        RefDocAmRemittedAm : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=I, maxLength=18, sysNumber=135.0, core=true, t24Name=RefDocAmRemittedAm, mandatory=false)
+        /* Details on the amounts of the referred document - Currency of the remitted amount. */
+        RefDocAmRemittedAmCcy : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=136.0, core=true, t24Name=RefDocAmRemittedAmCcy, mandatory=false)
+        RefDocAmTaxAmTpCd -> byValue PP_OutwardMappingFramework:PP_OUT_CT_TRANSACTION__RefDocInfTpCdOrPropCd__RefDocAmTaxAmTpCd *
+            @t24:i (t24Name=RefDocAmTaxAmTpCd)
+        RefDocInfTpCdOrPropCd -> byValue PP_OutwardMappingFramework:PP_OUT_CT_TRANSACTION__RefDocInfTpCdOrPropCd__RefDocInfTpCdOrPropCd *
+            @t24:i (t24Name=RefDocInfTpCdOrPropCd)
+    }
+    PP_OUT_CT_TRANSACTION__RefDocInfTpCdOrPropCd__InveIdOrgIdOthId
+    {
+        /* Identification assigned by an institution. */
+        InveIdOrgIdOthId : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=197.0, core=true, t24Name=InveIdOrgIdOthId, mandatory=false)
+        /* Entity that assigns the identification. */
+        InveIdOrgIdOthIssuer : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=200.0, core=true, t24Name=InveIdOrgIdOthIssuer, mandatory=false)
+        /* Name of the identification scheme, in a coded form as published in an external list. */
+        InveIdOrgIdOthSchNmCd : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=4, sysNumber=198.0, core=true, t24Name=InveIdOrgIdOthSchNmCd, mandatory=false)
+        /* Name of the identification scheme, in a free text form. */
+        InveIdOrgIdOthSchNmProp : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=199.0, core=true, t24Name=InveIdOrgIdOthSchNmProp, mandatory=false)
+    }
+    PP_OUT_CT_TRANSACTION__RefDocInfTpCdOrPropCd__InveIdPrvIdOthId
+    {
+        /* Unique and unambiguous identification of a person. */
+        InveIdPrvIdOthId : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=205.0, core=true, t24Name=InveIdPrvIdOthId, mandatory=false)
+        /* Entity that assigns the identification. */
+        InveIdPrvIdOthIssuer : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=208.0, core=true, t24Name=InveIdPrvIdOthIssuer, mandatory=false)
+        /* Name of the identification scheme, in a coded form as published in an external list. */
+        InveIdPrvIdOthSchNmCd : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=4, sysNumber=206.0, core=true, t24Name=InveIdPrvIdOthSchNmCd, mandatory=false)
+        /* Name of the identification scheme, in a free text form. */
+        InveIdPrvIdOthSchNmProp : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=207.0, core=true, t24Name=InveIdPrvIdOthSchNmProp, mandatory=false)
+    }
+    PP_OUT_CT_TRANSACTION__RefDocInfTpCdOrPropCd__InvrIdOrgIdOthId
+    {
+        /* Identification assigned by an institution. */
+        InvrIdOrgIdOthId : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=159.0, core=true, t24Name=InvrIdOrgIdOthId, mandatory=false)
+        /* Entity that assigns the identification. */
+        InvrIdOrgIdOthIssuer : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=162.0, core=true, t24Name=InvrIdOrgIdOthIssuer, mandatory=false)
+        /* Name of the identification scheme, in a coded form as published in an external list. */
+        InvrIdOrgIdOthSchNmCd : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=4, sysNumber=160.0, core=true, t24Name=InvrIdOrgIdOthSchNmCd, mandatory=false)
+        /* Name of the identification scheme, in a free text form. */
+        InvrIdOrgIdOthSchNmProp : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=161.0, core=true, t24Name=InvrIdOrgIdOthSchNmProp, mandatory=false)
+    }
+    PP_OUT_CT_TRANSACTION__RefDocInfTpCdOrPropCd__InvrIdPrvIdOthId
+    {
+        /* Unique and unambiguous identification of a person. */
+        InvrIdPrvIdOthId : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=167.0, core=true, t24Name=InvrIdPrvIdOthId, mandatory=false)
+        /* Entity that assigns the identification. */
+        InvrIdPrvIdOthIssuer : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=170.0, core=true, t24Name=InvrIdPrvIdOthIssuer, mandatory=false)
+        /* Name of the identification scheme, in a coded form as published in an external list. */
+        InvrIdPrvIdOthSchNmCd : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=4, sysNumber=168.0, core=true, t24Name=InvrIdPrvIdOthSchNmCd, mandatory=false)
+        /* Name of the identification scheme, in a free text form. */
+        InvrIdPrvIdOthSchNmProp : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=169.0, core=true, t24Name=InvrIdPrvIdOthSchNmProp, mandatory=false)
+    }
+    PP_OUT_CT_TRANSACTION__RefDocInfTpCdOrPropCd__RefDocAmAdjAmRsnAm
+    {
+        /* Details on the amounts of the referred document - Provides further details on the document adjustment. */
+        RefDocAmAdjAmRsnAdInf : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=140, sysNumber=134.0, core=true, t24Name=RefDocAmAdjAmRsnAdInf, mandatory=false)
+        /* Details on the amounts of the referred document - Amount of money of the document adjustment. */
+        RefDocAmAdjAmRsnAm : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=I, maxLength=18, sysNumber=130.0, core=true, t24Name=RefDocAmAdjAmRsnAm, mandatory=false)
+        /* Details on the amounts of the referred document - Currency of the adjustment amount. */
+        RefDocAmAdjAmRsnAmCcy : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=131.0, core=true, t24Name=RefDocAmAdjAmRsnAmCcy, mandatory=false)
+        /* Details on the amounts of the referred document - Specifies whether the adjustment must be substracted or added to the total amount. Example of values: CRDT (Credit), DBIT (Debit). */
+        RefDocAmAdjAmRsnCrDbInd : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=4, sysNumber=132.0, core=true, t24Name=RefDocAmAdjAmRsnCrDbInd, mandatory=false)
+        /* Details on the amounts of the referred document - Specifies the reason for the adjustment. */
+        RefDocAmAdjAmRsnRsn : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=4, sysNumber=133.0, core=true, t24Name=RefDocAmAdjAmRsnRsn, mandatory=false)
+    }
+    PP_OUT_CT_TRANSACTION__RefDocInfTpCdOrPropCd__RefDocAmDiscApplAmTpCd
+    {
+        /* Details on the amounts of the referred document - Amount of money, which has been typed. */
+        RefDocAmDiscApplAmAm : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=I, maxLength=18, sysNumber=122.0, core=true, t24Name=RefDocAmDiscApplAmAm, mandatory=false)
+        /* Details on the amounts of the referred document - Currency of the amount discount. */
+        RefDocAmDiscApplAmAmCcy : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=123.0, core=true, t24Name=RefDocAmDiscApplAmAmCcy, mandatory=false)
+        /* Details on the amounts of the referred document - Specifies the amount type, in a coded form. */
+        RefDocAmDiscApplAmTpCd : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=4, sysNumber=120.0, core=true, t24Name=RefDocAmDiscApplAmTpCd, mandatory=false)
+        /* Details on the amounts of the referred document - Specifies the amount type, in a free-text form. */
+        RefDocAmDiscApplAmTpProp : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=121.0, core=true, t24Name=RefDocAmDiscApplAmTpProp, mandatory=false)
+    }
+    PP_OUT_CT_TRANSACTION__RefDocInfTpCdOrPropCd__RefDocAmTaxAmTpCd
+    {
+        /* Details on the amounts of the referred document - Amount of money, which has been typed. */
+        RefDocAmTaxAmAm : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=I, maxLength=18, sysNumber=128.0, core=true, t24Name=RefDocAmTaxAmAm, mandatory=false)
+        /* Details on the amounts of the referred document - Currency of the amount discount. */
+        RefDocAmTaxAmAmCcy : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=129.0, core=true, t24Name=RefDocAmTaxAmAmCcy, mandatory=false)
+        /* Details on the amounts of the referred document - Specifies the amount type, in a coded form. */
+        RefDocAmTaxAmTpCd : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=4, sysNumber=126.0, core=true, t24Name=RefDocAmTaxAmTpCd, mandatory=false)
+        /* Details on the amounts of the referred document - Specifies the amount type, in a free-text form. */
+        RefDocAmTaxAmTpProp : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=127.0, core=true, t24Name=RefDocAmTaxAmTpProp, mandatory=false)
+    }
+    PP_OUT_CT_TRANSACTION__RefDocInfTpCdOrPropCd__RefDocInfTpCdOrPropCd
+    {
+        /* Unique and unambiguous identification of the referred document. */
+        RefDocInfNr : T24BusinessTypes:ANY
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=116.0, core=true, t24Name=RefDocInfNr, mandatory=false)
+        /* Date associated with the referred document. */
+        RefDocInfRelatedDt : T24BusinessTypes:D
+            @t24:i (align=R, inputBehaviour=I, maxLength=11, sysNumber=117.0, core=true, t24Name=RefDocInfRelatedDt, mandatory=false)
+        /* Specifies the type of referred document - document type in a coded form. Example of values: MSIN (Metered Service Invoice), CNFA (Credit Note Related to Financial Adjustment), DNFA (Debit Note Related to Financial Adjustment), CINV (Commercial Invoice), CREN (Credit Note), DEBN (Debit Note), HIRI (Hire Invoice), SBIN (Self Billed Invoice), CMCN (Commercial Contract), SOAC (Statement of Account), DISP (Dispatch Advice), BOLD (Bill of Landing), VCHR (Voucher), AROI (Accounte Receivable Open Item), TSUT (Trade Services Utility Transaction). */
+        RefDocInfTpCdOrPropCd : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=4, sysNumber=113.0, core=true, t24Name=RefDocInfTpCdOrPropCd, mandatory=false)
+        /* Specifies the type of referred document - Proprietary identification of the type of the remittance document. */
+        RefDocInfTpCdOrPropProp : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=114.0, core=true, t24Name=RefDocInfTpCdOrPropProp, mandatory=false)
+        /* Specifies the type of referred document - Identification of the issuer of the reference document type. */
+        RefDocInfTpIssuer : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=115.0, core=true, t24Name=RefDocInfTpIssuer, mandatory=false)
+    }
+    PP_OUT_DD_TRANSACTION
+        @i18n:Description (en="")
+        @t24:i (t24Name=PP.OUT.DD.TRANSACTION, level=F, type=L, allowedFunctions="L P S", localRefAllowed=false)
+    {
+        AdditionalInformationCode -> byValue PP_OutwardMappingFramework:PP_OUT_DD_TRANSACTION__AdditionalInformationCode *
+            @t24:i (t24Name=AdditionalInformationCode)
+        AmendmentIndicator : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=1, sysNumber=142.0, core=true, t24Name=AmendmentIndicator, mandatory=false)
+        BankOperationCode : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=10, sysNumber=6.0, core=true, t24Name=BankOperationCode, mandatory=false)
+        BatchIndicator : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=1, sysNumber=32.0, core=true, t24Name=BatchIndicator, mandatory=false)
+        BulkCount : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=10, sysNumber=9.0, core=true, t24Name=BulkCount, mandatory=false)
+        BulkReference : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=50, sysNumber=5.0, core=true, t24Name=BulkReference, mandatory=false)
+        BulkSendersReference : T24BusinessTypes:A
+            @i18n:Label (en=BulkSendersReference)
+            @i18n:Tooltip (en=BulkSendersReference)
+            @t24:i (align=L, inputBehaviour=I, maxLength=50, sysNumber=25.0, core=true, t24Name=BulkSendersReference, mandatory=false)
+        CancelReasonCode : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=40.0, core=true, t24Name=CancelReasonCode, mandatory=false)
+        ClearingBIC : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=3.0, core=true, t24Name=ClearingBIC, mandatory=false)
+        ClearingChannel : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=10, sysNumber=11.0, core=true, t24Name=ClearingChannel, mandatory=false)
+        ClearingNatureCode : T24BusinessTypes:A
+            @i18n:Label (en=ClearingNatureCode)
+            @i18n:Tooltip (en=ClearingNatureCode)
+            @t24:i (align=L, inputBehaviour=I, maxLength=4, sysNumber=18.0, core=true, t24Name=ClearingNatureCode, mandatory=false)
+        ClearingReturnCode : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=50, sysNumber=30.0, core=true, t24Name=ClearingReturnCode, mandatory=false)
+        ClearingTransactionType : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=4, sysNumber=12.0, core=true, t24Name=ClearingTransactionType, mandatory=false)
+        CompanyBIC : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=2.0, core=true, t24Name=CompanyBIC, mandatory=false)
+        CreatedDateTime : T24BusinessTypes:A
+            @i18n:Label (en=CreatedDateTime)
+            @i18n:Tooltip (en=CreatedDateTime)
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=8.0, core=true, t24Name=CreatedDateTime, mandatory=false)
+        CreditPartyRole -> byValue PP_OutwardMappingFramework:PP_OUT_DD_TRANSACTION__CreditPartyRole *
+            @t24:i (t24Name=CreditPartyRole)
+        CreditValueDate : T24BusinessTypes:D
+            @t24:i (align=R, inputBehaviour=I, maxLength=11, sysNumber=259.0, core=true, t24Name=CreditValueDate, mandatory=false)
+        CreditorID : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=138.0, core=true, t24Name=CreditorID, mandatory=false)
+        CustomerSpecifiedReference : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=16.0, core=true, t24Name=CustomerSpecifiedReference, mandatory=false)
+        DebitAccountLine : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=136.0, core=true, t24Name=DebitAccountLine, mandatory=false)
+        DebitPartyRole -> byValue PP_OutwardMappingFramework:PP_OUT_DD_TRANSACTION__DebitPartyRole *
+            @t24:i (t24Name=DebitPartyRole)
+        DebitValueDate : T24BusinessTypes:D
+            @t24:i (align=R, inputBehaviour=I, maxLength=11, sysNumber=21.0, core=true, t24Name=DebitValueDate, mandatory=false)
+        ElectronicSignature : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=141.0, core=true, t24Name=ElectronicSignature, mandatory=false)
+        FileFormat : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=4, sysNumber=7.0, core=true, t24Name=FileFormat, mandatory=false)
+        FileReference : T24BusinessTypes:A
+            @i18n:Label (en=FileReference)
+            @i18n:Tooltip (en=FileReference)
+            @t24:i (align=L, inputBehaviour=I, maxLength=50, sysNumber=4.0, core=true, t24Name=FileReference, mandatory=false)
+        ID -> PP_OutwardMappingFramework:PP_OUT_DD_TRANSACTION PK required
+            @i18n:Label (en="Transaction Ref")
+            @i18n:Tooltip (en="Transaction Reference")
+            @t24:i (align=L, inputBehaviour=I, maxLength=50, sysNumber=0.0, core=true, businessType=A, t24Name=ID, mandatory=true)
+        ISOCancelReasonCode : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=4, sysNumber=39.0, core=true, t24Name=ISOCancelReasonCode, mandatory=false)
+        InformationCode -> byValue PP_OutwardMappingFramework:PP_OUT_DD_TRANSACTION__InformationCode *
+            @t24:i (t24Name=InformationCode)
+        MainOrChargeAccountType -> byValue PP_OutwardMappingFramework:PP_OUT_DD_TRANSACTION__MainOrChargeAccountType *
+            @t24:i (t24Name=MainOrChargeAccountType)
+        MandateReference : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=139.0, core=true, t24Name=MandateReference, mandatory=false)
+        MessageReference : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=50, sysNumber=17.0, core=true, t24Name=MessageReference, mandatory=false)
+        MessageUserReference : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=16, sysNumber=26.0, core=true, t24Name=MessageUserReference, mandatory=false)
+        OrderingPartyTagOption : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=1, sysNumber=23.0, core=true, t24Name=OrderingPartyTagOption, mandatory=false)
+        OriginalCreditorID : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=145.0, core=true, t24Name=OriginalCreditorID, mandatory=false)
+        OriginalCreditorName : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=70, sysNumber=144.0, core=true, t24Name=OriginalCreditorName, mandatory=false)
+        OriginalCreditorSchProp : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=146.0, core=true, t24Name=OriginalCreditorSchProp, mandatory=false)
+        OriginalDebtorAccount : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=147.0, core=true, t24Name=OriginalDebtorAccount, mandatory=false)
+        OriginalDebtorAcctOtherID : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=151.0, core=true, t24Name=OriginalDebtorAcctOtherID, mandatory=false)
+        OriginalDebtorAgtBIC : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=148.0, core=true, t24Name=OriginalDebtorAgtBIC, mandatory=false)
+        OriginalMandateReference : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=143.0, core=true, t24Name=OriginalMandateReference, mandatory=false)
+        OriginatorBIC : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=12, sysNumber=41.0, core=true, t24Name=OriginatorBIC, mandatory=false)
+        OriginatorName : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=150, sysNumber=42.0, core=true, t24Name=OriginatorName, mandatory=false)
+        OutTransactionAmount : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=I, maxLength=17, sysNumber=19.0, core=true, t24Name=OutTransactionAmount, mandatory=false)
+        OutTransactionCurrencyCode : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=20.0, core=true, t24Name=OutTransactionCurrencyCode, mandatory=false)
+        OutgoingMessageType : T24BusinessTypes:A
+            @i18n:Label (en=OutgoingMessageType)
+            @i18n:Tooltip (en=OutgoingMessageType)
+            @t24:i (align=L, inputBehaviour=I, maxLength=10, sysNumber=37.0, core=true, t24Name=OutgoingMessageType, mandatory=false)
+        PartyLine1 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=137.0, core=true, t24Name=PartyLine1, mandatory=false)
+        PaymentDirection : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=1, sysNumber=22.0, core=true, t24Name=PaymentDirection, mandatory=false)
+        PhysicalFileReference : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=1.0, core=true, t24Name=PhysicalFileReference, mandatory=false)
+        ReasonDescription : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=50, sysNumber=31.0, core=true, t24Name=ReasonDescription, mandatory=false)
+        RefDocInfTpCdOrPropCd -> byValue PP_OutwardMappingFramework:PP_OUT_DD_TRANSACTION__RefDocInfTpCdOrPropCd *
+            @t24:i (t24Name=RefDocInfTpCdOrPropCd)
+        RelReference : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=16, sysNumber=38.0, core=true, t24Name=RelReference, mandatory=false)
+        RequestedCollectionDate : T24BusinessTypes:D
+            @t24:i (align=R, inputBehaviour=I, maxLength=11, sysNumber=33.0, core=true, t24Name=RequestedCollectionDate, mandatory=false)
+        RetRejOriginatedBy : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=50, sysNumber=36.0, core=true, t24Name=RetRejOriginatedBy, mandatory=false)
+        SenderChargeAmount1 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=17, sysNumber=34.0, core=true, t24Name=SenderChargeAmount1, mandatory=false)
+        SenderChargeCurrencyCode1 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=35.0, core=true, t24Name=SenderChargeCurrencyCode1, mandatory=false)
+        SendersReferenceIncoming : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=15.0, core=true, t24Name=SendersReferenceIncoming, mandatory=false)
+        SendingBank : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=135.0, core=true, t24Name=SendingBank, mandatory=false)
+        SequenceType : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=149.0, core=true, t24Name=SequenceType, mandatory=false)
+        ServiceLevelCode : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=150.0, core=true, t24Name=ServiceLevelCode, mandatory=false)
+        SettlementAmount : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=17, sysNumber=14.0, core=true, t24Name=SettlementAmount, mandatory=false)
+        SettlementDate : T24BusinessTypes:D
+            @t24:i (align=R, inputBehaviour=I, maxLength=11, sysNumber=13.0, core=true, t24Name=SettlementDate, mandatory=false)
+        SignatureDate : T24BusinessTypes:D
+            @t24:i (align=R, inputBehaviour=I, maxLength=11, sysNumber=140.0, core=true, t24Name=SignatureDate, mandatory=false)
+        SingleMultipleIndicator : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=1, sysNumber=24.0, core=true, t24Name=SingleMultipleIndicator, mandatory=false)
+        TransactionAmount : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=I, maxLength=17, sysNumber=28.0, core=true, t24Name=TransactionAmount, mandatory=false)
+        TransactionBulkCount : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=10, sysNumber=10.0, core=true, t24Name=TransactionBulkCount, mandatory=false)
+        TransactionCurrencyCode : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=29.0, core=true, t24Name=TransactionCurrencyCode, mandatory=false)
+        TransactionReferenceIncoming : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=50, sysNumber=27.0, core=true, t24Name=TransactionReferenceIncoming, mandatory=false)
+    }
+    PP_OUT_DD_TRANSACTION__AdditionalInformationCode
+    {
+        AdditionalInfLine : T24BusinessTypes:ANY
+            @t24:i (align=L, inputBehaviour=I, maxLength=0, sysNumber=106.0, core=true, t24Name=AdditionalInfLine, mandatory=false)
+        AdditionalInfTag : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=105.0, core=true, t24Name=AdditionalInfTag, mandatory=false)
+        AdditionalInfTypeLineSeq : T24BusinessTypes:N required
+            @t24:i (align=R, inputBehaviour=I, maxLength=7, sysNumber=104.0, core=true, t24Name=AdditionalInfTypeLineSeq, mandatory=true)
+        AdditionalInformationCode : T24BusinessTypes:A required
+            @t24:i (align=L, inputBehaviour=I, maxLength=6, sysNumber=103.0, core=true, t24Name=AdditionalInformationCode, mandatory=true)
+    }
+    PP_OUT_DD_TRANSACTION__CreditPartyRole
+    {
+        CdtPartyOrgIdOtherIssuer : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=61.0, core=true, t24Name=CdtPartyOrgIdOtherIssuer, mandatory=false)
+        CdtPartyOrgIdOtherSchCode : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=4, sysNumber=59.0, core=true, t24Name=CdtPartyOrgIdOtherSchCode, mandatory=false)
+        CdtPartyOrgIdOtherSchProp : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=60.0, core=true, t24Name=CdtPartyOrgIdOtherSchProp, mandatory=false)
+        CdtPartyPrvIdOtherIssuer : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=69.0, core=true, t24Name=CdtPartyPrvIdOtherIssuer, mandatory=false)
+        CdtPartyPrvIdOtherSchCode : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=4, sysNumber=67.0, core=true, t24Name=CdtPartyPrvIdOtherSchCode, mandatory=false)
+        CdtPartyPrvIdOtherSchProp : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=68.0, core=true, t24Name=CdtPartyPrvIdOtherSchProp, mandatory=false)
+        CreditPartyAccountLine : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=37, sysNumber=48.0, core=true, t24Name=CreditPartyAccountLine, mandatory=false)
+        CreditPartyAddressLine1 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=70, sysNumber=56.0, core=true, t24Name=CreditPartyAddressLine1, mandatory=false)
+        CreditPartyAddressLine2 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=70, sysNumber=57.0, core=true, t24Name=CreditPartyAddressLine2, mandatory=false)
+        CreditPartyBirthDate : T24BusinessTypes:D
+            @t24:i (align=R, inputBehaviour=I, maxLength=11, sysNumber=62.0, core=true, t24Name=CreditPartyBirthDate, mandatory=false)
+        CreditPartyCityOfBirth : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=64.0, core=true, t24Name=CreditPartyCityOfBirth, mandatory=false)
+        CreditPartyCountry : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=2, sysNumber=55.0, core=true, t24Name=CreditPartyCountry, mandatory=false)
+        CreditPartyCountryOfBirth : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=2, sysNumber=65.0, core=true, t24Name=CreditPartyCountryOfBirth, mandatory=false)
+        CreditPartyFreeLine1 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=49.0, core=true, t24Name=CreditPartyFreeLine1, mandatory=false)
+        CreditPartyFreeLine2 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=50.0, core=true, t24Name=CreditPartyFreeLine2, mandatory=false)
+        CreditPartyFreeLine3 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=51.0, core=true, t24Name=CreditPartyFreeLine3, mandatory=false)
+        CreditPartyFreeLine4 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=52.0, core=true, t24Name=CreditPartyFreeLine4, mandatory=false)
+        CreditPartyIdentifierCode : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=47.0, core=true, t24Name=CreditPartyIdentifierCode, mandatory=false)
+        CreditPartyInformationTag : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=45.0, core=true, t24Name=CreditPartyInformationTag, mandatory=false)
+        CreditPartyName : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=140, sysNumber=54.0, core=true, t24Name=CreditPartyName, mandatory=false)
+        CreditPartyNationalId : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=1, sysNumber=46.0, core=true, t24Name=CreditPartyNationalId, mandatory=false)
+        CreditPartyOrgIdOtherId : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=58.0, core=true, t24Name=CreditPartyOrgIdOtherId, mandatory=false)
+        CreditPartyProvinceOfBirth : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=63.0, core=true, t24Name=CreditPartyProvinceOfBirth, mandatory=false)
+        CreditPartyPrvIdOtherId : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=66.0, core=true, t24Name=CreditPartyPrvIdOtherId, mandatory=false)
+        CreditPartyRole : T24BusinessTypes:A required
+            @t24:i (align=L, inputBehaviour=I, maxLength=6, sysNumber=43.0, core=true, t24Name=CreditPartyRole, mandatory=true)
+        CreditPartyRoleIndicator : T24BusinessTypes:A required
+            @t24:i (align=L, inputBehaviour=I, maxLength=1, sysNumber=44.0, core=true, t24Name=CreditPartyRoleIndicator, mandatory=true)
+        DirectPaymentFlag : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=1, sysNumber=53.0, core=true, t24Name=DirectPaymentFlag, mandatory=false)
+    }
+    PP_OUT_DD_TRANSACTION__DebitPartyRole
+    {
+        DebitPartyAccountLine : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=37, sysNumber=75.0, core=true, t24Name=DebitPartyAccountLine, mandatory=false)
+        DebitPartyAddressLine1 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=70, sysNumber=82.0, core=true, t24Name=DebitPartyAddressLine1, mandatory=false)
+        DebitPartyAddressLine2 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=70, sysNumber=83.0, core=true, t24Name=DebitPartyAddressLine2, mandatory=false)
+        DebitPartyBirthDate : T24BusinessTypes:D
+            @t24:i (align=R, inputBehaviour=I, maxLength=11, sysNumber=88.0, core=true, t24Name=DebitPartyBirthDate, mandatory=false)
+        DebitPartyCityOfBirth : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=90.0, core=true, t24Name=DebitPartyCityOfBirth, mandatory=false)
+        DebitPartyCountry : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=2, sysNumber=81.0, core=true, t24Name=DebitPartyCountry, mandatory=false)
+        DebitPartyCountryOfBirth : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=2, sysNumber=91.0, core=true, t24Name=DebitPartyCountryOfBirth, mandatory=false)
+        DebitPartyFreeLine1 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=76.0, core=true, t24Name=DebitPartyFreeLine1, mandatory=false)
+        DebitPartyFreeLine2 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=77.0, core=true, t24Name=DebitPartyFreeLine2, mandatory=false)
+        DebitPartyFreeLine3 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=78.0, core=true, t24Name=DebitPartyFreeLine3, mandatory=false)
+        DebitPartyFreeLine4 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=79.0, core=true, t24Name=DebitPartyFreeLine4, mandatory=false)
+        DebitPartyIdentifierCode : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=74.0, core=true, t24Name=DebitPartyIdentifierCode, mandatory=false)
+        DebitPartyInformationTag : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=72.0, core=true, t24Name=DebitPartyInformationTag, mandatory=false)
+        DebitPartyName : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=140, sysNumber=80.0, core=true, t24Name=DebitPartyName, mandatory=false)
+        DebitPartyNationalId : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=1, sysNumber=73.0, core=true, t24Name=DebitPartyNationalId, mandatory=false)
+        DebitPartyOrgIdOtherId : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=84.0, core=true, t24Name=DebitPartyOrgIdOtherId, mandatory=false)
+        DebitPartyOrgIdOtherIssuer : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=87.0, core=true, t24Name=DebitPartyOrgIdOtherIssuer, mandatory=false)
+        DebitPartyProvinceOfBirth : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=89.0, core=true, t24Name=DebitPartyProvinceOfBirth, mandatory=false)
+        DebitPartyPrvIdOtherId : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=92.0, core=true, t24Name=DebitPartyPrvIdOtherId, mandatory=false)
+        DebitPartyPrvIdOtherIssuer : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=95.0, core=true, t24Name=DebitPartyPrvIdOtherIssuer, mandatory=false)
+        DebitPartyRole : T24BusinessTypes:A required
+            @t24:i (align=L, inputBehaviour=I, maxLength=6, sysNumber=70.0, core=true, t24Name=DebitPartyRole, mandatory=true)
+        DebitPartyRoleIndicator : T24BusinessTypes:A required
+            @t24:i (align=L, inputBehaviour=I, maxLength=1, sysNumber=71.0, core=true, t24Name=DebitPartyRoleIndicator, mandatory=true)
+        DebitPtyOrgIdOtherSchCode : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=4, sysNumber=85.0, core=true, t24Name=DebitPtyOrgIdOtherSchCode, mandatory=false)
+        DebitPtyOrgIdOtherSchProp : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=86.0, core=true, t24Name=DebitPtyOrgIdOtherSchProp, mandatory=false)
+        DebitPtyPrvIdOtherSchCode : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=4, sysNumber=93.0, core=true, t24Name=DebitPtyPrvIdOtherSchCode, mandatory=false)
+        DebitPtyPrvIdOtherSchProp : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=94.0, core=true, t24Name=DebitPtyPrvIdOtherSchProp, mandatory=false)
+    }
+    PP_OUT_DD_TRANSACTION__InformationCode
+    {
+        CountryCode : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=2, sysNumber=100.0, core=true, t24Name=CountryCode, mandatory=false)
+        InformationCode : T24BusinessTypes:A required
+            @t24:i (align=L, inputBehaviour=I, maxLength=6, sysNumber=96.0, core=true, t24Name=InformationCode, mandatory=true)
+        InformationLine : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=50, sysNumber=101.0, core=true, t24Name=InformationLine, mandatory=false)
+        InformationTag : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=98.0, core=true, t24Name=InformationTag, mandatory=false)
+        InformationTypeLineSeq : T24BusinessTypes:N required
+            @t24:i (align=R, inputBehaviour=I, maxLength=7, sysNumber=97.0, core=true, t24Name=InformationTypeLineSeq, mandatory=true)
+        InstructionCode : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=8, sysNumber=99.0, core=true, t24Name=InstructionCode, mandatory=false)
+        OutboundCwApplicableFlag : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=1, sysNumber=102.0, core=true, t24Name=OutboundCwApplicableFlag, mandatory=false)
+    }
+    PP_OUT_DD_TRANSACTION__MainOrChargeAccountType
+    {
+        AccountCompanyID : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=108.0, core=true, t24Name=AccountCompanyID, mandatory=false)
+        AccountCurrency : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=110.0, core=true, t24Name=AccountCurrency, mandatory=false)
+        AccountNumber : T24BusinessTypes:ACCA
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=109.0, core=true, t24Name=AccountNumber, mandatory=false)
+        AccountOfficer : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=30, sysNumber=126.0, core=true, t24Name=AccountOfficer, mandatory=false)
+        AccountStatus : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=8, sysNumber=112.0, core=true, t24Name=AccountStatus, mandatory=false)
+        AccountType : T24BusinessTypes:AA
+            @t24:i (align=L, inputBehaviour=I, maxLength=20, sysNumber=111.0, core=true, t24Name=AccountType, mandatory=false)
+        BookCode : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=10, sysNumber=128.0, core=true, t24Name=BookCode, mandatory=false)
+        BusinessLine : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=124.0, core=true, t24Name=BusinessLine, mandatory=false)
+        CdtPostingRestrictionCode : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=10, sysNumber=115.0, core=true, t24Name=CdtPostingRestrictionCode, mandatory=false)
+        CdtPostingRestrictionDesc : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=128, sysNumber=116.0, core=true, t24Name=CdtPostingRestrictionDesc, mandatory=false)
+        CustomerAddress : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=50, sysNumber=119.0, core=true, t24Name=CustomerAddress, mandatory=false)
+        CustomerCountryCode : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=50, sysNumber=121.0, core=true, t24Name=CustomerCountryCode, mandatory=false)
+        CustomerEmailID : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=50, sysNumber=131.0, core=true, t24Name=CustomerEmailID, mandatory=false)
+        CustomerID : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=34, sysNumber=117.0, core=true, t24Name=CustomerID, mandatory=false)
+        CustomerLanguageID : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=2, sysNumber=123.0, core=true, t24Name=CustomerLanguageID, mandatory=false)
+        CustomerName : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=50, sysNumber=118.0, core=true, t24Name=CustomerName, mandatory=false)
+        CustomerPhoneNumber : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=20, sysNumber=130.0, core=true, t24Name=CustomerPhoneNumber, mandatory=false)
+        CustomerPostalCode : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=50, sysNumber=120.0, core=true, t24Name=CustomerPostalCode, mandatory=false)
+        CustomerResidency : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=2, sysNumber=122.0, core=true, t24Name=CustomerResidency, mandatory=false)
+        DbtPostingRestrictionCode : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=10, sysNumber=113.0, core=true, t24Name=DbtPostingRestrictionCode, mandatory=false)
+        DbtPostingRestrictionDesc : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=128, sysNumber=114.0, core=true, t24Name=DbtPostingRestrictionDesc, mandatory=false)
+        ErrorCode : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=10, sysNumber=129.0, core=true, t24Name=ErrorCode, mandatory=false)
+        IdentifierCode : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=132.0, core=true, t24Name=IdentifierCode, mandatory=false)
+        MainOrChargeAccountType : T24BusinessTypes:A required
+            @t24:i (align=L, inputBehaviour=I, maxLength=2, sysNumber=107.0, core=true, t24Name=MainOrChargeAccountType, mandatory=true)
+        OtherRestrictionType -> byValue PP_OutwardMappingFramework:PP_OUT_DD_TRANSACTION__MainOrChargeAccountType__OtherRestrictionType *
+            @t24:i (t24Name=OtherRestrictionType)
+        RelatedIBAN : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=34, sysNumber=127.0, core=true, t24Name=RelatedIBAN, mandatory=false)
+        SectorCode : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=4, sysNumber=125.0, core=true, t24Name=SectorCode, mandatory=false)
+    }
+    PP_OUT_DD_TRANSACTION__MainOrChargeAccountType__OtherRestrictionType
+    {
+        OtherRestrictionDesc : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=50, sysNumber=134.0, core=true, t24Name=OtherRestrictionDesc, mandatory=false)
+        OtherRestrictionType : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=1, sysNumber=133.0, core=true, t24Name=OtherRestrictionType, mandatory=false)
+    }
+    PP_OUT_DD_TRANSACTION__RefDocInfTpCdOrPropCd
+    {
+        AdRemittanceInf1 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=140, sysNumber=256.0, core=true, t24Name=AdRemittanceInf1, mandatory=false)
+        AdRemittanceInf2 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=140, sysNumber=257.0, core=true, t24Name=AdRemittanceInf2, mandatory=false)
+        AdRemittanceInf3 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=140, sysNumber=258.0, core=true, t24Name=AdRemittanceInf3, mandatory=false)
+        CrdRefInfRef : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=179.0, core=true, t24Name=CrdRefInfRef, mandatory=false)
+        CrdRefInfTpCdOrPropCd : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=4, sysNumber=176.0, core=true, t24Name=CrdRefInfTpCdOrPropCd, mandatory=false)
+        CrdRefInfTpCdOrPropProp : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=177.0, core=true, t24Name=CrdRefInfTpCdOrPropProp, mandatory=false)
+        CrdRefInfTpIssuer : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=178.0, core=true, t24Name=CrdRefInfTpIssuer, mandatory=false)
+        InveContactDetEmailAdd : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=2048, sysNumber=254.0, core=true, t24Name=InveContactDetEmailAdd, mandatory=false)
+        InveContactDetFaxNr : T24BusinessTypes:ANY
+            @t24:i (align=L, inputBehaviour=I, maxLength=30, sysNumber=253.0, core=true, t24Name=InveContactDetFaxNr, mandatory=false)
+        InveContactDetMobileNr : T24BusinessTypes:ANY
+            @t24:i (align=L, inputBehaviour=I, maxLength=30, sysNumber=252.0, core=true, t24Name=InveContactDetMobileNr, mandatory=false)
+        InveContactDetNm : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=140, sysNumber=250.0, core=true, t24Name=InveContactDetNm, mandatory=false)
+        InveContactDetNmPrefix : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=4, sysNumber=249.0, core=true, t24Name=InveContactDetNmPrefix, mandatory=false)
+        InveContactDetOth : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=255.0, core=true, t24Name=InveContactDetOth, mandatory=false)
+        InveContactDetPhoneNr : T24BusinessTypes:ANY
+            @t24:i (align=L, inputBehaviour=I, maxLength=30, sysNumber=251.0, core=true, t24Name=InveContactDetPhoneNr, mandatory=false)
+        InveCtryOfResidence : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=2, sysNumber=248.0, core=true, t24Name=InveCtryOfResidence, mandatory=false)
+        InveIdOrgIdAnyBIC : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=11, sysNumber=235.0, core=true, t24Name=InveIdOrgIdAnyBIC, mandatory=false)
+        InveIdOrgIdOthId -> byValue PP_OutwardMappingFramework:PP_OUT_DD_TRANSACTION__RefDocInfTpCdOrPropCd__InveIdOrgIdOthId *
+            @t24:i (t24Name=InveIdOrgIdOthId)
+        InveIdPrvIdDtPlOfBrBrDt : T24BusinessTypes:D
+            @t24:i (align=R, inputBehaviour=I, maxLength=11, sysNumber=240.0, core=true, t24Name=InveIdPrvIdDtPlOfBrBrDt, mandatory=false)
+        InveIdPrvIdDtPlOfBrCityBr : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=242.0, core=true, t24Name=InveIdPrvIdDtPlOfBrCityBr, mandatory=false)
+        InveIdPrvIdDtPlOfBrCtryBr : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=2, sysNumber=243.0, core=true, t24Name=InveIdPrvIdDtPlOfBrCtryBr, mandatory=false)
+        InveIdPrvIdDtPlOfBrProvBr : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=241.0, core=true, t24Name=InveIdPrvIdDtPlOfBrProvBr, mandatory=false)
+        InveIdPrvIdOthId -> byValue PP_OutwardMappingFramework:PP_OUT_DD_TRANSACTION__RefDocInfTpCdOrPropCd__InveIdPrvIdOthId *
+            @t24:i (t24Name=InveIdPrvIdOthId)
+        InveNm : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=140, sysNumber=218.0, core=true, t24Name=InveNm, mandatory=false)
+        InvePostAddBuildingNr : T24BusinessTypes:ANY
+            @t24:i (align=L, inputBehaviour=I, maxLength=16, sysNumber=223.0, core=true, t24Name=InvePostAddBuildingNr, mandatory=false)
+        InvePostAddCtry : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=2, sysNumber=227.0, core=true, t24Name=InvePostAddCtry, mandatory=false)
+        InvePostAddCtrySubDiv : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=226.0, core=true, t24Name=InvePostAddCtrySubDiv, mandatory=false)
+        InvePostAddDep : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=70, sysNumber=220.0, core=true, t24Name=InvePostAddDep, mandatory=false)
+        InvePostAddLine1 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=70, sysNumber=228.0, core=true, t24Name=InvePostAddLine1, mandatory=false)
+        InvePostAddLine2 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=70, sysNumber=229.0, core=true, t24Name=InvePostAddLine2, mandatory=false)
+        InvePostAddLine3 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=70, sysNumber=230.0, core=true, t24Name=InvePostAddLine3, mandatory=false)
+        InvePostAddLine4 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=70, sysNumber=231.0, core=true, t24Name=InvePostAddLine4, mandatory=false)
+        InvePostAddLine5 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=70, sysNumber=232.0, core=true, t24Name=InvePostAddLine5, mandatory=false)
+        InvePostAddLine6 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=70, sysNumber=233.0, core=true, t24Name=InvePostAddLine6, mandatory=false)
+        InvePostAddLine7 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=70, sysNumber=234.0, core=true, t24Name=InvePostAddLine7, mandatory=false)
+        InvePostAddPostCd : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=16, sysNumber=224.0, core=true, t24Name=InvePostAddPostCd, mandatory=false)
+        InvePostAddStreetNm : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=70, sysNumber=222.0, core=true, t24Name=InvePostAddStreetNm, mandatory=false)
+        InvePostAddSubDep : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=70, sysNumber=221.0, core=true, t24Name=InvePostAddSubDep, mandatory=false)
+        InvePostAddTownNm : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=225.0, core=true, t24Name=InvePostAddTownNm, mandatory=false)
+        InvePostAddTp : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=4, sysNumber=219.0, core=true, t24Name=InvePostAddTp, mandatory=false)
+        InvrContactDetEmailAdd : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=2048, sysNumber=216.0, core=true, t24Name=InvrContactDetEmailAdd, mandatory=false)
+        InvrContactDetFaxNr : T24BusinessTypes:ANY
+            @t24:i (align=L, inputBehaviour=I, maxLength=30, sysNumber=215.0, core=true, t24Name=InvrContactDetFaxNr, mandatory=false)
+        InvrContactDetMobileNr : T24BusinessTypes:ANY
+            @t24:i (align=L, inputBehaviour=I, maxLength=30, sysNumber=214.0, core=true, t24Name=InvrContactDetMobileNr, mandatory=false)
+        InvrContactDetNm : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=140, sysNumber=212.0, core=true, t24Name=InvrContactDetNm, mandatory=false)
+        InvrContactDetNmPrefix : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=4, sysNumber=211.0, core=true, t24Name=InvrContactDetNmPrefix, mandatory=false)
+        InvrContactDetOth : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=217.0, core=true, t24Name=InvrContactDetOth, mandatory=false)
+        InvrContactDetPhoneNr : T24BusinessTypes:ANY
+            @t24:i (align=L, inputBehaviour=I, maxLength=30, sysNumber=213.0, core=true, t24Name=InvrContactDetPhoneNr, mandatory=false)
+        InvrCtryOfResidence : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=2, sysNumber=210.0, core=true, t24Name=InvrCtryOfResidence, mandatory=false)
+        InvrIdOrgIdAnyBIC : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=11, sysNumber=197.0, core=true, t24Name=InvrIdOrgIdAnyBIC, mandatory=false)
+        InvrIdOrgIdOthId -> byValue PP_OutwardMappingFramework:PP_OUT_DD_TRANSACTION__RefDocInfTpCdOrPropCd__InvrIdOrgIdOthId *
+            @t24:i (t24Name=InvrIdOrgIdOthId)
+        InvrIdPrvIdDtPlOfBrBrDt : T24BusinessTypes:D
+            @t24:i (align=R, inputBehaviour=I, maxLength=11, sysNumber=202.0, core=true, t24Name=InvrIdPrvIdDtPlOfBrBrDt, mandatory=false)
+        InvrIdPrvIdDtPlOfBrCityBr : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=204.0, core=true, t24Name=InvrIdPrvIdDtPlOfBrCityBr, mandatory=false)
+        InvrIdPrvIdDtPlOfBrCtryBr : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=2, sysNumber=205.0, core=true, t24Name=InvrIdPrvIdDtPlOfBrCtryBr, mandatory=false)
+        InvrIdPrvIdDtPlOfBrProvBr : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=203.0, core=true, t24Name=InvrIdPrvIdDtPlOfBrProvBr, mandatory=false)
+        InvrIdPrvIdOthId -> byValue PP_OutwardMappingFramework:PP_OUT_DD_TRANSACTION__RefDocInfTpCdOrPropCd__InvrIdPrvIdOthId *
+            @t24:i (t24Name=InvrIdPrvIdOthId)
+        InvrNm : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=140, sysNumber=180.0, core=true, t24Name=InvrNm, mandatory=false)
+        InvrPostAddBuildingNr : T24BusinessTypes:ANY
+            @t24:i (align=L, inputBehaviour=I, maxLength=16, sysNumber=185.0, core=true, t24Name=InvrPostAddBuildingNr, mandatory=false)
+        InvrPostAddCtry : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=2, sysNumber=189.0, core=true, t24Name=InvrPostAddCtry, mandatory=false)
+        InvrPostAddCtrySubDiv : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=188.0, core=true, t24Name=InvrPostAddCtrySubDiv, mandatory=false)
+        InvrPostAddDep : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=70, sysNumber=182.0, core=true, t24Name=InvrPostAddDep, mandatory=false)
+        InvrPostAddLine1 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=70, sysNumber=190.0, core=true, t24Name=InvrPostAddLine1, mandatory=false)
+        InvrPostAddLine2 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=70, sysNumber=191.0, core=true, t24Name=InvrPostAddLine2, mandatory=false)
+        InvrPostAddLine3 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=70, sysNumber=192.0, core=true, t24Name=InvrPostAddLine3, mandatory=false)
+        InvrPostAddLine4 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=70, sysNumber=193.0, core=true, t24Name=InvrPostAddLine4, mandatory=false)
+        InvrPostAddLine5 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=70, sysNumber=194.0, core=true, t24Name=InvrPostAddLine5, mandatory=false)
+        InvrPostAddLine6 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=70, sysNumber=195.0, core=true, t24Name=InvrPostAddLine6, mandatory=false)
+        InvrPostAddLine7 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=70, sysNumber=196.0, core=true, t24Name=InvrPostAddLine7, mandatory=false)
+        InvrPostAddPostCd : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=16, sysNumber=186.0, core=true, t24Name=InvrPostAddPostCd, mandatory=false)
+        InvrPostAddStreetNm : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=70, sysNumber=184.0, core=true, t24Name=InvrPostAddStreetNm, mandatory=false)
+        InvrPostAddSubDep : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=70, sysNumber=183.0, core=true, t24Name=InvrPostAddSubDep, mandatory=false)
+        InvrPostAddTownNm : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=187.0, core=true, t24Name=InvrPostAddTownNm, mandatory=false)
+        InvrPostAddTp : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=4, sysNumber=181.0, core=true, t24Name=InvrPostAddTp, mandatory=false)
+        RefDocAmAdjAmRsnAm -> byValue PP_OutwardMappingFramework:PP_OUT_DD_TRANSACTION__RefDocInfTpCdOrPropCd__RefDocAmAdjAmRsnAm *
+            @t24:i (t24Name=RefDocAmAdjAmRsnAm)
+        RefDocAmCrNoteAm : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=I, maxLength=18, sysNumber=163.0, core=true, t24Name=RefDocAmCrNoteAm, mandatory=false)
+        RefDocAmCrNoteAmCcy : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=164.0, core=true, t24Name=RefDocAmCrNoteAmCcy, mandatory=false)
+        RefDocAmDiscApplAmTpCd -> byValue PP_OutwardMappingFramework:PP_OUT_DD_TRANSACTION__RefDocInfTpCdOrPropCd__RefDocAmDiscApplAmTpCd *
+            @t24:i (t24Name=RefDocAmDiscApplAmTpCd)
+        RefDocAmDuePayableAm : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=I, maxLength=18, sysNumber=157.0, core=true, t24Name=RefDocAmDuePayableAm, mandatory=false)
+        RefDocAmDuePayableAmCcy : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=158.0, core=true, t24Name=RefDocAmDuePayableAmCcy, mandatory=false)
+        RefDocAmRemittedAm : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=I, maxLength=18, sysNumber=174.0, core=true, t24Name=RefDocAmRemittedAm, mandatory=false)
+        RefDocAmRemittedAmCcy : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=175.0, core=true, t24Name=RefDocAmRemittedAmCcy, mandatory=false)
+        RefDocAmTaxAmTpCd -> byValue PP_OutwardMappingFramework:PP_OUT_DD_TRANSACTION__RefDocInfTpCdOrPropCd__RefDocAmTaxAmTpCd *
+            @t24:i (t24Name=RefDocAmTaxAmTpCd)
+        RefDocInfTpCdOrPropCd -> byValue PP_OutwardMappingFramework:PP_OUT_DD_TRANSACTION__RefDocInfTpCdOrPropCd__RefDocInfTpCdOrPropCd *
+            @t24:i (t24Name=RefDocInfTpCdOrPropCd)
+    }
+    PP_OUT_DD_TRANSACTION__RefDocInfTpCdOrPropCd__InveIdOrgIdOthId
+    {
+        InveIdOrgIdOthId : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=236.0, core=true, t24Name=InveIdOrgIdOthId, mandatory=false)
+        InveIdOrgIdOthIssuer : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=239.0, core=true, t24Name=InveIdOrgIdOthIssuer, mandatory=false)
+        InveIdOrgIdOthSchNmCd : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=4, sysNumber=237.0, core=true, t24Name=InveIdOrgIdOthSchNmCd, mandatory=false)
+        InveIdOrgIdOthSchNmProp : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=238.0, core=true, t24Name=InveIdOrgIdOthSchNmProp, mandatory=false)
+    }
+    PP_OUT_DD_TRANSACTION__RefDocInfTpCdOrPropCd__InveIdPrvIdOthId
+    {
+        InveIdPrvIdOthId : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=244.0, core=true, t24Name=InveIdPrvIdOthId, mandatory=false)
+        InveIdPrvIdOthIssuer : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=247.0, core=true, t24Name=InveIdPrvIdOthIssuer, mandatory=false)
+        InveIdPrvIdOthSchNmCd : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=4, sysNumber=245.0, core=true, t24Name=InveIdPrvIdOthSchNmCd, mandatory=false)
+        InveIdPrvIdOthSchNmProp : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=246.0, core=true, t24Name=InveIdPrvIdOthSchNmProp, mandatory=false)
+    }
+    PP_OUT_DD_TRANSACTION__RefDocInfTpCdOrPropCd__InvrIdOrgIdOthId
+    {
+        InvrIdOrgIdOthId : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=198.0, core=true, t24Name=InvrIdOrgIdOthId, mandatory=false)
+        InvrIdOrgIdOthIssuer : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=201.0, core=true, t24Name=InvrIdOrgIdOthIssuer, mandatory=false)
+        InvrIdOrgIdOthSchNmCd : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=4, sysNumber=199.0, core=true, t24Name=InvrIdOrgIdOthSchNmCd, mandatory=false)
+        InvrIdOrgIdOthSchNmProp : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=200.0, core=true, t24Name=InvrIdOrgIdOthSchNmProp, mandatory=false)
+    }
+    PP_OUT_DD_TRANSACTION__RefDocInfTpCdOrPropCd__InvrIdPrvIdOthId
+    {
+        InvrIdPrvIdOthId : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=206.0, core=true, t24Name=InvrIdPrvIdOthId, mandatory=false)
+        InvrIdPrvIdOthIssuer : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=209.0, core=true, t24Name=InvrIdPrvIdOthIssuer, mandatory=false)
+        InvrIdPrvIdOthSchNmCd : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=4, sysNumber=207.0, core=true, t24Name=InvrIdPrvIdOthSchNmCd, mandatory=false)
+        InvrIdPrvIdOthSchNmProp : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=208.0, core=true, t24Name=InvrIdPrvIdOthSchNmProp, mandatory=false)
+    }
+    PP_OUT_DD_TRANSACTION__RefDocInfTpCdOrPropCd__RefDocAmAdjAmRsnAm
+    {
+        RefDocAmAdjAmRsnAdInf : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=140, sysNumber=173.0, core=true, t24Name=RefDocAmAdjAmRsnAdInf, mandatory=false)
+        RefDocAmAdjAmRsnAm : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=I, maxLength=18, sysNumber=169.0, core=true, t24Name=RefDocAmAdjAmRsnAm, mandatory=false)
+        RefDocAmAdjAmRsnAmCcy : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=170.0, core=true, t24Name=RefDocAmAdjAmRsnAmCcy, mandatory=false)
+        RefDocAmAdjAmRsnCrDbInd : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=4, sysNumber=171.0, core=true, t24Name=RefDocAmAdjAmRsnCrDbInd, mandatory=false)
+        RefDocAmAdjAmRsnRsn : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=4, sysNumber=172.0, core=true, t24Name=RefDocAmAdjAmRsnRsn, mandatory=false)
+    }
+    PP_OUT_DD_TRANSACTION__RefDocInfTpCdOrPropCd__RefDocAmDiscApplAmTpCd
+    {
+        RefDocAmDiscApplAmAm : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=I, maxLength=18, sysNumber=161.0, core=true, t24Name=RefDocAmDiscApplAmAm, mandatory=false)
+        RefDocAmDiscApplAmAmCcy : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=162.0, core=true, t24Name=RefDocAmDiscApplAmAmCcy, mandatory=false)
+        RefDocAmDiscApplAmTpCd : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=4, sysNumber=159.0, core=true, t24Name=RefDocAmDiscApplAmTpCd, mandatory=false)
+        RefDocAmDiscApplAmTpProp : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=160.0, core=true, t24Name=RefDocAmDiscApplAmTpProp, mandatory=false)
+    }
+    PP_OUT_DD_TRANSACTION__RefDocInfTpCdOrPropCd__RefDocAmTaxAmTpCd
+    {
+        RefDocAmTaxAmAm : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=I, maxLength=18, sysNumber=167.0, core=true, t24Name=RefDocAmTaxAmAm, mandatory=false)
+        RefDocAmTaxAmAmCcy : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=168.0, core=true, t24Name=RefDocAmTaxAmAmCcy, mandatory=false)
+        RefDocAmTaxAmTpCd : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=4, sysNumber=165.0, core=true, t24Name=RefDocAmTaxAmTpCd, mandatory=false)
+        RefDocAmTaxAmTpProp : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=166.0, core=true, t24Name=RefDocAmTaxAmTpProp, mandatory=false)
+    }
+    PP_OUT_DD_TRANSACTION__RefDocInfTpCdOrPropCd__RefDocInfTpCdOrPropCd
+    {
+        RefDocInfNr : T24BusinessTypes:ANY
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=155.0, core=true, t24Name=RefDocInfNr, mandatory=false)
+        RefDocInfRelatedDt : T24BusinessTypes:D
+            @t24:i (align=R, inputBehaviour=I, maxLength=11, sysNumber=156.0, core=true, t24Name=RefDocInfRelatedDt, mandatory=false)
+        RefDocInfTpCdOrPropCd : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=4, sysNumber=152.0, core=true, t24Name=RefDocInfTpCdOrPropCd, mandatory=false)
+        RefDocInfTpCdOrPropProp : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=153.0, core=true, t24Name=RefDocInfTpCdOrPropProp, mandatory=false)
+        RefDocInfTpIssuer : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=154.0, core=true, t24Name=RefDocInfTpIssuer, mandatory=false)
+    }
+}
+Enumerations {
+    PPT_SENTBULKDETAILS__ClearingUserAction : mml:string
+        NULL=NULL
+        REJECT=REJECT
+        RESUBMIT=RESUBMIT
+        REVERSE=REVERSE
+}

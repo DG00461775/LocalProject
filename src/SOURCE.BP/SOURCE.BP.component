@@ -1,0 +1,12 @@
+component SOURCE.BP
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+private method hello (
+)
+{
+    jBC: HELLO
+}
+

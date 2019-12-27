@@ -1,0 +1,1645 @@
+# UTF-8
+/* Fee Determination GUI */
+Domain PP_FeeDeterminationGUI
+    @t24:i (module=PP)
+    @java:Package (value=com.temenos.t24.datamodel.pp.pp_feedeterminationgui)
+namespace "http://www.temenos.com/t24/PP_FeeDeterminationGUI"
+metamodelVersion 1.30.6
+Classes {
+    NOFILE_PP_FEEPROD
+        @i18n:Description (en="")
+        @t24:i (t24Name=NOFILE.PP.FEEPROD, level=I, type=T, allowedFunctions="L P S", localRefAllowed=false)
+    {
+        ARR : T24BusinessTypes:N
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, core=false, t24Name=ARR, genOperation=NOFILE.ENQ.FEEPROD, mandatory=true)
+    }
+    NOFILE_SOURCE_PRODUCT
+        @i18n:Description (en="")
+        @t24:i (t24Name=NOFILE.SOURCE.PRODUCT, level=I, type=T, allowedFunctions="L P S", localRefAllowed=false)
+    {
+        SOURCE : T24BusinessTypes:N
+            @i18n:Label (en=Source)
+            @t24:i (align=R, inputBehaviour=N, maxLength=100, sysNumber=1.0, core=true, t24Name=SOURCE, mandatory=false)
+        SOURCE_LIST : T24BusinessTypes:N
+            @t24:i (align=L, inputBehaviour=N, maxLength=100, core=false, t24Name=SOURCE.LIST, genOperation=PP.NOFILE.SOURCE.PRODUCT, mandatory=true)
+    }
+/* This screen is used to maintain the Bank charges(Inbound Our and Outbound Our) in the payments hub.
+A record authorised in this screen will create or amend or reverse a record. */
+    PP_BANKCHARGES
+        @i18n:Description (en="")
+        @t24:i (t24Name=PP.BANKCHARGES, nonStop=true, level=I, type=H, additionalInfo=HLD, allowedFunctions="A C D E H I L P Q R S", localRefAllowed=true)
+    {
+        AUDITOR_CODE : T24BusinessTypes:A
+            @i18n:Label (en="Auditor Code")
+            @i18n:Tooltip (en="Auditor Code")
+            @t24:i (align=L, inputBehaviour=E, maxLength=16, sysNumber=41.0, core=true, t24Name=AUDITOR.CODE, mandatory=false)
+        AUDIT_DATE_TIME : T24BusinessTypes:RELTIME
+            @i18n:Label (en="Audit Date Time")
+            @i18n:Tooltip (en="Date and time when record was audited")
+            @t24:i (align=L, inputBehaviour=E, maxLength=15, sysNumber=42.0, core=true, t24Name=AUDIT.DATE.TIME, mask="RDD DD  DD ##:##", mandatory=false)
+        AUTHORISER : T24BusinessTypes:A
+            @i18n:Label (en=Authoriser)
+            @i18n:Tooltip (en="Indicates the User who Authorises the record")
+            @t24:i (align=L, inputBehaviour=N, maxLength=40, sysNumber=38.0, core=true, t24Name=AUTHORISER, mandatory=false)
+        AuthoriserDateTime : T24BusinessTypes:TIME
+            @t24:i (align=L, inputBehaviour=I, maxLength=17, sysNumber=25.0, core=true, t24Name=AuthoriserDateTime, mask="RDD DD  DD ##:##", mandatory=false)
+        CO_CODE -> ST_CompanyCreation:COMPANY
+            @i18n:Label (en=Company)
+            @t24:i (align=L, inputBehaviour=N, maxLength=11, sysNumber=39.0, core=true, businessType=A, t24Name=CO.CODE, mask="R##-###-####", mandatory=false)
+/* Specifies the type of transfer for which the charge is defined.
+Possible Values:
+C - Customer Transfer
+B - Bank Transfer */
+        CTRBTRIndicator : PP_FeeDeterminationGUI:PP_BANKCHARGES__CTRBTRIndicator
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=4.0, core=true, t24Name=CTRBTRIndicator, mandatory=false)
+        CURR_NO : T24BusinessTypes:N
+            @i18n:Label (en="Curr No")
+            @t24:i (align=R, inputBehaviour=N, maxLength=4, sysNumber=35.0, core=true, t24Name=CURR.NO, mandatory=false)
+/* Holds the Common Currency for all the fee types within a bank charge.
+Validation Rules:
+Mandatory field. 3 alphanumeric characters. Value links to field,  'CurrencyCode' in PP.CURRENCY */
+        CommonCurrency : T24BusinessTypes:A required
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=10.0, core=true, t24Name=CommonCurrency, mandatory=true)
+/* This is a No-Input field which gets Auto-Populated on Clicking Validate button
+Example : BNK,GB1 */
+        CompanyID : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=1.0, core=true, t24Name=CompanyID, mandatory=false)
+/* Holds the BIC of the sending bank.
+Validation Rules:
+35 alphanumeric characters. Wildcard value '*' is allowed. */
+        CorrespondentBIC : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=3.0, core=true, t24Name=CorrespondentBIC, mandatory=false)
+/* Holds the country code of the destination.
+Validation Rules:
+2 alphanumeric characters. Value links to field,  'COUNTRY.CODE' in COUNTRY */
+        CountryCodeDestination : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=2, sysNumber=7.0, core=true, t24Name=CountryCodeDestination, mandatory=false)
+/* Indicates the code of the currency for which the charge is defined.
+Possible Values :
+Value links to field, 'CurrencyCode' in PP.CURRENCY. Wildcard value '*' is allowed. */
+        CurrencyCode : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=6.0, core=true, t24Name=CurrencyCode, mandatory=false)
+        DATE_TIME -> byValue PP_FeeDeterminationGUI:PP_BANKCHARGES__DATE_TIME *
+            @t24:i (t24Name=DATE.TIME)
+        DEPT_CODE -> ST_Config:DEPT_ACCT_OFFICER
+            @i18n:Label (en="Dept Code")
+            @t24:i (align=R, inputBehaviour=N, maxLength=4, sysNumber=40.0, core=true, t24Name=DEPT.CODE, mandatory=false)
+/* Specifies the date until which the record is to be considered as active for payments processing.Post this date, the record will be set as
+Inactive by the payments hub. */
+        EndDate : T24BusinessTypes:D
+            @t24:i (align=R, inputBehaviour=I, maxLength=11, sysNumber=11.0, core=true, t24Name=EndDate, mandatory=false)
+        FeeType -> byValue PP_FeeDeterminationGUI:PP_BANKCHARGES__FeeType *
+            @t24:i (t24Name=FeeType)
+        /* ID-Date will be the format for ID. */
+        ID -> PP_FeeDeterminationGUI:PP_BANKCHARGES PK required
+            @i18n:Label (en="Transaction Ref")
+            @i18n:Tooltip (en="Transaction Reference")
+            @t24:i (align=L, inputBehaviour=I, maxLength=75, sysNumber=0.0, core=true, businessType=ANY, t24Name=ID, mandatory=true)
+        INPUTTER -> byValue PP_FeeDeterminationGUI:PP_BANKCHARGES__INPUTTER *
+            @t24:i (t24Name=INPUTTER)
+/* Indicates if the payments hub needs to send 71G charges to the receiving bank or not.
+Possible values:
+Y - Yes.Charges are included in 71G tag
+N - No.Charges are not included in 71G tag.
+Vaidation Rules:
+Value to this field is mandatory if field, 'SendingOrReceivingBankCharge'is set as R. */
+        Include71GIndicator : PP_FeeDeterminationGUI:PP_BANKCHARGES__Include71GIndicator
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=9.0, core=true, t24Name=Include71GIndicator, mandatory=false)
+/* Its a No-Input field
+Value is populated by concatenating all the Primary Keys */
+        LinkID : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=33.0, core=true, t24Name=LinkID, mandatory=false)
+        OVERRIDE -> byValue PP_FeeDeterminationGUI:PP_BANKCHARGES__OVERRIDE *
+            @t24:i (t24Name=OVERRIDE)
+        RECORD_STATUS : T24BusinessTypes:STAT
+            @i18n:Label (en="Record Status")
+            @t24:i (align=L, inputBehaviour=N, maxLength=4, sysNumber=34.0, core=true, t24Name=RECORD.STATUS, mandatory=false)
+        /* Standard T24 field. Reserved for future use */
+        RESERVED_1 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=30.0, core=true, t24Name=RESERVED.1, mandatory=false)
+        /* Standard T24 field. Reserved for future use */
+        RESERVED_2 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=29.0, core=true, t24Name=RESERVED.2, mandatory=false)
+        /* Standard T24 field. Reserved for future use */
+        RESERVED_3 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=28.0, core=true, t24Name=RESERVED.3, mandatory=false)
+        /* Standard T24 field. Reserved for future use */
+        RESERVED_4 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=27.0, core=true, t24Name=RESERVED.4, mandatory=false)
+        /* Standard T24 field. Reserved for future use */
+        RESERVED_5 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=26.0, core=true, t24Name=RESERVED.5, mandatory=false)
+/* Indicates the code that relates to service level agreement with other banks.
+Validation Rules:
+Value links to field, 'SLAID' in PP.SLA.PER.CODEWORD table. */
+        SLACode : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=10, sysNumber=5.0, core=true, t24Name=SLACode, mandatory=false)
+/* Specifies if the charge defined is to be considered as Sending Bank charge or Receiving bank charge.
+Possible Values:
+S - Sending Bank.
+R - Receiving Bank. */
+        SendingOrReceivingBankCharge : T24BusinessTypes:A required
+            @t24:i (align=L, inputBehaviour=I, maxLength=1, sysNumber=2.0, core=true, t24Name=SendingOrReceivingBankCharge, mandatory=true)
+/* Specifies the date from which the record is to be considered as active for payments processing.
+Autopopulated from the ID upon clicking Validate Button */
+        StartDate : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=8.0, core=true, t24Name=StartDate, mandatory=false)
+    }
+    PP_BANKCHARGES_PDS
+        @i18n:Description (en="")
+        @t24:i (t24Name=PP.BANKCHARGES.PDS, nonStop=true, level=I, type=H, allowedFunctions="A C D E H I L P Q R S", localRefAllowed=true)
+    {
+        AUDITOR_CODE : T24BusinessTypes:A
+            @i18n:Label (en="Auditor Code")
+            @i18n:Tooltip (en="Auditor Code")
+            @t24:i (align=L, inputBehaviour=E, maxLength=16, sysNumber=41.0, core=true, t24Name=AUDITOR.CODE, mandatory=false)
+        AUDIT_DATE_TIME : T24BusinessTypes:RELTIME
+            @i18n:Label (en="Audit Date Time")
+            @i18n:Tooltip (en="Date and time when record was audited")
+            @t24:i (align=L, inputBehaviour=E, maxLength=15, sysNumber=42.0, core=true, t24Name=AUDIT.DATE.TIME, mask="RDD DD  DD ##:##", mandatory=false)
+        AUTHORISER : T24BusinessTypes:A
+            @i18n:Label (en=Authoriser)
+            @i18n:Tooltip (en="Indicates the User who Authorises the record")
+            @t24:i (align=L, inputBehaviour=N, maxLength=40, sysNumber=38.0, core=true, t24Name=AUTHORISER, mandatory=false)
+        AuthoriserDateTime : T24BusinessTypes:TIME
+            @t24:i (align=L, inputBehaviour=I, maxLength=17, sysNumber=25.0, core=true, t24Name=AuthoriserDateTime, mask="RDD DD  DD ##:##", mandatory=false)
+        CO_CODE -> ST_CompanyCreation:COMPANY
+            @i18n:Label (en=Company)
+            @t24:i (align=L, inputBehaviour=N, maxLength=11, sysNumber=39.0, core=true, businessType=A, t24Name=CO.CODE, mask="R##-###-####", mandatory=false)
+        CTRBTRIndicator : PP_FeeDeterminationGUI:PP_BANKCHARGES_PDS__CTRBTRIndicator
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=4.0, core=true, t24Name=CTRBTRIndicator, mandatory=false)
+        CURR_NO : T24BusinessTypes:N
+            @i18n:Label (en="Curr No")
+            @t24:i (align=R, inputBehaviour=N, maxLength=4, sysNumber=35.0, core=true, t24Name=CURR.NO, mandatory=false)
+        CommonCurrency : T24BusinessTypes:A required
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=10.0, core=true, t24Name=CommonCurrency, mandatory=true)
+        CompanyID : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=1.0, core=true, t24Name=CompanyID, mandatory=false)
+        CorrespondentBIC : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=3.0, core=true, t24Name=CorrespondentBIC, mandatory=false)
+        CountryCodeDestination : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=2, sysNumber=7.0, core=true, t24Name=CountryCodeDestination, mandatory=false)
+        CurrencyCode : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=6.0, core=true, t24Name=CurrencyCode, mandatory=false)
+        DATE_TIME -> byValue PP_FeeDeterminationGUI:PP_BANKCHARGES_PDS__DATE_TIME *
+            @t24:i (t24Name=DATE.TIME)
+        DEPT_CODE -> ST_Config:DEPT_ACCT_OFFICER
+            @i18n:Label (en="Dept Code")
+            @t24:i (align=R, inputBehaviour=N, maxLength=4, sysNumber=40.0, core=true, t24Name=DEPT.CODE, mandatory=false)
+        EndDate : T24BusinessTypes:D
+            @t24:i (align=R, inputBehaviour=I, maxLength=11, sysNumber=11.0, core=true, t24Name=EndDate, mandatory=false)
+        FeeType -> byValue PP_FeeDeterminationGUI:PP_BANKCHARGES_PDS__FeeType *
+            @t24:i (t24Name=FeeType)
+        ID -> PP_FeeDeterminationGUI:PP_BANKCHARGES_PDS PK required
+            @i18n:Label (en="Transaction Ref")
+            @i18n:Tooltip (en="Transaction Reference")
+            @t24:i (align=L, inputBehaviour=I, maxLength=75, sysNumber=0.0, core=true, businessType=ANY, t24Name=ID, mandatory=true)
+        INPUTTER -> byValue PP_FeeDeterminationGUI:PP_BANKCHARGES_PDS__INPUTTER *
+            @t24:i (t24Name=INPUTTER)
+        Include71GIndicator : PP_FeeDeterminationGUI:PP_BANKCHARGES_PDS__Include71GIndicator
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=9.0, core=true, t24Name=Include71GIndicator, mandatory=false)
+        LinkID : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=33.0, core=true, t24Name=LinkID, mandatory=false)
+        OVERRIDE -> byValue PP_FeeDeterminationGUI:PP_BANKCHARGES_PDS__OVERRIDE *
+            @t24:i (t24Name=OVERRIDE)
+        RECORD_STATUS : T24BusinessTypes:STAT
+            @i18n:Label (en="Record Status")
+            @t24:i (align=L, inputBehaviour=N, maxLength=4, sysNumber=34.0, core=true, t24Name=RECORD.STATUS, mandatory=false)
+        RESERVED_1 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=30.0, core=true, t24Name=RESERVED.1, mandatory=false)
+        RESERVED_2 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=29.0, core=true, t24Name=RESERVED.2, mandatory=false)
+        RESERVED_3 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=28.0, core=true, t24Name=RESERVED.3, mandatory=false)
+        RESERVED_4 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=27.0, core=true, t24Name=RESERVED.4, mandatory=false)
+        RESERVED_5 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=26.0, core=true, t24Name=RESERVED.5, mandatory=false)
+        SLACode : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=10, sysNumber=5.0, core=true, t24Name=SLACode, mandatory=false)
+        SendingOrReceivingBankCharge : T24BusinessTypes:A required
+            @t24:i (align=L, inputBehaviour=I, maxLength=1, sysNumber=2.0, core=true, t24Name=SendingOrReceivingBankCharge, mandatory=true)
+        StartDate : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=8.0, core=true, t24Name=StartDate, mandatory=false)
+    }
+    PP_BANKCHARGES_PDS__DATE_TIME
+    {
+        DATE_TIME : T24BusinessTypes:RELTIME
+            @i18n:Label (en="Date time")
+            @i18n:Tooltip (en="Date and time when record was input or authorised")
+            @t24:i (align=L, inputBehaviour=N, maxLength=15, sysNumber=37.0, core=true, t24Name=DATE.TIME, mask="RDD DD  DD ##:##", mandatory=false)
+    }
+    PP_BANKCHARGES_PDS__FeeType
+    {
+        AlwaysApplyFlag : PP_FeeDeterminationGUI:PP_BANKCHARGES_PDS__FeeType__AlwaysApplyFlag required
+            @t24:i (align=L, inputBehaviour=I, maxLength=1, sysNumber=14.0, core=true, t24Name=AlwaysApplyFlag, mandatory=true)
+        ApplyMeOnlyFlag : PP_FeeDeterminationGUI:PP_BANKCHARGES_PDS__FeeType__ApplyMeOnlyFlag required
+            @t24:i (align=L, inputBehaviour=I, maxLength=1, sysNumber=15.0, core=true, t24Name=ApplyMeOnlyFlag, mandatory=true)
+        FeeTierRangeLowerLimit -> byValue PP_FeeDeterminationGUI:PP_BANKCHARGES_PDS__FeeType__FeeTierRangeLowerLimit *
+            @t24:i (t24Name=FeeTierRangeLowerLimit)
+        FeeType -> PP_FeeDeterminationGUI:PP_FEETYPE required
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=12.0, core=true, businessType=A, t24Name=FeeType, mandatory=true)
+        PercentageVATOnCharge : T24BusinessTypes:R
+            @t24:i (align=R, inputBehaviour=N, maxLength=11, sysNumber=16.0, core=true, t24Name=PercentageVATOnCharge, mandatory=false)
+        Ranking : T24BusinessTypes:N required
+            @t24:i (align=R, inputBehaviour=I, maxLength=3, sysNumber=13.0, core=true, t24Name=Ranking, mandatory=true)
+    }
+    PP_BANKCHARGES_PDS__FeeType__FeeTierRangeLowerLimit
+    {
+        BaseChargeAmount : T24BusinessTypes:AMT
+            @t24:i (align=R, inputBehaviour=I, maxLength=15, sysNumber=20.0, core=true, t24Name=BaseChargeAmount, mandatory=false)
+        ChargeDiscountAmount : T24BusinessTypes:AMT
+            @t24:i (align=R, inputBehaviour=I, maxLength=15, sysNumber=21.0, core=true, t24Name=ChargeDiscountAmount, mandatory=false)
+        ChargeRiseAmount : T24BusinessTypes:AMT
+            @t24:i (align=R, inputBehaviour=I, maxLength=15, sysNumber=22.0, core=true, t24Name=ChargeRiseAmount, mandatory=false)
+        FeeTierRangeLowerLimit : T24BusinessTypes:AMT
+            @t24:i (align=R, inputBehaviour=I, maxLength=17, sysNumber=17.0, core=true, t24Name=FeeTierRangeLowerLimit, mandatory=false)
+        FixedChargeAmount : T24BusinessTypes:AMT
+            @t24:i (align=R, inputBehaviour=I, maxLength=15, sysNumber=18.0, core=true, t24Name=FixedChargeAmount, mandatory=false)
+        MaximumChargeAmount : T24BusinessTypes:AMT
+            @t24:i (align=R, inputBehaviour=I, maxLength=15, sysNumber=24.0, core=true, t24Name=MaximumChargeAmount, mandatory=false)
+        MinimumChargeAmount : T24BusinessTypes:AMT
+            @t24:i (align=R, inputBehaviour=I, maxLength=15, sysNumber=23.0, core=true, t24Name=MinimumChargeAmount, mandatory=false)
+        PercentageVariableFee : T24BusinessTypes:R
+            @t24:i (align=R, inputBehaviour=I, maxLength=11, sysNumber=19.0, core=true, t24Name=PercentageVariableFee, mandatory=false)
+    }
+    PP_BANKCHARGES_PDS__INPUTTER
+    {
+        INPUTTER : T24BusinessTypes:A
+            @i18n:Label (en=Inputter)
+            @i18n:Tooltip (en="The user who last updated the record")
+            @t24:i (align=L, inputBehaviour=N, maxLength=40, sysNumber=36.0, core=true, t24Name=INPUTTER, mandatory=false)
+    }
+    PP_BANKCHARGES_PDS__OVERRIDE
+    {
+        OVERRIDE : T24BusinessTypes:N
+            @i18n:Label (en=Override)
+            @i18n:Tooltip (en="Overrides generated by this transaction")
+            @t24:i (align=R, inputBehaviour=N, maxLength=35, sysNumber=32.0, core=true, t24Name=OVERRIDE, mandatory=false)
+    }
+    PP_BANKCHARGES__DATE_TIME
+    {
+        DATE_TIME : T24BusinessTypes:RELTIME
+            @i18n:Label (en="Date time")
+            @i18n:Tooltip (en="Date and time when record was input or authorised")
+            @t24:i (align=L, inputBehaviour=N, maxLength=15, sysNumber=37.0, core=true, t24Name=DATE.TIME, mask="RDD DD  DD ##:##", mandatory=false)
+    }
+    PP_BANKCHARGES__FeeType
+    {
+/* Indicates whether the charge is to be applied always or not.
+Possible Values:
+"Y" - Yes
+"N" - No
+Validation Rules:
+
+
+Validation Rules:
+
+Mandatory field */
+        AlwaysApplyFlag : PP_FeeDeterminationGUI:PP_BANKCHARGES__FeeType__AlwaysApplyFlag required
+            @t24:i (align=L, inputBehaviour=I, maxLength=1, sysNumber=14.0, core=true, t24Name=AlwaysApplyFlag, mandatory=true)
+/* Indicates if only the defined charge is to be applied. Payments hub will not consider other charges
+Possible Values:
+Y - Yes
+N - No
+Validation Rules:
+Mandatory field */
+        ApplyMeOnlyFlag : PP_FeeDeterminationGUI:PP_BANKCHARGES__FeeType__ApplyMeOnlyFlag required
+            @t24:i (align=L, inputBehaviour=I, maxLength=1, sysNumber=15.0, core=true, t24Name=ApplyMeOnlyFlag, mandatory=true)
+        FeeTierRangeLowerLimit -> byValue PP_FeeDeterminationGUI:PP_BANKCHARGES__FeeType__FeeTierRangeLowerLimit *
+            @t24:i (t24Name=FeeTierRangeLowerLimit)
+/* Specifies the fee type which is linked to the bank charge defined.
+Validation Rules:
+Mandatory field. Value links to field, 'FeeType' in PP.FEETYPE.
+Special processing:
+Redirect Fee is a fee type introduced to capture fee when a payment is redirected. It is a conditional fee type and is applied only when payment direction is “R”(Redirect)
+When processing a redirect payment with charge option BEN or SHA, if the redirect fee needs to be taken from the Sending Bank, then, Redirect fee needs to be defined as part of the Sending Bank Charges. If it is to be taken from the Receiving Bank, then, it needs to be defined as part of the Receiving Bank Charges. If Redirect Fee is defined for both Sending and Receiving bank, then, Sending bank definition will take precedence.
+When processing a redirect payment with charge option OUR, charges of sending and receiving bank will be summed up and used. In this case, if any fee is defined for both sending and receiving bank, the receiving bank fee will be the final fee that is used. This applies to any fee type and not restricted to Redirect Fee. */
+        FeeType -> PP_FeeDeterminationGUI:PP_FEETYPE required
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=12.0, core=true, businessType=A, t24Name=FeeType, mandatory=true)
+/* IndicatesThis would be the percentage indicated in
+nn.nnnn (upto 9 decimal places). If this is blank
+then default percentage as defined in FeeType
+table would be applied. If this is zero then no VAT
+on charge would be applied even if defined in
+FeeType table for the respective Fee Type.
+Possible Values:
+'' (Blank)
+0  (Zero)
+Positive value */
+        PercentageVATOnCharge : T24BusinessTypes:R
+            @t24:i (align=R, inputBehaviour=N, maxLength=11, sysNumber=16.0, core=true, t24Name=PercentageVATOnCharge, mandatory=false)
+/* Specifies the order (sequence) of the record in the application. Based on the value, a record is prioritised in such a way that, it is given higher preference for selection under peeling logic applied in the payments hub.
+Validation Rules:
+Mandatory field. 9 numeric characters. */
+        Ranking : T24BusinessTypes:N required
+            @t24:i (align=R, inputBehaviour=I, maxLength=3, sysNumber=13.0, core=true, t24Name=Ranking, mandatory=true)
+    }
+    PP_BANKCHARGES__FeeType__FeeTierRangeLowerLimit
+    {
+/* Specifies the fixed positive amount which would be added to charge amount in case of percentage charge.
+Validation Rules:
+15 characters of type AMT. */
+        BaseChargeAmount : T24BusinessTypes:AMT
+            @t24:i (align=R, inputBehaviour=I, maxLength=15, sysNumber=20.0, core=true, t24Name=BaseChargeAmount, mandatory=false)
+/* Mentions the fixed positive amount which would be deducted from charge amount in case of percentage charge.
+Validation Rules:
+15 characters of type AMT. */
+        ChargeDiscountAmount : T24BusinessTypes:AMT
+            @t24:i (align=R, inputBehaviour=I, maxLength=15, sysNumber=21.0, core=true, t24Name=ChargeDiscountAmount, mandatory=false)
+/* Indicates the fixed positive amount which could be added to the calculated Fee (fixed or variable) to arrive at the final fee.
+Validation Rules:
+15 characters of type AMT. */
+        ChargeRiseAmount : T24BusinessTypes:AMT
+            @t24:i (align=R, inputBehaviour=I, maxLength=15, sysNumber=22.0, core=true, t24Name=ChargeRiseAmount, mandatory=false)
+/* This is the lower tier amount and if the transaction amount is greater than this limit (in case of FX, converted amount) and is lesser than the next tier (if there is any), then this record will be selected.
+Validation Rules:
+17 characters of type AMT. */
+        FeeTierRangeLowerLimit : T24BusinessTypes:AMT
+            @t24:i (align=R, inputBehaviour=I, maxLength=17, sysNumber=17.0, core=true, t24Name=FeeTierRangeLowerLimit, mandatory=false)
+/* Holds the fixed charge amount.
+Validation Rules:
+15 characters of type 'AMT' */
+        FixedChargeAmount : T24BusinessTypes:AMT
+            @t24:i (align=R, inputBehaviour=I, maxLength=15, sysNumber=18.0, core=true, t24Name=FixedChargeAmount, mandatory=false)
+/* Charge amount has to be equal to or lesser than this maximum charge amount.
+Validation Rules:
+15 characters of type AMT. */
+        MaximumChargeAmount : T24BusinessTypes:AMT
+            @t24:i (align=R, inputBehaviour=I, maxLength=15, sysNumber=24.0, core=true, t24Name=MaximumChargeAmount, mandatory=false)
+/* Charge amount has to be equal to or greater than this minimum amount.
+Validation Rules:
+15 characters of type AMT. */
+        MinimumChargeAmount : T24BusinessTypes:AMT
+            @t24:i (align=R, inputBehaviour=I, maxLength=15, sysNumber=23.0, core=true, t24Name=MinimumChargeAmount, mandatory=false)
+/* Hold the percentage value when the fee type is a variable fee type.
+Validation Rules:
+11 characters of type R. */
+        PercentageVariableFee : T24BusinessTypes:R
+            @t24:i (align=R, inputBehaviour=I, maxLength=11, sysNumber=19.0, core=true, t24Name=PercentageVariableFee, mandatory=false)
+    }
+    PP_BANKCHARGES__INPUTTER
+    {
+        INPUTTER : T24BusinessTypes:A
+            @i18n:Label (en=Inputter)
+            @i18n:Tooltip (en="The user who last updated the record")
+            @t24:i (align=L, inputBehaviour=N, maxLength=40, sysNumber=36.0, core=true, t24Name=INPUTTER, mandatory=false)
+    }
+    PP_BANKCHARGES__OVERRIDE
+    {
+        /* Contains all the override messages which the user agreed to during Input. During the validation of a transaction, the system may provide the user with a series of screen override messages to indicate an anomaly. */
+        OVERRIDE : T24BusinessTypes:N
+            @i18n:Label (en=Override)
+            @i18n:Tooltip (en="Overrides generated by this transaction")
+            @t24:i (align=R, inputBehaviour=N, maxLength=35, sysNumber=32.0, core=true, t24Name=OVERRIDE, mandatory=false)
+    }
+/* This screen stores the bank’s preferences for claims processing.
+A record authorised in this screen will create or amend or reverse a record in store table. */
+    PP_BANKCLAIMSCONTROL
+        @i18n:Description (en="")
+        @t24:i (t24Name=PP.BANKCLAIMSCONTROL, nonStop=true, level=I, type=H, additionalInfo=HLD, allowedFunctions="A C D E H I L P Q R S", localRefAllowed=true)
+    {
+        AUDITOR_CODE : T24BusinessTypes:A
+            @i18n:Label (en="Auditor Code")
+            @i18n:Tooltip (en="Auditor Code")
+            @t24:i (align=L, inputBehaviour=E, maxLength=16, sysNumber=28.0, core=true, t24Name=AUDITOR.CODE, mandatory=false)
+        AUDIT_DATE_TIME : T24BusinessTypes:RELTIME
+            @i18n:Label (en="Audit Date Time")
+            @i18n:Tooltip (en="Date and time when record was audited")
+            @t24:i (align=L, inputBehaviour=E, maxLength=15, sysNumber=29.0, core=true, t24Name=AUDIT.DATE.TIME, mask="RDD DD  DD ##:##", mandatory=false)
+        AUTHORISER : T24BusinessTypes:A
+            @i18n:Label (en=Authoriser)
+            @i18n:Tooltip (en="Indicates the User who Authorises the record")
+            @t24:i (align=L, inputBehaviour=N, maxLength=40, sysNumber=25.0, core=true, t24Name=AUTHORISER, mandatory=false)
+        CO_CODE -> ST_CompanyCreation:COMPANY
+            @i18n:Label (en=Company)
+            @t24:i (align=L, inputBehaviour=N, maxLength=11, sysNumber=26.0, core=true, businessType=A, t24Name=CO.CODE, mask="R##-###-####", mandatory=false)
+        CURR_NO : T24BusinessTypes:N
+            @i18n:Label (en="Curr No")
+            @t24:i (align=R, inputBehaviour=N, maxLength=4, sysNumber=22.0, core=true, t24Name=CURR.NO, mandatory=false)
+/* If the claim towards field is 'OTHERBIC' then this field will store the actual BIC value. Otherwise it is hardcoded as SENDER, indicating claim towards the sender BIC.
+
+Validation Rules:
+Accepts upto 35 alphanumeric characters. */
+        ClaimBIC : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=6.0, core=true, t24Name=ClaimBIC, mandatory=false)
+/* Holds the Claims generation threshold.
+
+Possible Values:
+Count
+Periodic
+
+Validation Rules:
+Input to this field is mandatory. */
+        ClaimBasis : PP_FeeDeterminationGUI:PP_BANKCLAIMSCONTROL__ClaimBasis required
+            @t24:i (align=L, inputBehaviour=I, maxLength=10, sysNumber=7.0, core=true, t24Name=ClaimBasis, onchangeBehaviour=HOT.VALIDATE, mandatory=true)
+/* If Claim Basis is set as PERIODIC then this field will hold the exact period.
+
+Possible Values:
+D - Daily
+W - Weekly
+M - Monthly */
+        ClaimPeriod : PP_FeeDeterminationGUI:PP_BANKCLAIMSCONTROL__ClaimPeriod
+            @t24:i (align=L, inputBehaviour=I, maxLength=1, sysNumber=8.0, core=true, t24Name=ClaimPeriod, onchangeBehaviour=HOT.VALIDATE, mandatory=false)
+/* Claim could be generated towards the sending bank or in certain cases sending bank might want us to send the claim to some other BIC. This information is stored in this field.
+
+Possible Values:
+SENDER
+OTHERBIC */
+        ClaimTowards : PP_FeeDeterminationGUI:PP_BANKCLAIMSCONTROL__ClaimTowards
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=5.0, core=true, t24Name=ClaimTowards, mandatory=false)
+/* In case claim basis is count then we will define trigger as the count of payments which once reached will trigger the claim generation. So it will be a number.
+
+In case claim basis is periodic then if claim period is
+Daily – Claim will be generated on each working day.In this case acceptable trigger will be 1.
+
+Weekly – Trigger is day of the week, Monday(1), Tuesday(2)…Friday(5).
+In this case acceptable trigger will be 1,2,3,4 or 5.
+
+Monthly – Trigger is the day of the month.In this case acceptable trigger could be any value from 1 to 31. */
+        ClaimTrigger : PP_FeeDeterminationGUI:PP_BANKCLAIMSCONTROL__ClaimTrigger
+            @t24:i (align=R, inputBehaviour=I, maxLength=2, sysNumber=9.0, core=true, t24Name=ClaimTrigger, mandatory=false)
+/* Holds the type of Claim to be raised.
+
+Possible Values:
+Debit
+MT191
+
+Validation Rules:
+Input to this field is mandatory */
+        ClaimType : PP_FeeDeterminationGUI:PP_BANKCLAIMSCONTROL__ClaimType
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=4.0, core=true, t24Name=ClaimType, mandatory=false)
+/* This is a No-Input field which gets Auto-Populated on Clicking Validate button
+Example : BNK,GB1 */
+        CompanyID : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=1.0, core=true, t24Name=CompanyID, mandatory=false)
+/* This is the sending bank’s BIC against which we will read the bank claims table.
+
+This can be defined at different levels (BIC 11, 8, 6, 4, 2, *)
+
+Validation Rules:
+35 alphanumeric characters.
+Input to this field is mandatory. The value is validated against field ‘BICCode’ in PPT.BICTABLE at 11,8,6,4 and 2 levels. */
+        CorrespondentBIC : T24BusinessTypes:A required
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=2.0, core=true, t24Name=CorrespondentBIC, mandatory=true)
+/* Indicates the currency of the payment for which this bank claims control record is created.
+
+Possible Values:
+Value links to field, 'CurrencyCode' in PP.CURRENCY table
+* (Default Value) */
+        CurrencyCode : T24BusinessTypes:A required
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=3.0, core=true, t24Name=CurrencyCode, mandatory=true)
+        DATE_TIME -> byValue PP_FeeDeterminationGUI:PP_BANKCLAIMSCONTROL__DATE_TIME *
+            @t24:i (t24Name=DATE.TIME)
+        DEPT_CODE -> ST_Config:DEPT_ACCT_OFFICER
+            @i18n:Label (en="Dept Code")
+            @t24:i (align=R, inputBehaviour=N, maxLength=4, sysNumber=27.0, core=true, t24Name=DEPT.CODE, mandatory=false)
+        /* Specifies the date until which the record is to be considered as active for payments processing.Post this date, the record will be set as Inactive by the payments hub. */
+        EndDate : T24BusinessTypes:D
+            @t24:i (align=R, inputBehaviour=I, maxLength=11, sysNumber=12.0, core=true, t24Name=EndDate, mandatory=false)
+        /* ID-Date will be the format for ID. */
+        ID -> PP_FeeDeterminationGUI:PP_BANKCLAIMSCONTROL PK required
+            @i18n:Label (en="Transaction Ref")
+            @i18n:Tooltip (en="Transaction Reference")
+            @t24:i (align=L, inputBehaviour=I, maxLength=75, sysNumber=0.0, core=true, businessType=ANY, t24Name=ID, mandatory=true)
+        INPUTTER -> byValue PP_FeeDeterminationGUI:PP_BANKCLAIMSCONTROL__INPUTTER *
+            @t24:i (t24Name=INPUTTER)
+/* Indicates if we need to club all the claims or process them individually.
+
+Possible Values:
+I - Individual
+G - Group */
+        IndividualGroupIndicator : PP_FeeDeterminationGUI:PP_BANKCLAIMSCONTROL__IndividualGroupIndicator
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=10.0, core=true, t24Name=IndividualGroupIndicator, mandatory=false)
+/* Its a No-Input field
+Value is populated by concatenating all the Primary Keys */
+        LinkID : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=20.0, core=true, t24Name=LinkID, mandatory=false)
+        OVERRIDE -> byValue PP_FeeDeterminationGUI:PP_BANKCLAIMSCONTROL__OVERRIDE *
+            @t24:i (t24Name=OVERRIDE)
+        RECORD_STATUS : T24BusinessTypes:STAT
+            @i18n:Label (en="Record Status")
+            @t24:i (align=L, inputBehaviour=N, maxLength=4, sysNumber=21.0, core=true, t24Name=RECORD.STATUS, mandatory=false)
+        /* Standard T24 field. Reserved for future use */
+        RESERVED_1 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=17.0, core=true, t24Name=RESERVED.1, mandatory=false)
+        /* Standard T24 field. Reserved for future use */
+        RESERVED_2 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=16.0, core=true, t24Name=RESERVED.2, mandatory=false)
+        /* Standard T24 field. Reserved for future use */
+        RESERVED_3 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=15.0, core=true, t24Name=RESERVED.3, mandatory=false)
+        /* Standard T24 field. Reserved for future use */
+        RESERVED_4 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=14.0, core=true, t24Name=RESERVED.4, mandatory=false)
+        /* Standard T24 field. Reserved for future use */
+        RESERVED_5 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=13.0, core=true, t24Name=RESERVED.5, mandatory=false)
+/* Specifies the date from which the record is to be considered as active for payments processing.
+Autopopulated from the ID upon clicking Validate Button */
+        StartDate : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=11.0, core=true, t24Name=StartDate, mandatory=false)
+    }
+    PP_BANKCLAIMSCONTROL_PDS
+        @i18n:Description (en="")
+        @t24:i (t24Name=PP.BANKCLAIMSCONTROL.PDS, nonStop=true, level=I, type=H, allowedFunctions="A C D E H I L P Q R S", localRefAllowed=true)
+    {
+        AUDITOR_CODE : T24BusinessTypes:A
+            @i18n:Label (en="Auditor Code")
+            @i18n:Tooltip (en="Auditor Code")
+            @t24:i (align=L, inputBehaviour=E, maxLength=16, sysNumber=28.0, core=true, t24Name=AUDITOR.CODE, mandatory=false)
+        AUDIT_DATE_TIME : T24BusinessTypes:RELTIME
+            @i18n:Label (en="Audit Date Time")
+            @i18n:Tooltip (en="Date and time when record was audited")
+            @t24:i (align=L, inputBehaviour=E, maxLength=15, sysNumber=29.0, core=true, t24Name=AUDIT.DATE.TIME, mask="RDD DD  DD ##:##", mandatory=false)
+        AUTHORISER : T24BusinessTypes:A
+            @i18n:Label (en=Authoriser)
+            @i18n:Tooltip (en="Indicates the User who Authorises the record")
+            @t24:i (align=L, inputBehaviour=N, maxLength=40, sysNumber=25.0, core=true, t24Name=AUTHORISER, mandatory=false)
+        CO_CODE -> ST_CompanyCreation:COMPANY
+            @i18n:Label (en=Company)
+            @t24:i (align=L, inputBehaviour=N, maxLength=11, sysNumber=26.0, core=true, businessType=A, t24Name=CO.CODE, mask="R##-###-####", mandatory=false)
+        CURR_NO : T24BusinessTypes:N
+            @i18n:Label (en="Curr No")
+            @t24:i (align=R, inputBehaviour=N, maxLength=4, sysNumber=22.0, core=true, t24Name=CURR.NO, mandatory=false)
+        ClaimBIC : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=6.0, core=true, t24Name=ClaimBIC, mandatory=false)
+        ClaimBasis : PP_FeeDeterminationGUI:PP_BANKCLAIMSCONTROL_PDS__ClaimBasis required
+            @t24:i (align=L, inputBehaviour=I, maxLength=10, sysNumber=7.0, core=true, t24Name=ClaimBasis, onchangeBehaviour=HOT.VALIDATE, mandatory=true)
+        ClaimPeriod : PP_FeeDeterminationGUI:PP_BANKCLAIMSCONTROL_PDS__ClaimPeriod
+            @t24:i (align=L, inputBehaviour=I, maxLength=1, sysNumber=8.0, core=true, t24Name=ClaimPeriod, onchangeBehaviour=HOT.VALIDATE, mandatory=false)
+        ClaimTowards : PP_FeeDeterminationGUI:PP_BANKCLAIMSCONTROL_PDS__ClaimTowards
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=5.0, core=true, t24Name=ClaimTowards, mandatory=false)
+        ClaimTrigger : PP_FeeDeterminationGUI:PP_BANKCLAIMSCONTROL_PDS__ClaimTrigger
+            @t24:i (align=R, inputBehaviour=I, maxLength=2, sysNumber=9.0, core=true, t24Name=ClaimTrigger, mandatory=false)
+        ClaimType : PP_FeeDeterminationGUI:PP_BANKCLAIMSCONTROL_PDS__ClaimType
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=4.0, core=true, t24Name=ClaimType, mandatory=false)
+        CompanyID : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=1.0, core=true, t24Name=CompanyID, mandatory=false)
+        CorrespondentBIC : T24BusinessTypes:A required
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=2.0, core=true, t24Name=CorrespondentBIC, mandatory=true)
+        CurrencyCode : T24BusinessTypes:A required
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=3.0, core=true, t24Name=CurrencyCode, mandatory=true)
+        DATE_TIME -> byValue PP_FeeDeterminationGUI:PP_BANKCLAIMSCONTROL_PDS__DATE_TIME *
+            @t24:i (t24Name=DATE.TIME)
+        DEPT_CODE -> ST_Config:DEPT_ACCT_OFFICER
+            @i18n:Label (en="Dept Code")
+            @t24:i (align=R, inputBehaviour=N, maxLength=4, sysNumber=27.0, core=true, t24Name=DEPT.CODE, mandatory=false)
+        EndDate : T24BusinessTypes:D
+            @t24:i (align=R, inputBehaviour=I, maxLength=11, sysNumber=12.0, core=true, t24Name=EndDate, mandatory=false)
+        ID -> PP_FeeDeterminationGUI:PP_BANKCLAIMSCONTROL_PDS PK required
+            @i18n:Label (en="Transaction Ref")
+            @i18n:Tooltip (en="Transaction Reference")
+            @t24:i (align=L, inputBehaviour=I, maxLength=75, sysNumber=0.0, core=true, businessType=ANY, t24Name=ID, mandatory=true)
+        INPUTTER -> byValue PP_FeeDeterminationGUI:PP_BANKCLAIMSCONTROL_PDS__INPUTTER *
+            @t24:i (t24Name=INPUTTER)
+        IndividualGroupIndicator : PP_FeeDeterminationGUI:PP_BANKCLAIMSCONTROL_PDS__IndividualGroupIndicator
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=10.0, core=true, t24Name=IndividualGroupIndicator, mandatory=false)
+        LinkID : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=20.0, core=true, t24Name=LinkID, mandatory=false)
+        OVERRIDE -> byValue PP_FeeDeterminationGUI:PP_BANKCLAIMSCONTROL_PDS__OVERRIDE *
+            @t24:i (t24Name=OVERRIDE)
+        RECORD_STATUS : T24BusinessTypes:STAT
+            @i18n:Label (en="Record Status")
+            @t24:i (align=L, inputBehaviour=N, maxLength=4, sysNumber=21.0, core=true, t24Name=RECORD.STATUS, mandatory=false)
+        RESERVED_1 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=17.0, core=true, t24Name=RESERVED.1, mandatory=false)
+        RESERVED_2 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=16.0, core=true, t24Name=RESERVED.2, mandatory=false)
+        RESERVED_3 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=15.0, core=true, t24Name=RESERVED.3, mandatory=false)
+        RESERVED_4 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=14.0, core=true, t24Name=RESERVED.4, mandatory=false)
+        RESERVED_5 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=13.0, core=true, t24Name=RESERVED.5, mandatory=false)
+        StartDate : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=11.0, core=true, t24Name=StartDate, mandatory=false)
+    }
+    PP_BANKCLAIMSCONTROL_PDS__DATE_TIME
+    {
+        DATE_TIME : T24BusinessTypes:RELTIME
+            @i18n:Label (en="Date time")
+            @i18n:Tooltip (en="Date and time when record was input or authorised")
+            @t24:i (align=L, inputBehaviour=N, maxLength=15, sysNumber=24.0, core=true, t24Name=DATE.TIME, mask="RDD DD  DD ##:##", mandatory=false)
+    }
+    PP_BANKCLAIMSCONTROL_PDS__INPUTTER
+    {
+        INPUTTER : T24BusinessTypes:A
+            @i18n:Label (en=Inputter)
+            @i18n:Tooltip (en="The user who last updated the record")
+            @t24:i (align=L, inputBehaviour=N, maxLength=40, sysNumber=23.0, core=true, t24Name=INPUTTER, mandatory=false)
+    }
+    PP_BANKCLAIMSCONTROL_PDS__OVERRIDE
+    {
+        OVERRIDE : T24BusinessTypes:N
+            @i18n:Label (en=Override)
+            @i18n:Tooltip (en="Overrides generated by this transaction")
+            @t24:i (align=R, inputBehaviour=N, maxLength=35, sysNumber=19.0, core=true, t24Name=OVERRIDE, mandatory=false)
+    }
+    PP_BANKCLAIMSCONTROL__DATE_TIME
+    {
+        DATE_TIME : T24BusinessTypes:RELTIME
+            @i18n:Label (en="Date time")
+            @i18n:Tooltip (en="Date and time when record was input or authorised")
+            @t24:i (align=L, inputBehaviour=N, maxLength=15, sysNumber=24.0, core=true, t24Name=DATE.TIME, mask="RDD DD  DD ##:##", mandatory=false)
+    }
+    PP_BANKCLAIMSCONTROL__INPUTTER
+    {
+        INPUTTER : T24BusinessTypes:A
+            @i18n:Label (en=Inputter)
+            @i18n:Tooltip (en="The user who last updated the record")
+            @t24:i (align=L, inputBehaviour=N, maxLength=40, sysNumber=23.0, core=true, t24Name=INPUTTER, mandatory=false)
+    }
+    PP_BANKCLAIMSCONTROL__OVERRIDE
+    {
+        /* Contains all the override messages which the user agreed to during Input. During the validation of a transaction, the system may provide the user with a series of screen override messages to indicate an anomaly. */
+        OVERRIDE : T24BusinessTypes:N
+            @i18n:Label (en=Override)
+            @i18n:Tooltip (en="Overrides generated by this transaction")
+            @t24:i (align=R, inputBehaviour=N, maxLength=35, sysNumber=19.0, core=true, t24Name=OVERRIDE, mandatory=false)
+    }
+/* This table enables definition of charges for clients (non banks)
+Charges can be defined for both debit and credit parties based on the direction of the message. */
+    PP_CLIENTCHARGES
+        @i18n:Description (en="")
+        @t24:i (t24Name=PP.CLIENTCHARGES, nonStop=true, level=I, type=H, additionalInfo=HLD, allowedFunctions="A C D E H I L P Q R S", localRefAllowed=true)
+    {
+        AUDITOR_CODE : T24BusinessTypes:A
+            @i18n:Label (en="Auditor Code")
+            @i18n:Tooltip (en="Auditor Code")
+            @t24:i (align=L, inputBehaviour=E, maxLength=16, sysNumber=52.0, core=true, t24Name=AUDITOR.CODE, mandatory=false)
+        AUDIT_DATE_TIME : T24BusinessTypes:RELTIME
+            @i18n:Label (en="Audit Date Time")
+            @i18n:Tooltip (en="Date and time when record was audited")
+            @t24:i (align=L, inputBehaviour=E, maxLength=15, sysNumber=53.0, core=true, t24Name=AUDIT.DATE.TIME, mask="RDD DD  DD ##:##", mandatory=false)
+        AUTHORISER : T24BusinessTypes:A
+            @i18n:Label (en=Authoriser)
+            @i18n:Tooltip (en="Indicates the User who Authorises the record")
+            @t24:i (align=L, inputBehaviour=N, maxLength=40, sysNumber=49.0, core=true, t24Name=AUTHORISER, mandatory=false)
+        AuthoriserDateTime : T24BusinessTypes:TIME
+            @t24:i (align=L, inputBehaviour=I, maxLength=17, sysNumber=31.0, core=true, t24Name=AuthoriserDateTime, mask="RDD DD  DD ##:##", mandatory=false)
+/* Each customer belongs to a specific group which is called business line. Each business line can have specific
+objective from the Fee perspective and accordingly a bank might want to price the charges and hence itӳ very
+important to take business line into account while determining the fee
+Can be wildcarded */
+        BusinessLine : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=4.0, core=true, t24Name=BusinessLine, mandatory=false)
+        CO_CODE -> ST_CompanyCreation:COMPANY
+            @i18n:Label (en=Company)
+            @t24:i (align=L, inputBehaviour=N, maxLength=11, sysNumber=50.0, core=true, businessType=A, t24Name=CO.CODE, mask="R##-###-####", mandatory=false)
+        CURR_NO : T24BusinessTypes:N
+            @i18n:Label (en="Curr No")
+            @t24:i (align=R, inputBehaviour=N, maxLength=4, sysNumber=46.0, core=true, t24Name=CURR.NO, mandatory=false)
+/* Customer ID as in the DDA
+
+Can be wildcarded as well. Wildcard denotes that this definition is not client specific but a common one */
+        ClientID : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=34, sysNumber=5.0, core=true, t24Name=ClientID, mandatory=false)
+/* Multiple fee can be defined for a single correspondent bank. This fields holds the currency in which the fee will be charged.
+Should be a valid value in PP.CURRENCY */
+        CommonCurrency : T24BusinessTypes:A required
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=11.0, core=true, t24Name=CommonCurrency, mandatory=true)
+/* This is a No-Input field which gets Auto-Populated on Clicking Validate button
+Example : BNK,GB1 */
+        CompanyID : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=1.0, core=true, t24Name=CompanyID, mandatory=false)
+/* Indicates 3 character ISO currency code of the account which is either the credit or the debit account currency in the payment
+If specific charges need to be applied based on the account's currency, this field can be used
+
+Should be a valid value in PP_CURRENCY or can be wild carded */
+        CustomerAccountCurrency : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=8.0, core=true, t24Name=CustomerAccountCurrency, mandatory=false)
+/* Indicates the account number of the account which is either the credit or the debit account in the payment
+If specific charges need to be applied based on the account used in the payment, this field can be used
+
+Should be a valid account in the DDA system or can be wild carded */
+        CustomerAccountNumber : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=7.0, core=true, t24Name=CustomerAccountNumber, mandatory=false)
+/* This is the owning company of the account specified in field Customer Account Number.
+
+Can be wild carded */
+        CustomerAccountNumberCompID : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=6.0, core=true, t24Name=CustomerAccountNumberCompID, mandatory=false)
+        DATE_TIME -> byValue PP_FeeDeterminationGUI:PP_CLIENTCHARGES__DATE_TIME *
+            @t24:i (t24Name=DATE.TIME)
+        DEPT_CODE -> ST_Config:DEPT_ACCT_OFFICER
+            @i18n:Label (en="Dept Code")
+            @t24:i (align=R, inputBehaviour=N, maxLength=4, sysNumber=51.0, core=true, t24Name=DEPT.CODE, mandatory=false)
+        /* Specifies the date until which the record is to be considered as active for payments processing.Post this date, the record will be set as Inactive by the payments hub. */
+        EndDate : T24BusinessTypes:D
+            @t24:i (align=R, inputBehaviour=I, maxLength=11, sysNumber=12.0, core=true, t24Name=EndDate, mandatory=false)
+/* Holds a valid FeePoduct. Fee product would be an output when a payment product is successfully determined.
+
+Can be wildcarded. */
+        FeeProduct : T24BusinessTypes:ANY
+            @t24:i (align=L, inputBehaviour=I, maxLength=10, sysNumber=2.0, core=true, t24Name=FeeProduct, mandatory=false)
+        FeeType -> byValue PP_FeeDeterminationGUI:PP_CLIENTCHARGES__FeeType *
+            @t24:i (t24Name=FeeType)
+        /* ID-Date will be the format for ID. */
+        ID -> PP_FeeDeterminationGUI:PP_CLIENTCHARGES PK required
+            @i18n:Label (en="Transaction Ref")
+            @i18n:Tooltip (en="Transaction Reference")
+            @t24:i (align=L, inputBehaviour=I, maxLength=75, sysNumber=0.0, core=true, businessType=ANY, t24Name=ID, mandatory=true)
+        INPUTTER -> byValue PP_FeeDeterminationGUI:PP_CLIENTCHARGES__INPUTTER *
+            @t24:i (t24Name=INPUTTER)
+/* Its a No-Input field
+Value is populated by concatenating all the Primary Keys */
+        LinkID : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=44.0, core=true, t24Name=LinkID, mandatory=false)
+        OVERRIDE -> byValue PP_FeeDeterminationGUI:PP_CLIENTCHARGES__OVERRIDE *
+            @t24:i (t24Name=OVERRIDE)
+        RECORD_STATUS : T24BusinessTypes:STAT
+            @i18n:Label (en="Record Status")
+            @t24:i (align=L, inputBehaviour=N, maxLength=4, sysNumber=45.0, core=true, t24Name=RECORD.STATUS, mandatory=false)
+        /* Standard T24 field. Reserved for future use */
+        RESERVED_1 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=41.0, core=true, t24Name=RESERVED.1, mandatory=false)
+        RESERVED_10 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=32.0, core=true, t24Name=RESERVED.10, mandatory=false)
+        /* Standard T24 field. Reserved for future use */
+        RESERVED_2 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=40.0, core=true, t24Name=RESERVED.2, mandatory=false)
+        /* Standard T24 field. Reserved for future use */
+        RESERVED_3 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=39.0, core=true, t24Name=RESERVED.3, mandatory=false)
+        /* Standard T24 field. Reserved for future use */
+        RESERVED_4 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=38.0, core=true, t24Name=RESERVED.4, mandatory=false)
+        /* Standard T24 field. Reserved for future use */
+        RESERVED_5 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=37.0, core=true, t24Name=RESERVED.5, mandatory=false)
+        RESERVED_6 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=36.0, core=true, t24Name=RESERVED.6, mandatory=false)
+        RESERVED_7 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=35.0, core=true, t24Name=RESERVED.7, mandatory=false)
+        RESERVED_8 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=34.0, core=true, t24Name=RESERVED.8, mandatory=false)
+        RESERVED_9 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=33.0, core=true, t24Name=RESERVED.9, mandatory=false)
+/* In most of the countries there is a Value Added Tax (VAT) imposed by government which is levied on the
+payment or on the charges which are taken by the Bank. This tax amount goes to the government and all Banks
+within that country need to follow those regulations. It need not be applied on all the cases and one of the
+factor which influences whether we take the VAT or not depends if ordering party or beneficiary customer is a
+resident of that country or not.
+Possible Values:
+RR, RN, NR or NN
+First character denotes the residency status of the ordering party (OrderingPartyResidencyFlag)
+and second character denotes the residency status of beneficiary party (BeneficiaryPartyResidencyFlag)
+Can be wildcarded */
+        ResidencyStatus : PP_FeeDeterminationGUI:PP_CLIENTCHARGES__ResidencyStatus
+            @t24:i (align=L, inputBehaviour=I, maxLength=2, sysNumber=9.0, core=true, t24Name=ResidencyStatus, mandatory=false)
+/* Bank may receive payments from variety of sources, it could be from Internet banking channel or Trade platform
+or the payment could have been initiated by the Cash pool engine. We may not want to take charges for payments
+originating from certain sources or apply preferential charges. E.g.  A bank has introduced a new channel for
+the client initiated payment and want to move the clients from old channel to new channel; based on the source
+we can increase the Fee for payments initiated through the old channel; which will mean that client would not
+want to pay more charges to use the old channel and rather would try to move to new channel at the earliest
+This field specifies the source group from where payment has been originated. Soucre group is a group of payment sources
+Can be wildcarded
+Should be a valid value in PP.SourceProductGroup table */
+        SourceProduct : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=10, sysNumber=3.0, core=true, t24Name=SourceProduct, mandatory=false)
+/* Specifies the date from which the record is to be considered as active for payments processing.
+Autopopulated from the ID upon clicking Validate Button */
+        StartDate : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=10.0, core=true, t24Name=StartDate, mandatory=false)
+    }
+    PP_CLIENTCHARGES_PDS
+        @i18n:Description (en="")
+        @t24:i (t24Name=PP.CLIENTCHARGES.PDS, nonStop=true, level=I, type=H, allowedFunctions="A C D E H I L P Q R S", localRefAllowed=true)
+    {
+        AUDITOR_CODE : T24BusinessTypes:A
+            @i18n:Label (en="Auditor Code")
+            @i18n:Tooltip (en="Auditor Code")
+            @t24:i (align=L, inputBehaviour=E, maxLength=16, sysNumber=52.0, core=true, t24Name=AUDITOR.CODE, mandatory=false)
+        AUDIT_DATE_TIME : T24BusinessTypes:RELTIME
+            @i18n:Label (en="Audit Date Time")
+            @i18n:Tooltip (en="Date and time when record was audited")
+            @t24:i (align=L, inputBehaviour=E, maxLength=15, sysNumber=53.0, core=true, t24Name=AUDIT.DATE.TIME, mask="RDD DD  DD ##:##", mandatory=false)
+        AUTHORISER : T24BusinessTypes:A
+            @i18n:Label (en=Authoriser)
+            @i18n:Tooltip (en="Indicates the User who Authorises the record")
+            @t24:i (align=L, inputBehaviour=N, maxLength=40, sysNumber=49.0, core=true, t24Name=AUTHORISER, mandatory=false)
+        AuthoriserDateTime : T24BusinessTypes:TIME
+            @t24:i (align=L, inputBehaviour=I, maxLength=17, sysNumber=31.0, core=true, t24Name=AuthoriserDateTime, mask="RDD DD  DD ##:##", mandatory=false)
+        BusinessLine : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=4.0, core=true, t24Name=BusinessLine, mandatory=false)
+        CO_CODE -> ST_CompanyCreation:COMPANY
+            @i18n:Label (en=Company)
+            @t24:i (align=L, inputBehaviour=N, maxLength=11, sysNumber=50.0, core=true, businessType=A, t24Name=CO.CODE, mask="R##-###-####", mandatory=false)
+        CURR_NO : T24BusinessTypes:N
+            @i18n:Label (en="Curr No")
+            @t24:i (align=R, inputBehaviour=N, maxLength=4, sysNumber=46.0, core=true, t24Name=CURR.NO, mandatory=false)
+        ClientID : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=34, sysNumber=5.0, core=true, t24Name=ClientID, mandatory=false)
+        CommonCurrency : T24BusinessTypes:A required
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=11.0, core=true, t24Name=CommonCurrency, mandatory=true)
+        CompanyID : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=1.0, core=true, t24Name=CompanyID, mandatory=false)
+        CustomerAccountCurrency : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=8.0, core=true, t24Name=CustomerAccountCurrency, mandatory=false)
+        CustomerAccountNumber : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=7.0, core=true, t24Name=CustomerAccountNumber, mandatory=false)
+        CustomerAccountNumberCompID : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=6.0, core=true, t24Name=CustomerAccountNumberCompID, mandatory=false)
+        DATE_TIME -> byValue PP_FeeDeterminationGUI:PP_CLIENTCHARGES_PDS__DATE_TIME *
+            @t24:i (t24Name=DATE.TIME)
+        DEPT_CODE -> ST_Config:DEPT_ACCT_OFFICER
+            @i18n:Label (en="Dept Code")
+            @t24:i (align=R, inputBehaviour=N, maxLength=4, sysNumber=51.0, core=true, t24Name=DEPT.CODE, mandatory=false)
+        EndDate : T24BusinessTypes:D
+            @t24:i (align=R, inputBehaviour=I, maxLength=11, sysNumber=12.0, core=true, t24Name=EndDate, mandatory=false)
+        FeeProduct : T24BusinessTypes:ANY
+            @t24:i (align=L, inputBehaviour=I, maxLength=10, sysNumber=2.0, core=true, t24Name=FeeProduct, mandatory=false)
+        FeeType -> byValue PP_FeeDeterminationGUI:PP_CLIENTCHARGES_PDS__FeeType *
+            @t24:i (t24Name=FeeType)
+        ID -> PP_FeeDeterminationGUI:PP_CLIENTCHARGES_PDS PK required
+            @i18n:Label (en="Transaction Ref")
+            @i18n:Tooltip (en="Transaction Reference")
+            @t24:i (align=L, inputBehaviour=I, maxLength=75, sysNumber=0.0, core=true, businessType=ANY, t24Name=ID, mandatory=true)
+        INPUTTER -> byValue PP_FeeDeterminationGUI:PP_CLIENTCHARGES_PDS__INPUTTER *
+            @t24:i (t24Name=INPUTTER)
+        LinkID : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=44.0, core=true, t24Name=LinkID, mandatory=false)
+        OVERRIDE -> byValue PP_FeeDeterminationGUI:PP_CLIENTCHARGES_PDS__OVERRIDE *
+            @t24:i (t24Name=OVERRIDE)
+        RECORD_STATUS : T24BusinessTypes:STAT
+            @i18n:Label (en="Record Status")
+            @t24:i (align=L, inputBehaviour=N, maxLength=4, sysNumber=45.0, core=true, t24Name=RECORD.STATUS, mandatory=false)
+        RESERVED_1 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=41.0, core=true, t24Name=RESERVED.1, mandatory=false)
+        RESERVED_10 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=32.0, core=true, t24Name=RESERVED.10, mandatory=false)
+        RESERVED_2 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=40.0, core=true, t24Name=RESERVED.2, mandatory=false)
+        RESERVED_3 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=39.0, core=true, t24Name=RESERVED.3, mandatory=false)
+        RESERVED_4 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=38.0, core=true, t24Name=RESERVED.4, mandatory=false)
+        RESERVED_5 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=37.0, core=true, t24Name=RESERVED.5, mandatory=false)
+        RESERVED_6 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=36.0, core=true, t24Name=RESERVED.6, mandatory=false)
+        RESERVED_7 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=35.0, core=true, t24Name=RESERVED.7, mandatory=false)
+        RESERVED_8 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=34.0, core=true, t24Name=RESERVED.8, mandatory=false)
+        RESERVED_9 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=33.0, core=true, t24Name=RESERVED.9, mandatory=false)
+        ResidencyStatus : PP_FeeDeterminationGUI:PP_CLIENTCHARGES_PDS__ResidencyStatus
+            @t24:i (align=L, inputBehaviour=I, maxLength=2, sysNumber=9.0, core=true, t24Name=ResidencyStatus, mandatory=false)
+        SourceProduct : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=10, sysNumber=3.0, core=true, t24Name=SourceProduct, mandatory=false)
+        StartDate : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=10.0, core=true, t24Name=StartDate, mandatory=false)
+    }
+    PP_CLIENTCHARGES_PDS__DATE_TIME
+    {
+        DATE_TIME : T24BusinessTypes:RELTIME
+            @i18n:Label (en="Date time")
+            @i18n:Tooltip (en="Date and time when record was input or authorised")
+            @t24:i (align=L, inputBehaviour=N, maxLength=15, sysNumber=48.0, core=true, t24Name=DATE.TIME, mask="RDD DD  DD ##:##", mandatory=false)
+    }
+    PP_CLIENTCHARGES_PDS__FeeType
+    {
+        AlwaysApplyFlag : PP_FeeDeterminationGUI:PP_CLIENTCHARGES_PDS__FeeType__AlwaysApplyFlag required
+            @t24:i (align=L, inputBehaviour=I, maxLength=1, sysNumber=15.0, core=true, t24Name=AlwaysApplyFlag, mandatory=true)
+        ApplyMeOnlyFlag : PP_FeeDeterminationGUI:PP_CLIENTCHARGES_PDS__FeeType__ApplyMeOnlyFlag required
+            @t24:i (align=L, inputBehaviour=I, maxLength=1, sysNumber=16.0, core=true, t24Name=ApplyMeOnlyFlag, mandatory=true)
+        FeeTierRangeLowerLimit -> byValue PP_FeeDeterminationGUI:PP_CLIENTCHARGES_PDS__FeeType__FeeTierRangeLowerLimit *
+            @t24:i (t24Name=FeeTierRangeLowerLimit)
+        FeeType -> PP_FeeDeterminationGUI:PP_FEETYPE required
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=13.0, core=true, businessType=A, t24Name=FeeType, mandatory=true)
+        PercentageVATOnCharge : T24BusinessTypes:R
+            @t24:i (align=R, inputBehaviour=I, maxLength=11, sysNumber=17.0, core=true, t24Name=PercentageVATOnCharge, mandatory=false)
+        Ranking : T24BusinessTypes:N required
+            @t24:i (align=R, inputBehaviour=I, maxLength=3, sysNumber=14.0, core=true, t24Name=Ranking, mandatory=true)
+    }
+    PP_CLIENTCHARGES_PDS__FeeType__FeeTierRangeLowerLimit
+    {
+        BaseChargeAmount : T24BusinessTypes:AMT
+            @t24:i (align=R, inputBehaviour=I, maxLength=15, sysNumber=21.0, core=true, t24Name=BaseChargeAmount, mandatory=false)
+        BaseChargeAmountFX : T24BusinessTypes:AMT
+            @t24:i (align=R, inputBehaviour=I, maxLength=15, sysNumber=28.0, core=true, t24Name=BaseChargeAmountFX, mandatory=false)
+        ChargeDiscountAmount : T24BusinessTypes:AMT
+            @t24:i (align=R, inputBehaviour=I, maxLength=15, sysNumber=22.0, core=true, t24Name=ChargeDiscountAmount, mandatory=false)
+        ChargeDiscountAmountFX : T24BusinessTypes:AMT
+            @t24:i (align=R, inputBehaviour=I, maxLength=15, sysNumber=29.0, core=true, t24Name=ChargeDiscountAmountFX, mandatory=false)
+        ChargeRiseAmount : T24BusinessTypes:AMT
+            @t24:i (align=R, inputBehaviour=I, maxLength=15, sysNumber=23.0, core=true, t24Name=ChargeRiseAmount, mandatory=false)
+        ChargeRiseAmountFX : T24BusinessTypes:AMT
+            @t24:i (align=R, inputBehaviour=I, maxLength=15, sysNumber=30.0, core=true, t24Name=ChargeRiseAmountFX, mandatory=false)
+        FeeTierRangeLowerLimit : T24BusinessTypes:AMT
+            @t24:i (align=R, inputBehaviour=I, maxLength=17, sysNumber=18.0, core=true, t24Name=FeeTierRangeLowerLimit, mandatory=false)
+        FixedChargeAmount : T24BusinessTypes:AMT
+            @t24:i (align=R, inputBehaviour=I, maxLength=15, sysNumber=19.0, core=true, t24Name=FixedChargeAmount, mandatory=false)
+        FixedChargeAmountFX : T24BusinessTypes:AMT
+            @t24:i (align=R, inputBehaviour=I, maxLength=15, sysNumber=26.0, core=true, t24Name=FixedChargeAmountFX, mandatory=false)
+        MaximumChargeAmount : T24BusinessTypes:AMT
+            @t24:i (align=R, inputBehaviour=I, maxLength=15, sysNumber=25.0, core=true, t24Name=MaximumChargeAmount, mandatory=false)
+        MinimumChargeAmount : T24BusinessTypes:AMT
+            @t24:i (align=R, inputBehaviour=I, maxLength=15, sysNumber=24.0, core=true, t24Name=MinimumChargeAmount, mandatory=false)
+        PercentageVariableFee : T24BusinessTypes:R
+            @t24:i (align=R, inputBehaviour=I, maxLength=11, sysNumber=20.0, core=true, t24Name=PercentageVariableFee, mandatory=false)
+        PercentageVariableFeeFX : T24BusinessTypes:R
+            @t24:i (align=R, inputBehaviour=I, maxLength=11, sysNumber=27.0, core=true, t24Name=PercentageVariableFeeFX, mandatory=false)
+    }
+    PP_CLIENTCHARGES_PDS__INPUTTER
+    {
+        INPUTTER : T24BusinessTypes:A
+            @i18n:Label (en=Inputter)
+            @i18n:Tooltip (en="The user who last updated the record")
+            @t24:i (align=L, inputBehaviour=N, maxLength=40, sysNumber=47.0, core=true, t24Name=INPUTTER, mandatory=false)
+    }
+    PP_CLIENTCHARGES_PDS__OVERRIDE
+    {
+        OVERRIDE : T24BusinessTypes:N
+            @i18n:Label (en=Override)
+            @i18n:Tooltip (en="Overrides generated by this transaction")
+            @t24:i (align=R, inputBehaviour=N, maxLength=35, sysNumber=43.0, core=true, t24Name=OVERRIDE, mandatory=false)
+    }
+    PP_CLIENTCHARGES__DATE_TIME
+    {
+        DATE_TIME : T24BusinessTypes:RELTIME
+            @i18n:Label (en="Date time")
+            @i18n:Tooltip (en="Date and time when record was input or authorised")
+            @t24:i (align=L, inputBehaviour=N, maxLength=15, sysNumber=48.0, core=true, t24Name=DATE.TIME, mask="RDD DD  DD ##:##", mandatory=false)
+    }
+    PP_CLIENTCHARGES__FeeType
+    {
+/* If this flag is set to Y against a particular Fee type then that Fee will always be taken if evaluated for a
+particular payment. Both conditional and unconditional fees can be marked as ҁlways applyҮ When a conditional
+fee is marked so, then fee will be applied always if the condition is first met, if the condition is not met,
+then fee is not applied though the flag is set. For example, Phone confirmation fee is applied only if client has
+chosen for phone confirmation. In brief, this flag should be understood as ҉nclude fee type always for
+unconditional fees and for conditional, include if condition is metҮ In the table below always apply flag
+for Transaction Fee and Service Fee is set as Y which means that both these components should always be applied.
+
+Possible Values:
+Y
+N
+
+Validation Rules:
+
+Mandatory field */
+        AlwaysApplyFlag : PP_FeeDeterminationGUI:PP_CLIENTCHARGES__FeeType__AlwaysApplyFlag required
+            @t24:i (align=L, inputBehaviour=I, maxLength=1, sysNumber=15.0, core=true, t24Name=AlwaysApplyFlag, mandatory=true)
+/* Any fee type with this flag set, then, only this Fee type should be applied and rest of the fee type should be ignored
+except where Always apply flag is set as Y. When processing a payment, fee component may come up with 4 different charges
+to be applied. Each charge will be included or calculated depending on the ranking associated with it. When a fee
+with ҁpply me onlyҠflag is set to YES, it would mean the rest of the charges can be ignored (except where always apply flag is set as Yes)
+Possible Values:
+Y
+N
+
+Validation Rules:
+
+Mandatory field */
+        ApplyMeOnlyFlag : PP_FeeDeterminationGUI:PP_CLIENTCHARGES__FeeType__ApplyMeOnlyFlag required
+            @t24:i (align=L, inputBehaviour=I, maxLength=1, sysNumber=16.0, core=true, t24Name=ApplyMeOnlyFlag, mandatory=true)
+        FeeTierRangeLowerLimit -> byValue PP_FeeDeterminationGUI:PP_CLIENTCHARGES__FeeType__FeeTierRangeLowerLimit *
+            @t24:i (t24Name=FeeTierRangeLowerLimit)
+/* Specifies the fee type which will be applied. Mandatory field.
+Should be a valid value in PP.FEETYPE */
+        FeeType -> PP_FeeDeterminationGUI:PP_FEETYPE required
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=13.0, core=true, businessType=A, t24Name=FeeType, mandatory=true)
+/* Fee amount can be a fixed amount or can be a percentage of the transaction amount
+To specify that the fee should be a percentage of the transaction amount, specify the % in this field */
+        PercentageVATOnCharge : T24BusinessTypes:R
+            @t24:i (align=R, inputBehaviour=I, maxLength=11, sysNumber=17.0, core=true, t24Name=PercentageVATOnCharge, mandatory=false)
+/* Determines the order in which the fee needs to be evaluated. Higher the rank, higher the priority.
+Value 1 (Rank 1) will get the highest priority
+Mandatory field */
+        Ranking : T24BusinessTypes:N required
+            @t24:i (align=R, inputBehaviour=I, maxLength=3, sysNumber=14.0, core=true, t24Name=Ranking, mandatory=true)
+    }
+    PP_CLIENTCHARGES__FeeType__FeeTierRangeLowerLimit
+    {
+        /* Fixed positive amount which would be added to charge amount in case of percentage charge. */
+        BaseChargeAmount : T24BusinessTypes:AMT
+            @t24:i (align=R, inputBehaviour=I, maxLength=15, sysNumber=21.0, core=true, t24Name=BaseChargeAmount, mandatory=false)
+        BaseChargeAmountFX : T24BusinessTypes:AMT
+            @i18n:Label (en=BaseChargeAmountFX)
+            @i18n:Tooltip (en=BaseChargeAmountFX)
+            @t24:i (align=R, inputBehaviour=I, maxLength=15, sysNumber=28.0, core=true, t24Name=BaseChargeAmountFX, mandatory=false)
+        /* Fixed positive amount which would be deducted from charge amount in case of percentage charge */
+        ChargeDiscountAmount : T24BusinessTypes:AMT
+            @t24:i (align=R, inputBehaviour=I, maxLength=15, sysNumber=22.0, core=true, t24Name=ChargeDiscountAmount, mandatory=false)
+        ChargeDiscountAmountFX : T24BusinessTypes:AMT
+            @i18n:Label (en=ChargeDiscountAmountFX)
+            @i18n:Tooltip (en=ChargeDiscountAmountFX)
+            @t24:i (align=R, inputBehaviour=I, maxLength=15, sysNumber=29.0, core=true, t24Name=ChargeDiscountAmountFX, mandatory=false)
+        /* Fixed positive amount which could be added to the calculated Fee (fixed or variable) to arrive at the final fee. */
+        ChargeRiseAmount : T24BusinessTypes:AMT
+            @t24:i (align=R, inputBehaviour=I, maxLength=15, sysNumber=23.0, core=true, t24Name=ChargeRiseAmount, mandatory=false)
+        ChargeRiseAmountFX : T24BusinessTypes:AMT
+            @i18n:Label (en=ChargeRiseAmountFX)
+            @i18n:Tooltip (en=ChargeRiseAmountFX)
+            @t24:i (align=R, inputBehaviour=I, maxLength=15, sysNumber=30.0, core=true, t24Name=ChargeRiseAmountFX, mandatory=false)
+/* There could be different charges based on the transaction amount. We can define various amount tiers and different charge amount for each tier
+This field holds the transaction amount tier.
+For the following configuration of 0, 500 and 1500
+0 - Covers form 0 until 499
+500 - Covers form 500 until 999
+1000 - Covers form 1000 and above
+
+Based on the transaction amount, the appropriate tier will be chosen. */
+        FeeTierRangeLowerLimit : T24BusinessTypes:AMT
+            @t24:i (align=R, inputBehaviour=I, maxLength=17, sysNumber=18.0, core=true, t24Name=FeeTierRangeLowerLimit, mandatory=false)
+        /* Holds the fixed positive amount in the Fee type currency. Fee amount could be entered up to two decimal places */
+        FixedChargeAmount : T24BusinessTypes:AMT
+            @t24:i (align=R, inputBehaviour=I, maxLength=15, sysNumber=19.0, core=true, t24Name=FixedChargeAmount, mandatory=false)
+        FixedChargeAmountFX : T24BusinessTypes:AMT
+            @i18n:Label (en=FixedChargeAmountFX)
+            @i18n:Tooltip (en=FixedChargeAmountFX)
+            @t24:i (align=R, inputBehaviour=I, maxLength=15, sysNumber=26.0, core=true, t24Name=FixedChargeAmountFX, mandatory=false)
+/* Holds the maximum charge amount for the specific fee type. If the charge amount is calculated as a percentage
+of the transaction amount and if it exceeds the amount specified here, the fee amount is capped to the amount
+specified in this field */
+        MaximumChargeAmount : T24BusinessTypes:AMT
+            @t24:i (align=R, inputBehaviour=I, maxLength=15, sysNumber=25.0, core=true, t24Name=MaximumChargeAmount, mandatory=false)
+/* Holds the minimum charge amount for the specific fee type. If the charge amount is calculated as a percentage
+of the transaction amount and if it falls below the amount specified here, the fee amount applied would be the amount
+specified in this field */
+        MinimumChargeAmount : T24BusinessTypes:AMT
+            @t24:i (align=R, inputBehaviour=I, maxLength=15, sysNumber=24.0, core=true, t24Name=MinimumChargeAmount, mandatory=false)
+        /* In case of variable fee this will be defined as the percentage (up to 9 decimal places) */
+        PercentageVariableFee : T24BusinessTypes:R
+            @t24:i (align=R, inputBehaviour=I, maxLength=11, sysNumber=20.0, core=true, t24Name=PercentageVariableFee, mandatory=false)
+        PercentageVariableFeeFX : T24BusinessTypes:R
+            @i18n:Label (en=PercentageVariableFeeFX)
+            @i18n:Tooltip (en=PercentageVariableFeeFX)
+            @t24:i (align=R, inputBehaviour=I, maxLength=11, sysNumber=27.0, core=true, t24Name=PercentageVariableFeeFX, mandatory=false)
+    }
+    PP_CLIENTCHARGES__INPUTTER
+    {
+        INPUTTER : T24BusinessTypes:A
+            @i18n:Label (en=Inputter)
+            @i18n:Tooltip (en="The user who last updated the record")
+            @t24:i (align=L, inputBehaviour=N, maxLength=40, sysNumber=47.0, core=true, t24Name=INPUTTER, mandatory=false)
+    }
+    PP_CLIENTCHARGES__OVERRIDE
+    {
+        /* Contains all the override messages which the user agreed to during Input. During the validation of a transaction, the system may provide the user with a series of screen override messages to indicate an anomaly. */
+        OVERRIDE : T24BusinessTypes:N
+            @i18n:Label (en=Override)
+            @i18n:Tooltip (en="Overrides generated by this transaction")
+            @t24:i (align=R, inputBehaviour=N, maxLength=35, sysNumber=43.0, core=true, t24Name=OVERRIDE, mandatory=false)
+    }
+/* This screen is used to create/configure different fee types in the payments hub.
+Fee types can be segregated in two broad categories.
+
+i. Conditional Fee Types – These are the Fee types which can only be applied for a transaction if there is a particular condition which is met. Example: Non-STP Fee. This Fee can only be applied if the transaction has been processed Non-STP. If the transaction is STP then the charge cannot be levied even if it is defined in the Client Charges table.
+
+ii. Unconditional Fee Types – These are the Fee types which needs to be applied in all the cases if it’s defined for the Client.
+Example: Transaction Fee.
+
+This screen can be used to create only unconditional fee types. User is allowed only to amend a set of predefined conditional fee types in the payments hub. */
+    PP_FEETYPE
+        @i18n:Description (en="")
+        @t24:i (t24Name=PP.FEETYPE, nonStop=true, level=I, type=H, allowedFunctions="A C D E H I L P Q R S", localRefAllowed=true)
+    {
+        AUDITOR_CODE : T24BusinessTypes:A
+            @i18n:Label (en="Auditor Code")
+            @i18n:Tooltip (en="Auditor Code")
+            @t24:i (align=L, inputBehaviour=E, maxLength=16, sysNumber=20.0, core=true, t24Name=AUDITOR.CODE, mandatory=false)
+        AUDIT_DATE_TIME : T24BusinessTypes:RELTIME
+            @i18n:Label (en="Audit Date Time")
+            @i18n:Tooltip (en="Date and time when record was audited")
+            @t24:i (align=L, inputBehaviour=E, maxLength=15, sysNumber=21.0, core=true, t24Name=AUDIT.DATE.TIME, mask="RDD DD  DD ##:##", mandatory=false)
+        AUTHORISER : T24BusinessTypes:A
+            @i18n:Label (en=Authoriser)
+            @i18n:Tooltip (en="Indicates the User who Authorises the record")
+            @t24:i (align=L, inputBehaviour=N, maxLength=40, sysNumber=17.0, core=true, t24Name=AUTHORISER, mandatory=false)
+/* Indicates if a beneficiary party can be charged in case of OUR payment.
+Possible values:
+"Y" – Yes
+"N" – No. */
+        BeneficiaryChargeAllowed : PP_FeeDeterminationGUI:PP_FEETYPE__BeneficiaryChargeAllowed required
+            @i18n:Label (en=BeneficiaryChargeAllowed)
+            @i18n:Tooltip (en=BeneficiaryChargeAllowed)
+            @t24:i (align=L, inputBehaviour=I, maxLength=1, sysNumber=2.0, core=true, t24Name=BeneficiaryChargeAllowed, mandatory=true)
+        CO_CODE -> ST_CompanyCreation:COMPANY
+            @i18n:Label (en=Company)
+            @t24:i (align=L, inputBehaviour=N, maxLength=11, sysNumber=18.0, core=true, businessType=A, t24Name=CO.CODE, mask="R##-###-####", mandatory=false)
+        CURR_NO : T24BusinessTypes:N
+            @i18n:Label (en="Curr No")
+            @t24:i (align=R, inputBehaviour=N, maxLength=4, sysNumber=14.0, core=true, t24Name=CURR.NO, mandatory=false)
+/* Differentiates if the fee type is conditional or unconditional.
+Possible values:
+U - Unconditional
+C - Conditional */
+        ConditionalIndicator : PP_FeeDeterminationGUI:PP_FEETYPE__ConditionalIndicator required
+            @i18n:Label (en=ConditionalIndicator)
+            @i18n:Tooltip (en=ConditionalIndicator)
+            @t24:i (align=L, inputBehaviour=I, maxLength=1, sysNumber=1.0, core=true, t24Name=ConditionalIndicator, mandatory=true)
+        DATE_TIME -> byValue PP_FeeDeterminationGUI:PP_FEETYPE__DATE_TIME *
+            @t24:i (t24Name=DATE.TIME)
+        DEPT_CODE -> ST_Config:DEPT_ACCT_OFFICER
+            @i18n:Label (en="Dept Code")
+            @t24:i (align=R, inputBehaviour=N, maxLength=4, sysNumber=19.0, core=true, t24Name=DEPT.CODE, mandatory=false)
+        FeeDescription -> byValue PP_FeeDeterminationGUI:PP_FEETYPE__FeeDescription *
+            @t24:i (t24Name=FeeDescription)
+/* FeeType will be the format for the ID.
+Indicates the Fee type to be defined for the company.
+Possible values when ConditionalIndicator is set to 'C':
+Debit Phone Confirmation Fee
+Credit Phone Confirmation Fee
+Debit Email Confirmation Fee
+Credit Email Confirmation Fee
+Debit FAX Confirmation Fee
+Credit FAX Confirmation Fee
+Client Condition Non STP
+Manual Repair
+Payfix Repair
+FX Fee
+Missing IBAN Fee
+Beneficiary Bank Repaired
+Return charge
+Inbound Our Charge
+Outbound Our Charge
+PSD Leg-in charge
+PSD Leg-out charge
+VAT on charges
+Debit Post Confirmation Fee
+Credit Post Confirmation Fee
+Book Transfer Debit Fee
+Book Transfer Credit Fee
+Manual Transfer Fee
+VAT on principal
+Validation Rules:
+35 alphanumeric characters. When ConditionalIndicator is set to 'C', the value can be defined only from the possible values mentioned. If not, it is a free text field. */
+        FeeType -> PP_FeeDeterminationGUI:PP_FEETYPE PK required
+            @t24:i (align=L, inputBehaviour=I, maxLength=75, sysNumber=0.0, core=true, businessType=ANY, t24Name=FeeType, mandatory=true)
+        INPUTTER -> byValue PP_FeeDeterminationGUI:PP_FEETYPE__INPUTTER *
+            @t24:i (t24Name=INPUTTER)
+        LinkID : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=12.0, core=true, t24Name=LinkID, mandatory=false)
+        OVERRIDE -> byValue PP_FeeDeterminationGUI:PP_FEETYPE__OVERRIDE *
+            @t24:i (t24Name=OVERRIDE)
+/* Indicates if VAT is applicable for the fee type with the percentage. The value can be zero and above. Value as zero indicates that VAT is not applicable for the fee type.
+Validation Rules:
+11 numeric characters which includes '.'
+Default value is set as 0. */
+        PercentageVATOnCharge : T24BusinessTypes:R
+            @i18n:Label (en=PercentageVATOnCharge)
+            @i18n:Tooltip (en=PercentageVATOnCharge)
+            @t24:i (align=R, inputBehaviour=I, maxLength=11, sysNumber=4.0, core=true, t24Name=PercentageVATOnCharge, mandatory=false)
+        RECORD_STATUS : T24BusinessTypes:STAT
+            @i18n:Label (en="Record Status")
+            @t24:i (align=L, inputBehaviour=N, maxLength=4, sysNumber=13.0, core=true, t24Name=RECORD.STATUS, mandatory=false)
+        /* Standard T24 field. Reserved for future use */
+        RESERVED_1 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=9.0, core=true, t24Name=RESERVED.1, mandatory=false)
+        /* Standard T24 field. Reserved for future use */
+        RESERVED_2 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=8.0, core=true, t24Name=RESERVED.2, mandatory=false)
+        /* Standard T24 field. Reserved for future use */
+        RESERVED_3 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=7.0, core=true, t24Name=RESERVED.3, mandatory=false)
+        /* Standard T24 field. Reserved for future use */
+        RESERVED_4 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=6.0, core=true, t24Name=RESERVED.4, mandatory=false)
+        /* Standard T24 field. Reserved for future use */
+        RESERVED_5 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=5.0, core=true, t24Name=RESERVED.5, mandatory=false)
+    }
+/* This screen is used to store the credit accounts linked with the fee types defined in payments hub. During the Fee processing, depending on the charges which are applied to the payment, a lookup will be performed to identify the associated credit account(P&L account). This credit account along with the other charge details will be used to post entries into the general ledger.
+This is Non dated and FTD type of classification
+This application follows T24 Standard and it will be of History Type application. */
+    PP_FEETYPECREDITACCOUNT
+        @i18n:Description (en="")
+        @t24:i (t24Name=PP.FEETYPECREDITACCOUNT, nonStop=true, level=F, type=H, allowedFunctions="A C D E H I L P Q R S", localRefAllowed=true)
+    {
+        AUDITOR_CODE : T24BusinessTypes:A
+            @i18n:Label (en="Auditor Code")
+            @i18n:Tooltip (en="Auditor Code")
+            @t24:i (align=L, inputBehaviour=E, maxLength=16, sysNumber=20.0, core=true, t24Name=AUDITOR.CODE, mandatory=false)
+        AUDIT_DATE_TIME : T24BusinessTypes:RELTIME
+            @i18n:Label (en="Audit Date Time")
+            @i18n:Tooltip (en="Date and time when record was audited")
+            @t24:i (align=L, inputBehaviour=E, maxLength=15, sysNumber=21.0, core=true, t24Name=AUDIT.DATE.TIME, mask="RDD DD  DD ##:##", mandatory=false)
+        AUTHORISER : T24BusinessTypes:A
+            @i18n:Label (en=Authoriser)
+            @i18n:Tooltip (en="Indicates the User who Authorises the record")
+            @t24:i (align=L, inputBehaviour=N, maxLength=40, sysNumber=17.0, core=true, t24Name=AUTHORISER, mandatory=false)
+        CO_CODE -> ST_CompanyCreation:COMPANY
+            @i18n:Label (en=Company)
+            @t24:i (align=L, inputBehaviour=N, maxLength=11, sysNumber=18.0, core=true, businessType=A, t24Name=CO.CODE, mask="R##-###-####", mandatory=false)
+/* Indicates the credit account linked to the fee type.
+Validation Rules:
+35 characters of type 'ACCA'. */
+        CRAccount : T24BusinessTypes:ACCA required
+            @i18n:Label (en=CRAccount)
+            @i18n:Tooltip (en=CRAccount)
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, sysNumber=3.0, core=true, t24Name=CRAccount, mandatory=true)
+/* Indicates the company ID of the credit account which is linked to the fee type. The value is same as the value to field, 'CompanyID'.
+Validation Rules:
+No input field. */
+        CRAccountCompanyID -> PP_StaticDataGUI:PP_COMPANY
+            @i18n:Label (en=CRAccountCompanyID)
+            @i18n:Tooltip (en=CRAccountCompanyID)
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=2.0, core=true, businessType=A, t24Name=CRAccountCompanyID, mandatory=false)
+/* Indicates the currency code of the credit account which is linked to the fee type.
+Validation Rules:
+Mandatory field. 3 alphanumeric characters. The value links to field 'CurrencyCode' in PP.CURRENCY. */
+        CRAccountCurrency -> PP_StaticDataGUI:PP_CURRENCY required
+            @i18n:Label (en=CRAccountCurrency)
+            @i18n:Tooltip (en=CRAccountCurrency)
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=4.0, core=true, businessType=A, t24Name=CRAccountCurrency, mandatory=true)
+/* Indicates the type of the credit account which is linked to the fee type.
+Possible values:
+PL - Profile and Loss account
+Vostro - Vostro account
+Nostro - Nostro account
+Suspense - Internal suspense account
+Validation Rules:
+Mandatory field. A value can be defined only from the possible values as mentioned. */
+        CRAccountType : PP_FeeDeterminationGUI:PP_FEETYPECREDITACCOUNT__CRAccountType required
+            @i18n:Label (en=CRAccountType)
+            @i18n:Tooltip (en=CRAccountType)
+            @t24:i (align=L, inputBehaviour=I, maxLength=20, sysNumber=5.0, core=true, t24Name=CRAccountType, mandatory=true)
+        CURR_NO : T24BusinessTypes:N
+            @i18n:Label (en="Curr No")
+            @t24:i (align=R, inputBehaviour=N, maxLength=4, sysNumber=14.0, core=true, t24Name=CURR.NO, mandatory=false)
+/* Indicates the FTD company ID for which the record is created.
+It is NOINPUT field. On click of validate button, Company ID gets autopopulated from FTD Company.
+Example : BNK,GB1
+Validation Rules:
+3 alphanumeric characters. */
+        CompanyID : T24BusinessTypes:A
+            @i18n:Label (en=CompanyID)
+            @i18n:Tooltip (en=CompanyID)
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=1.0, core=true, t24Name=CompanyID, mandatory=false)
+        DATE_TIME -> byValue PP_FeeDeterminationGUI:PP_FEETYPECREDITACCOUNT__DATE_TIME *
+            @t24:i (t24Name=DATE.TIME)
+        DEPT_CODE -> ST_Config:DEPT_ACCT_OFFICER
+            @i18n:Label (en="Dept Code")
+            @t24:i (align=R, inputBehaviour=N, maxLength=4, sysNumber=19.0, core=true, t24Name=DEPT.CODE, mandatory=false)
+/* ID should be in the format of FeeType and FeeTypeCurrency seperated by "."
+For Ex: "TRANSACTIONFEE.USD", "SERVICEFEE.GBP"
+Validation Rules:
+75 Any characters.
+FeeType Specifies the fee type for which the credit account is defined in the application. The value links to field 'FeeType' in PP.FEETYPE.
+If user enters FeeType in small letters, the same will be converted to CAPS.
+FeeTypeCurrency Indicates the currency code of the fee type for which a credit account is defined in the application. This provides the flexibility to define different credit accounts for fee types of different currency in the payments hub.
+FeeTypeCurrency is 3 alphanumeric characters. The value links to field 'CurrencyCode' in PPT.CURRENCY */
+        ID -> PP_FeeDeterminationGUI:PP_FEETYPECREDITACCOUNT PK required
+            @i18n:Label (en="Transaction Ref")
+            @i18n:Tooltip (en="Transaction Reference")
+            @t24:i (align=L, inputBehaviour=I, maxLength=55, sysNumber=0.0, core=true, businessType=ANY, t24Name=ID, mandatory=true)
+        INPUTTER -> byValue PP_FeeDeterminationGUI:PP_FEETYPECREDITACCOUNT__INPUTTER *
+            @t24:i (t24Name=INPUTTER)
+        OVERRIDE -> byValue PP_FeeDeterminationGUI:PP_FEETYPECREDITACCOUNT__OVERRIDE *
+            @t24:i (t24Name=OVERRIDE)
+        RECORD_STATUS : T24BusinessTypes:STAT
+            @i18n:Label (en="Record Status")
+            @t24:i (align=L, inputBehaviour=N, maxLength=4, sysNumber=13.0, core=true, t24Name=RECORD.STATUS, mandatory=false)
+        /* Standard T24 String. No Input Field */
+        RESERVED_1 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=10.0, core=true, t24Name=RESERVED.1, mandatory=false)
+        /* Standard T24 String. No Input Field */
+        RESERVED_2 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=9.0, core=true, t24Name=RESERVED.2, mandatory=false)
+        /* Standard T24 String. No Input Field */
+        RESERVED_3 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=8.0, core=true, t24Name=RESERVED.3, mandatory=false)
+        /* Standard T24 String. No Input Field */
+        RESERVED_4 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=7.0, core=true, t24Name=RESERVED.4, mandatory=false)
+        /* Standard T24 String. No Input Field */
+        RESERVED_5 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=6.0, core=true, t24Name=RESERVED.5, mandatory=false)
+    }
+    PP_FEETYPECREDITACCOUNT__DATE_TIME
+    {
+        DATE_TIME : T24BusinessTypes:RELTIME
+            @i18n:Label (en="Date time")
+            @i18n:Tooltip (en="Date and time when record was input or authorised")
+            @t24:i (align=L, inputBehaviour=N, maxLength=15, sysNumber=16.0, core=true, t24Name=DATE.TIME, mask="RDD DD  DD ##:##", mandatory=false)
+    }
+    PP_FEETYPECREDITACCOUNT__INPUTTER
+    {
+        INPUTTER : T24BusinessTypes:A
+            @i18n:Label (en=Inputter)
+            @i18n:Tooltip (en="The user who last updated the record")
+            @t24:i (align=L, inputBehaviour=N, maxLength=40, sysNumber=15.0, core=true, t24Name=INPUTTER, mandatory=false)
+    }
+    PP_FEETYPECREDITACCOUNT__OVERRIDE
+    {
+        /* Contains all the override messages which the user agreed to during Input. During the validation of a transaction, the system may provide the user with a series of screen override messages to indicate an anomaly. */
+        OVERRIDE : T24BusinessTypes:N
+            @i18n:Label (en=Override)
+            @i18n:Tooltip (en="Overrides generated by this transaction")
+            @t24:i (align=R, inputBehaviour=N, maxLength=35, sysNumber=12.0, core=true, t24Name=OVERRIDE, mandatory=false)
+    }
+    PP_FEETYPE__DATE_TIME
+    {
+        DATE_TIME : T24BusinessTypes:RELTIME
+            @i18n:Label (en="Date time")
+            @i18n:Tooltip (en="Date and time when record was input or authorised")
+            @t24:i (align=L, inputBehaviour=N, maxLength=15, sysNumber=16.0, core=true, t24Name=DATE.TIME, mask="RDD DD  DD ##:##", mandatory=false)
+    }
+    PP_FEETYPE__FeeDescription
+    {
+/* Language Specific Multi-Value Field
+Describes the Fee type in Multiple Languages */
+        FeeDescription : T24BusinessTypes:ANY required
+            @i18n:Label (en=FeeDescription)
+            @i18n:Tooltip (en=FeeDescription)
+            @t24:i (align=L, inputBehaviour=I, maxLength=35, multiLanguage=true, sysNumber=3.0, core=true, t24Name=FeeDescription, mandatory=true)
+    }
+    PP_FEETYPE__INPUTTER
+    {
+        INPUTTER : T24BusinessTypes:A
+            @i18n:Label (en=Inputter)
+            @i18n:Tooltip (en="The user who last updated the record")
+            @t24:i (align=L, inputBehaviour=N, maxLength=40, sysNumber=15.0, core=true, t24Name=INPUTTER, mandatory=false)
+    }
+    PP_FEETYPE__OVERRIDE
+    {
+        /* Contains all the override messages which the user agreed to during Input. During the validation of a transaction, the system may provide the user with a series of screen override messages to indicate an anomaly. */
+        OVERRIDE : T24BusinessTypes:N
+            @i18n:Label (en=Override)
+            @i18n:Tooltip (en="Overrides generated by this transaction")
+            @t24:i (align=R, inputBehaviour=N, maxLength=35, sysNumber=11.0, core=true, t24Name=OVERRIDE, mandatory=false)
+    }
+/* This screen is used to define the fee products in the payments hub. These fee products are used in client charges table and derived as one of the output of product determination process.
+This is Non dated and FTD type of classification
+This application follows T24 Standard and it will be of History Type application. */
+    PP_FEE_PRODUCT
+        @i18n:Description (en="")
+        @t24:i (t24Name=PP.FEE.PRODUCT, nonStop=true, level=I, type=H, allowedFunctions="A C D E H I L P Q R S", localRefAllowed=true)
+    {
+        AUDITOR_CODE : T24BusinessTypes:A
+            @i18n:Label (en="Auditor Code")
+            @i18n:Tooltip (en="Auditor Code")
+            @t24:i (align=L, inputBehaviour=E, maxLength=16, sysNumber=17.0, core=true, t24Name=AUDITOR.CODE, mandatory=false)
+        AUDIT_DATE_TIME : T24BusinessTypes:RELTIME
+            @i18n:Label (en="Audit Date Time")
+            @i18n:Tooltip (en="Date and time when record was audited")
+            @t24:i (align=L, inputBehaviour=E, maxLength=15, sysNumber=18.0, core=true, t24Name=AUDIT.DATE.TIME, mask="RDD DD  DD ##:##", mandatory=false)
+        AUTHORISER : T24BusinessTypes:A
+            @i18n:Label (en=Authoriser)
+            @i18n:Tooltip (en="Indicates the User who Authorises the record")
+            @t24:i (align=L, inputBehaviour=N, maxLength=40, sysNumber=14.0, core=true, t24Name=AUTHORISER, mandatory=false)
+        CO_CODE -> ST_CompanyCreation:COMPANY
+            @i18n:Label (en=Company)
+            @t24:i (align=L, inputBehaviour=N, maxLength=11, sysNumber=15.0, core=true, businessType=A, t24Name=CO.CODE, mask="R##-###-####", mandatory=false)
+        CURR_NO : T24BusinessTypes:N
+            @i18n:Label (en="Curr No")
+            @t24:i (align=R, inputBehaviour=N, maxLength=4, sysNumber=11.0, core=true, t24Name=CURR.NO, mandatory=false)
+/* Indicates the FTD company ID for which the record is created.
+It is NOINPUT field. On click of validate button, Company ID gets autopopulated from FTD Company.
+Examples: BNK,GB1
+Validation Rules:
+3 alphanumeric characters. */
+        CompanyID : T24BusinessTypes:A
+            @i18n:Label (en=CompanyID)
+            @i18n:Tooltip (en=CompanyID)
+            @t24:i (align=L, inputBehaviour=N, maxLength=3, sysNumber=1.0, core=true, t24Name=CompanyID, mandatory=false)
+        DATE_TIME -> byValue PP_FeeDeterminationGUI:PP_FEE_PRODUCT__DATE_TIME *
+            @t24:i (t24Name=DATE.TIME)
+        DEPT_CODE -> ST_Config:DEPT_ACCT_OFFICER
+            @i18n:Label (en="Dept Code")
+            @t24:i (align=R, inputBehaviour=N, maxLength=4, sysNumber=16.0, core=true, t24Name=DEPT.CODE, mandatory=false)
+        Description -> byValue PP_FeeDeterminationGUI:PP_FEE_PRODUCT__Description *
+            @t24:i (t24Name=Description)
+/* Specifies the name of the fee product. Fee Product is used in Product Determination and Client charges table.
+Represents the unique ID of this application.
+Validation Rules:
+10 alphanumeric characters. */
+        FeeProduct -> PP_FeeDeterminationGUI:PP_FEE_PRODUCT PK required
+            @i18n:Label (en=FeeProduct)
+            @i18n:Tooltip (en=FeeProduct)
+            @t24:i (align=L, inputBehaviour=I, maxLength=10, sysNumber=0.0, core=true, businessType=ANY, t24Name=FeeProduct, mandatory=true)
+        INPUTTER -> byValue PP_FeeDeterminationGUI:PP_FEE_PRODUCT__INPUTTER *
+            @t24:i (t24Name=INPUTTER)
+        OVERRIDE -> byValue PP_FeeDeterminationGUI:PP_FEE_PRODUCT__OVERRIDE *
+            @t24:i (t24Name=OVERRIDE)
+        RECORD_STATUS : T24BusinessTypes:STAT
+            @i18n:Label (en="Record Status")
+            @t24:i (align=L, inputBehaviour=N, maxLength=4, sysNumber=10.0, core=true, t24Name=RECORD.STATUS, mandatory=false)
+        /* Standard T24 String. No Input Field */
+        RESERVED_1 : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=N, maxLength=35, sysNumber=7.0, core=true, t24Name=RESERVED.1, mandatory=false)
+        /* Standard T24 String. No Input Field */
+        RESERVED_2 : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=N, maxLength=35, sysNumber=6.0, core=true, t24Name=RESERVED.2, mandatory=false)
+        /* Standard T24 String. No Input Field */
+        RESERVED_3 : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=N, maxLength=35, sysNumber=5.0, core=true, t24Name=RESERVED.3, mandatory=false)
+        /* Standard T24 String. No Input Field */
+        RESERVED_4 : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=N, maxLength=35, sysNumber=4.0, core=true, t24Name=RESERVED.4, mandatory=false)
+        /* Standard T24 String. No Input Field */
+        RESERVED_5 : T24BusinessTypes:N
+            @t24:i (align=R, inputBehaviour=N, maxLength=35, sysNumber=3.0, core=true, t24Name=RESERVED.5, mandatory=false)
+    }
+    PP_FEE_PRODUCT__DATE_TIME
+    {
+        DATE_TIME : T24BusinessTypes:RELTIME
+            @i18n:Label (en="Date time")
+            @i18n:Tooltip (en="Date and time when record was input or authorised")
+            @t24:i (align=L, inputBehaviour=N, maxLength=15, sysNumber=13.0, core=true, t24Name=DATE.TIME, mask="RDD DD  DD ##:##", mandatory=false)
+    }
+    PP_FEE_PRODUCT__Description
+    {
+/* Describes the fee product in free text.
+Validation Rules:
+256 alphanumeric characters. */
+        Description : T24BusinessTypes:A
+            @i18n:Label (en=Description)
+            @i18n:Tooltip (en=Description)
+            @t24:i (align=L, inputBehaviour=I, maxLength=256, multiLanguage=true, sysNumber=2.0, core=true, t24Name=Description, mandatory=false)
+    }
+    PP_FEE_PRODUCT__INPUTTER
+    {
+        INPUTTER : T24BusinessTypes:A
+            @i18n:Label (en=Inputter)
+            @i18n:Tooltip (en="The user who last updated the record")
+            @t24:i (align=L, inputBehaviour=N, maxLength=40, sysNumber=12.0, core=true, t24Name=INPUTTER, mandatory=false)
+    }
+    PP_FEE_PRODUCT__OVERRIDE
+    {
+        /* Contains all the override messages which the user agreed to during Input. During the validation of a transaction, the system may provide the user with a series of screen override messages to indicate an anomaly. */
+        OVERRIDE : T24BusinessTypes:N
+            @i18n:Label (en=Override)
+            @i18n:Tooltip (en="Overrides generated by this transaction")
+            @t24:i (align=R, inputBehaviour=N, maxLength=35, sysNumber=9.0, core=true, t24Name=OVERRIDE, mandatory=false)
+    }
+}
+Enumerations {
+    PP_BANKCHARGES_PDS__CTRBTRIndicator : mml:string
+        B=B
+        C=C
+        NULL=NULL
+        STAR="*"
+    PP_BANKCHARGES_PDS__FeeType__AlwaysApplyFlag : mml:string
+        N=N
+        Y=Y
+    PP_BANKCHARGES_PDS__FeeType__ApplyMeOnlyFlag : mml:string
+        N=N
+        Y=Y
+    PP_BANKCHARGES_PDS__Include71GIndicator : mml:string
+        N=N
+        NULL=NULL
+        Y=Y
+    PP_BANKCHARGES__CTRBTRIndicator : mml:string
+        B=B
+        C=C
+        NULL=NULL
+        STAR="*"
+    PP_BANKCHARGES__FeeType__AlwaysApplyFlag : mml:string
+        N=N
+        Y=Y
+    PP_BANKCHARGES__FeeType__ApplyMeOnlyFlag : mml:string
+        N=N
+        Y=Y
+    PP_BANKCHARGES__Include71GIndicator : mml:string
+        N=N
+        NULL=NULL
+        Y=Y
+    PP_BANKCLAIMSCONTROL_PDS__ClaimBasis : mml:string
+        Count=Count
+        NULL=NULL
+        Periodic=Periodic
+    PP_BANKCLAIMSCONTROL_PDS__ClaimPeriod : mml:string
+        D=D
+        M=M
+        NULL=NULL
+        W=W
+    PP_BANKCLAIMSCONTROL_PDS__ClaimTowards : mml:string
+        NULL=NULL
+        OTHERBIC=OTHERBIC
+        SENDER=SENDER
+    PP_BANKCLAIMSCONTROL_PDS__ClaimTrigger : mml:string
+        1=1
+        10=10
+        11=11
+        12=12
+        13=13
+        14=14
+        15=15
+        16=16
+        17=17
+        18=18
+        19=19
+        2=2
+        20=20
+        21=21
+        22=22
+        23=23
+        24=24
+        25=25
+        26=26
+        27=27
+        28=28
+        29=29
+        3=3
+        30=30
+        31=31
+        4=4
+        5=5
+        6=6
+        7=7
+        8=8
+        9=9
+    PP_BANKCLAIMSCONTROL_PDS__ClaimType : mml:string
+        DEBIT=DEBIT
+        MT191=MT191
+        NULL=NULL
+    PP_BANKCLAIMSCONTROL_PDS__IndividualGroupIndicator : mml:string
+        G=G
+        I=I
+        NULL=NULL
+    PP_BANKCLAIMSCONTROL__ClaimBasis : mml:string
+        Count=Count
+        NULL=NULL
+        Periodic=Periodic
+    PP_BANKCLAIMSCONTROL__ClaimPeriod : mml:string
+        D=D
+        M=M
+        NULL=NULL
+        W=W
+    PP_BANKCLAIMSCONTROL__ClaimTowards : mml:string
+        NULL=NULL
+        OTHERBIC=OTHERBIC
+        SENDER=SENDER
+    PP_BANKCLAIMSCONTROL__ClaimTrigger : mml:string
+        1=1
+        10=10
+        11=11
+        12=12
+        13=13
+        14=14
+        15=15
+        16=16
+        17=17
+        18=18
+        19=19
+        2=2
+        20=20
+        21=21
+        22=22
+        23=23
+        24=24
+        25=25
+        26=26
+        27=27
+        28=28
+        29=29
+        3=3
+        30=30
+        31=31
+        4=4
+        5=5
+        6=6
+        7=7
+        8=8
+        9=9
+    PP_BANKCLAIMSCONTROL__ClaimType : mml:string
+        DEBIT=DEBIT
+        MT191=MT191
+        NULL=NULL
+    PP_BANKCLAIMSCONTROL__IndividualGroupIndicator : mml:string
+        G=G
+        I=I
+        NULL=NULL
+    PP_CLIENTCHARGES_PDS__FeeType__AlwaysApplyFlag : mml:string
+        N=N
+        Y=Y
+    PP_CLIENTCHARGES_PDS__FeeType__ApplyMeOnlyFlag : mml:string
+        N=N
+        Y=Y
+    PP_CLIENTCHARGES_PDS__ResidencyStatus : mml:string
+        NN=NN
+        NR=NR
+        RN=RN
+        RR=RR
+        STAR="*"
+    PP_CLIENTCHARGES__FeeType__AlwaysApplyFlag : mml:string
+        N=N
+        Y=Y
+    PP_CLIENTCHARGES__FeeType__ApplyMeOnlyFlag : mml:string
+        N=N
+        Y=Y
+    PP_CLIENTCHARGES__ResidencyStatus : mml:string
+        NN=NN
+        NR=NR
+        RN=RN
+        RR=RR
+        STAR="*"
+    PP_FEETYPECREDITACCOUNT__CRAccountType : mml:string
+        NULL=NULL
+        Nostro=Nostro
+        PL=PL
+        Suspense=Suspense
+        Vostro=Vostro
+    PP_FEETYPE__BeneficiaryChargeAllowed : mml:string
+        N=N
+        Y=Y
+    PP_FEETYPE__ConditionalIndicator : mml:string
+        C=C
+        U=U
+}

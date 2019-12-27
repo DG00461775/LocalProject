@@ -1,0 +1,141 @@
+# UTF-8
+/* Weight Assignment GUI */
+Domain PP_WeightAssignmentGUI
+    @t24:i (module=PP)
+    @java:Package (value=com.temenos.t24.datamodel.pp.pp_weightassignmentgui)
+namespace "http://www.temenos.com/t24/PP_WeightAssignmentGUI"
+metamodelVersion 1.30.6
+Classes {
+    /* This screen is used to define specific weight to be used for payments in the payments hub. Apart from assigning weights for a payment (H- Heavy, M - Medium or L - Light), specific weight can be assigned to a payment to enforce special processing rules. A Heavy weight payment with a specific weight can attract a special fee for instance. */
+    PP_SPECIFIC_WEIGHT
+        @i18n:Description (en="")
+        @t24:i (t24Name=PP.SPECIFIC.WEIGHT, nonStop=true, level=I, type=H, allowedFunctions="A C D E H I L P Q R S", localRefAllowed=true)
+    {
+        AUDITOR_CODE : T24BusinessTypes:A
+            @i18n:Label (en="Auditor Code")
+            @i18n:Tooltip (en="Auditor Code")
+            @t24:i (align=L, inputBehaviour=E, maxLength=16, sysNumber=23.0, core=true, t24Name=AUDITOR.CODE, mandatory=false)
+        AUDIT_DATE_TIME : T24BusinessTypes:RELTIME
+            @i18n:Label (en="Audit Date Time")
+            @i18n:Tooltip (en="Date and time when record was audited")
+            @t24:i (align=L, inputBehaviour=E, maxLength=15, sysNumber=24.0, core=true, t24Name=AUDIT.DATE.TIME, mask="RDD DD  DD ##:##", mandatory=false)
+        AUTHORISER : T24BusinessTypes:A
+            @i18n:Label (en=Authoriser)
+            @i18n:Tooltip (en="Indicates the User who Authorises the record")
+            @t24:i (align=L, inputBehaviour=N, maxLength=40, sysNumber=20.0, core=true, t24Name=AUTHORISER, mandatory=false)
+        /* Indicates the instance to be used for Auto Repair of a payment. */
+        AutoRepairInstanceName : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=8, sysNumber=6.0, core=true, t24Name=AutoRepairInstanceName, mandatory=false)
+        CO_CODE -> ST_CompanyCreation:COMPANY
+            @i18n:Label (en=Company)
+            @t24:i (align=L, inputBehaviour=N, maxLength=11, sysNumber=21.0, core=true, businessType=A, t24Name=CO.CODE, mask="R##-###-####", mandatory=false)
+        CURR_NO : T24BusinessTypes:N
+            @i18n:Label (en="Curr No")
+            @t24:i (align=R, inputBehaviour=N, maxLength=4, sysNumber=17.0, core=true, t24Name=CURR.NO, mandatory=false)
+/* Indicates the  Financial Table Descriptive(FTD) company for which the record is created.
+This is NoInput field
+It gets autopopulated after validation
+Example : BNK,GB1 */
+        CompanyID : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=3, sysNumber=1.0, core=true, t24Name=CompanyID, mandatory=false)
+        DATE_TIME -> byValue PP_WeightAssignmentGUI:PP_SPECIFIC_WEIGHT__DATE_TIME *
+            @t24:i (t24Name=DATE.TIME)
+        DEPT_CODE -> ST_Config:DEPT_ACCT_OFFICER
+            @i18n:Label (en="Dept Code")
+            @t24:i (align=R, inputBehaviour=N, maxLength=4, sysNumber=22.0, core=true, t24Name=DEPT.CODE, mandatory=false)
+        /* Specifies the date until which the record is to be considered as active for payments processing.Post this date, the record will be set as Inactive by the payments hub. */
+        EndDate : T24BusinessTypes:D
+            @t24:i (align=R, inputBehaviour=I, maxLength=11, sysNumber=8.0, core=true, t24Name=EndDate, mandatory=false)
+/* It is the combination of OriginatingSource, MessageType, ClearingTransactionType seperated by '.'
+Validation Rules
+Id can be appended by '-' with start date
+It contains only one '-' followed by date
+Id can be given without the startdate
+OriginatingSource
+Value links to record in the the table PP.SOURCE. Wildcard ‘*’ is acceptable which denotes all message types.
+MessageType
+Value links to record in the the table PP.MSGPAYMENTTYPE. Wildcard ‘*’ is acceptable which denotes all message types.
+ClearingTransactionType
+The value links to the field 'ClearingTransactionType' in PP.TRANSACTION.TYPES table. Wildcard ‘*’ is acceptable which denotes all message types.
+Id should be in the following format
+OriginatingSource.MessageType.ClearingTransactionType or OriginatingSource.MessageType.ClearingTransactionType-startdate */
+        ID -> PP_WeightAssignmentGUI:PP_SPECIFIC_WEIGHT PK required
+            @i18n:Label (en="Transaction Ref")
+            @i18n:Tooltip (en="Transaction Reference")
+            @t24:i (align=L, inputBehaviour=I, maxLength=150, sysNumber=0.0, core=true, businessType=ANY, t24Name=ID, mandatory=true)
+        INPUTTER -> byValue PP_WeightAssignmentGUI:PP_SPECIFIC_WEIGHT__INPUTTER *
+            @t24:i (t24Name=INPUTTER)
+        OVERRIDE -> byValue PP_WeightAssignmentGUI:PP_SPECIFIC_WEIGHT__OVERRIDE *
+            @t24:i (t24Name=OVERRIDE)
+        RECORD_STATUS : T24BusinessTypes:STAT
+            @i18n:Label (en="Record Status")
+            @t24:i (align=L, inputBehaviour=N, maxLength=4, sysNumber=16.0, core=true, t24Name=RECORD.STATUS, mandatory=false)
+        RESERVED_1 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=13.0, core=true, t24Name=RESERVED.1, mandatory=false)
+        RESERVED_2 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=12.0, core=true, t24Name=RESERVED.2, mandatory=false)
+        RESERVED_3 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=11.0, core=true, t24Name=RESERVED.3, mandatory=false)
+        RESERVED_4 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=10.0, core=true, t24Name=RESERVED.4, mandatory=false)
+        RESERVED_5 : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=N, maxLength=35, sysNumber=9.0, core=true, t24Name=RESERVED.5, mandatory=false)
+/* Specifies the order (sequence) of the record in the application. Based on the value, a record is prioritised in such a way that, it is given higher preference for selection under peeling logic applied in the payments hub.
+Validation Rules:
+Mandatory field. 9 numeric characters. */
+        Ranking : T24BusinessTypes:R required
+            @t24:i (align=R, inputBehaviour=I, maxLength=9, sysNumber=2.0, core=true, t24Name=Ranking, mandatory=true)
+/* The specific weight code that needs to be applied based on the originating source, message type and ranking.
+Validation Rules:
+Mandatory field. 3 alphanumeric characters. */
+        SpecificWeightCode : T24BusinessTypes:A required
+            @t24:i (align=L, inputBehaviour=I, maxLength=3, sysNumber=3.0, core=true, t24Name=SpecificWeightCode, mandatory=true)
+/* Specifies the date from which the record is to be considered as active for payments processing.
+Validation Rules:
+No Input Field
+If the start date is given in ID then the start date gets populated from the id
+Or else start date gets populated from the field startdate in the table PP.COMPANY */
+        StartDate : T24BusinessTypes:D
+            @t24:i (align=R, inputBehaviour=N, maxLength=11, sysNumber=7.0, core=true, t24Name=StartDate, mandatory=false)
+/* Indicates the weight code for which a specific weight code is defined.
+Possible values:
+H - High
+M - Medium
+L - Light */
+        WeightCode : PP_WeightAssignmentGUI:PP_SPECIFIC_WEIGHT__WeightCode required
+            @t24:i (align=L, inputBehaviour=I, maxLength=1, sysNumber=5.0, core=true, t24Name=WeightCode, mandatory=true)
+/* Describes the specific weight code defined.
+Validation Rules:
+128 alphanumeric chracters. */
+        WeightDescription : T24BusinessTypes:A
+            @t24:i (align=L, inputBehaviour=I, maxLength=128, sysNumber=4.0, core=true, t24Name=WeightDescription, mandatory=false)
+    }
+    PP_SPECIFIC_WEIGHT__DATE_TIME
+    {
+        DATE_TIME : T24BusinessTypes:RELTIME
+            @i18n:Label (en="Date time")
+            @i18n:Tooltip (en="Date and time when record was input or authorised")
+            @t24:i (align=L, inputBehaviour=N, maxLength=15, sysNumber=19.0, core=true, t24Name=DATE.TIME, mask="RDD DD  DD ##:##", mandatory=false)
+    }
+    PP_SPECIFIC_WEIGHT__INPUTTER
+    {
+        INPUTTER : T24BusinessTypes:A
+            @i18n:Label (en=Inputter)
+            @i18n:Tooltip (en="The user who last updated the record")
+            @t24:i (align=L, inputBehaviour=N, maxLength=40, sysNumber=18.0, core=true, t24Name=INPUTTER, mandatory=false)
+    }
+    PP_SPECIFIC_WEIGHT__OVERRIDE
+    {
+        /* Contains all the override messages which the user agreed to during Input. During the validation of a transaction, the system may provide the user with a series of screen override messages to indicate an anomaly. */
+        OVERRIDE : T24BusinessTypes:N
+            @i18n:Label (en=Override)
+            @i18n:Tooltip (en="Overrides generated by this transaction")
+            @t24:i (align=R, inputBehaviour=N, maxLength=35, sysNumber=15.0, core=true, t24Name=OVERRIDE, mandatory=false)
+    }
+}
+Enumerations {
+    PP_SPECIFIC_WEIGHT__WeightCode : mml:string
+        H=H
+        L=L
+        M=M
+}
